@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/stepper_test.xst" -ofn "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/stepper_test.syr" 
+xst -intstyle ise -ifn "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/stepper_test.xst" -ofn "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/stepper_test.syr" 
+xst -intstyle ise -ifn "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/stepper_test.xst" -ofn "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/stepper_test.syr" 

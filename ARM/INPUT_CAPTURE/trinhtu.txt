@@ -1,0 +1,52 @@
+a. makefile 
+b. project.h
+c.create dma.h , dma.can
+d.test make 
+.. update constance for dma in mtype.h
+e . config dma for usart 
+f.run test
+
+
+
+1 disable it by resetting the EN bit in the DMA_SxCR register,. 
+	+ wait for disable
+	
+2.Set the peripheral port register address in the DMA_SxPAR register. The data will be
+moved from/ to this address to/ from the peripheral port after the peripheral event.
+   + USART1 DR
+   
+3. Set the memory address in the DMA_SxMA0R register (and in the DMA_SxMA1R
+register in the case of a double buffer mode). The data will be written to or read from
+this memory after the peripheral event
+	+ u32_t rx_data 
+
+4.Configure the total number of data items to be transferred in the DMA_SxNDTR
+register. After each peripheral event or each beat of the burst, this value is
+decremented.
+	1bytes  . 
+
+5.Select the DMA channel (request) using CHSEL[2:0] in the DMA_SxCR register.
+	channel 4
+6.If the peripheral is intended to be the flow controller and if it supports this feature, set
+the PFCTRL bit in the DMA_SxCR register.
+	none
+7.Configure the stream priority using the PL[1:0] bits in the DMA_SxCR register.
+	low
+8. Configure the FIFO usage (enable or disable, threshold in transmission and reception)
+	disable
+9. Configure the data transfer direction, peripheral and memory incremented/fixed mode,
+single or burst transactions, peripheral and memory data widths, Circular mode,
+Double buffer mode and interrupts after half and/or full transfer, and/or errors in the
+DMA_SxCR register.
+
+	peripheral to memory .increment memmory . peripheral ,memmory data widths byte
+	Circular mode
+10. Activate the stream by setting the EN bit in the DMA_SxCR register.
+As soon as the stream is enabled, it can serve any DMA request from the peripheral
+connected to the stream.
+	enable
+
+Warning: To switch off a peripheral connected to a DMA stream
+request, it is mandatory to, first, switch off the DMA stream to
+which the peripheral is connected, then to wait for EN bit = 0.
+Only then can the peripheral be safely disabled.

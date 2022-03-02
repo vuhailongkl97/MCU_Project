@@ -1,0 +1,1517 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+                              c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o (exit)
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+                              c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o) (_global_impure_ptr)
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+                              c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o (__libc_init_array)
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+                              build/queue.o (memcpy)
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+                              c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o (memset)
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+                              c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o) (_exit)
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+                              build/uart.o (__aeabi_ui2d)
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+                              build/uart.o (__aeabi_dmul)
+c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_truncdfsf2.o)
+                              build/uart.o (__aeabi_d2f)
+
+Allocating common symbols
+Common symbol       size              file
+
+xQueueRegistry      0x40              build/queue.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+ .data          0x00000000        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .text          0x00000000       0x74 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .ARM.attributes
+                0x00000000       0x20 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .text          0x00000000        0x0 build/main.o
+ .data          0x00000000        0x0 build/main.o
+ .bss           0x00000000        0x0 build/main.o
+ .data.mpin13   0x00000000        0x4 build/main.o
+ .data.mpin14   0x00000000        0x4 build/main.o
+ .data.mpin15   0x00000000        0x4 build/main.o
+ .text          0x00000000        0x0 build/stm32f4xx_it.o
+ .data          0x00000000        0x0 build/stm32f4xx_it.o
+ .bss           0x00000000        0x0 build/stm32f4xx_it.o
+ .text          0x00000000        0x0 build/gpio.o
+ .data          0x00000000        0x0 build/gpio.o
+ .bss           0x00000000        0x0 build/gpio.o
+ .text.led_on   0x00000000        0x4 build/gpio.o
+ .text.led_off  0x00000000        0x6 build/gpio.o
+ .text          0x00000000        0x0 build/clock.o
+ .data          0x00000000        0x0 build/clock.o
+ .bss           0x00000000        0x0 build/clock.o
+ .text          0x00000000        0x0 build/uart.o
+ .data          0x00000000        0x0 build/uart.o
+ .bss           0x00000000        0x0 build/uart.o
+ .text.usart_send_string
+                0x00000000       0x16 build/uart.o
+ .text.usart_dma_en
+                0x00000000       0x10 build/uart.o
+ .text          0x00000000        0x0 build/heap_4.o
+ .data          0x00000000        0x0 build/heap_4.o
+ .bss           0x00000000        0x0 build/heap_4.o
+ .text.xPortGetFreeHeapSize
+                0x00000000        0xc build/heap_4.o
+ .text.xPortGetMinimumEverFreeHeapSize
+                0x00000000        0xc build/heap_4.o
+ .text.vPortInitialiseBlocks
+                0x00000000        0x2 build/heap_4.o
+ .text          0x00000000        0x0 build/port.o
+ .data          0x00000000        0x0 build/port.o
+ .bss           0x00000000        0x0 build/port.o
+ .text.vPortEndScheduler
+                0x00000000       0x24 build/port.o
+ .text          0x00000000        0x0 build/croutine.o
+ .data          0x00000000        0x0 build/croutine.o
+ .bss           0x00000000        0x0 build/croutine.o
+ .debug_info    0x00000000       0x72 build/croutine.o
+ .debug_abbrev  0x00000000       0x26 build/croutine.o
+ .debug_aranges
+                0x00000000       0x18 build/croutine.o
+ .debug_line    0x00000000       0x1d build/croutine.o
+ .debug_str     0x00000000      0x1a2 build/croutine.o
+ .comment       0x00000000       0x7f build/croutine.o
+ .ARM.attributes
+                0x00000000       0x39 build/croutine.o
+ .text          0x00000000        0x0 build/event_groups.o
+ .data          0x00000000        0x0 build/event_groups.o
+ .bss           0x00000000        0x0 build/event_groups.o
+ .text.prvTestWaitCondition
+                0x00000000       0x1c build/event_groups.o
+ .text.xEventGroupCreate
+                0x00000000       0x1a build/event_groups.o
+ .text.xEventGroupWaitBits
+                0x00000000      0x10c build/event_groups.o
+ .text.xEventGroupClearBits
+                0x00000000       0x46 build/event_groups.o
+ .text.xEventGroupGetBitsFromISR
+                0x00000000       0x1c build/event_groups.o
+ .text.xEventGroupSetBits
+                0x00000000       0x8c build/event_groups.o
+ .text.xEventGroupSync
+                0x00000000       0xd4 build/event_groups.o
+ .text.vEventGroupDelete
+                0x00000000       0x3e build/event_groups.o
+ .text.vEventGroupSetBitsCallback
+                0x00000000        0x8 build/event_groups.o
+ .text.vEventGroupClearBitsCallback
+                0x00000000        0x8 build/event_groups.o
+ .text.uxEventGroupGetNumber
+                0x00000000        0xa build/event_groups.o
+ .text.vEventGroupSetNumber
+                0x00000000        0x4 build/event_groups.o
+ .debug_info    0x00000000     0x14b0 build/event_groups.o
+ .debug_abbrev  0x00000000      0x374 build/event_groups.o
+ .debug_loc     0x00000000      0x887 build/event_groups.o
+ .debug_aranges
+                0x00000000       0x78 build/event_groups.o
+ .debug_ranges  0x00000000       0x88 build/event_groups.o
+ .debug_line    0x00000000      0x410 build/event_groups.o
+ .debug_str     0x00000000      0xa7e build/event_groups.o
+ .comment       0x00000000       0x7f build/event_groups.o
+ .debug_frame   0x00000000      0x15c build/event_groups.o
+ .ARM.attributes
+                0x00000000       0x39 build/event_groups.o
+ .text          0x00000000        0x0 build/list.o
+ .data          0x00000000        0x0 build/list.o
+ .bss           0x00000000        0x0 build/list.o
+ .text          0x00000000        0x0 build/queue.o
+ .data          0x00000000        0x0 build/queue.o
+ .bss           0x00000000        0x0 build/queue.o
+ .text.prvGetDisinheritPriorityAfterTimeout
+                0x00000000       0x12 build/queue.o
+ .text.xQueueCreateCountingSemaphore
+                0x00000000       0x40 build/queue.o
+ .text.prvInitialiseMutex
+                0x00000000       0x18 build/queue.o
+ .text.xQueueCreateMutex
+                0x00000000       0x16 build/queue.o
+ .text.xQueueGiveMutexRecursive
+                0x00000000       0x40 build/queue.o
+ .text.xQueueGiveFromISR
+                0x00000000       0xb2 build/queue.o
+ .text.xQueueSemaphoreTake
+                0x00000000      0x19c build/queue.o
+ .text.xQueueTakeMutexRecursive
+                0x00000000       0x44 build/queue.o
+ .text.xQueuePeek
+                0x00000000      0x158 build/queue.o
+ .text.xQueueReceiveFromISR
+                0x00000000       0xaa build/queue.o
+ .text.xQueuePeekFromISR
+                0x00000000       0x7c build/queue.o
+ .text.uxQueueMessagesWaiting
+                0x00000000       0x26 build/queue.o
+ .text.uxQueueSpacesAvailable
+                0x00000000       0x2a build/queue.o
+ .text.uxQueueMessagesWaitingFromISR
+                0x00000000       0x18 build/queue.o
+ .text.uxQueueGetQueueNumber
+                0x00000000        0x4 build/queue.o
+ .text.vQueueSetQueueNumber
+                0x00000000        0x4 build/queue.o
+ .text.ucQueueGetQueueType
+                0x00000000        0x6 build/queue.o
+ .text.xQueueIsQueueEmptyFromISR
+                0x00000000       0x20 build/queue.o
+ .text.xQueueIsQueueFullFromISR
+                0x00000000       0x24 build/queue.o
+ .text.pcQueueGetName
+                0x00000000       0x28 build/queue.o
+ .text.vQueueUnregisterQueue
+                0x00000000       0x2c build/queue.o
+ .text.vQueueDelete
+                0x00000000       0x24 build/queue.o
+ .text          0x00000000        0x0 build/tasks.o
+ .data          0x00000000        0x0 build/tasks.o
+ .bss           0x00000000        0x0 build/tasks.o
+ .text.prvTaskIsTaskSuspended
+                0x00000000       0x40 build/tasks.o
+ .text.prvTaskCheckFreeStackSpace
+                0x00000000       0x14 build/tasks.o
+ .text.vTaskDelete
+                0x00000000       0xe0 build/tasks.o
+ .text.eTaskGetState
+                0x00000000       0x80 build/tasks.o
+ .text.uxTaskPriorityGet
+                0x00000000       0x20 build/tasks.o
+ .text.uxTaskPriorityGetFromISR
+                0x00000000       0x30 build/tasks.o
+ .text.vTaskPrioritySet
+                0x00000000       0xdc build/tasks.o
+ .text.vTaskResume
+                0x00000000       0x84 build/tasks.o
+ .text.xTaskResumeFromISR
+                0x00000000       0xa4 build/tasks.o
+ .text.vTaskEndScheduler
+                0x00000000       0x24 build/tasks.o
+ .text.xTaskGetTickCountFromISR
+                0x00000000       0x10 build/tasks.o
+ .text.uxTaskGetNumberOfTasks
+                0x00000000        0xc build/tasks.o
+ .text.pcTaskGetName
+                0x00000000       0x28 build/tasks.o
+ .text.vTaskDelayUntil
+                0x00000000       0xa4 build/tasks.o
+ .text.vTaskSuspend
+                0x00000000       0xec build/tasks.o
+ .text.vTaskPlaceOnUnorderedEventList
+                0x00000000       0x5c build/tasks.o
+ .text.vTaskRemoveFromUnorderedEventList
+                0x00000000       0x88 build/tasks.o
+ .text.vTaskSetTimeOutState
+                0x00000000       0x38 build/tasks.o
+ .text.uxTaskGetTaskNumber
+                0x00000000        0xa build/tasks.o
+ .text.vTaskSetTaskNumber
+                0x00000000        0x6 build/tasks.o
+ .text.vTaskGetInfo
+                0x00000000       0x78 build/tasks.o
+ .text.prvListTasksWithinSingleList
+                0x00000000       0x60 build/tasks.o
+ .text.uxTaskGetSystemState
+                0x00000000       0xb0 build/tasks.o
+ .text.xTaskGetCurrentTaskHandle
+                0x00000000        0xc build/tasks.o
+ .text.xTaskPriorityInherit
+                0x00000000       0xb8 build/tasks.o
+ .text.vTaskPriorityDisinheritAfterTimeout
+                0x00000000       0xc0 build/tasks.o
+ .text.uxTaskResetEventItemValue
+                0x00000000       0x18 build/tasks.o
+ .text.pvTaskIncrementMutexHeldCount
+                0x00000000       0x1c build/tasks.o
+ .text.xTaskNotifyWait
+                0x00000000       0x98 build/tasks.o
+ .text.xTaskGenericNotify
+                0x00000000       0xe0 build/tasks.o
+ .text.xTaskGenericNotifyFromISR
+                0x00000000      0x120 build/tasks.o
+ .text.xTaskNotifyStateClear
+                0x00000000       0x34 build/tasks.o
+ .text          0x00000000        0x0 build/timers.o
+ .data          0x00000000        0x0 build/timers.o
+ .bss           0x00000000        0x0 build/timers.o
+ .text.prvInitialiseNewTimer
+                0x00000000       0x40 build/timers.o
+ .text.xTimerCreate
+                0x00000000       0x32 build/timers.o
+ .text.xTimerGetTimerDaemonTaskHandle
+                0x00000000       0x20 build/timers.o
+ .text.xTimerGetPeriod
+                0x00000000       0x18 build/timers.o
+ .text.xTimerGetExpiryTime
+                0x00000000       0x18 build/timers.o
+ .text.pcTimerGetName
+                0x00000000       0x18 build/timers.o
+ .text.xTimerIsTimerActive
+                0x00000000       0x2c build/timers.o
+ .text.pvTimerGetTimerID
+                0x00000000       0x26 build/timers.o
+ .text.vTimerSetTimerID
+                0x00000000       0x26 build/timers.o
+ .text.uxTimerGetTimerNumber
+                0x00000000        0x4 build/timers.o
+ .text.vTimerSetTimerNumber
+                0x00000000        0x4 build/timers.o
+ .text          0x00000000       0x14 build/startup_stm32f411xe.o
+ .data          0x00000000        0x0 build/startup_stm32f411xe.o
+ .bss           0x00000000        0x0 build/startup_stm32f411xe.o
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x28 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+ .debug_frame   0x00000000       0x28 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000000       0x34 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x00000000        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+ .data.impure_data
+                0x00000000       0x60 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000000       0x34 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+ .text._exit    0x00000000        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+ .debug_frame   0x00000000       0x20 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+ .ARM.attributes
+                0x00000000       0x34 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .eh_frame      0x00000000        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .ARM.attributes
+                0x00000000       0x34 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .text          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ .data          0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ .bss           0x00000000        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x20000000         0x00020000         xrw
+FLASH            0x08000000         0x00080000         xr
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+LOAD build/main.o
+LOAD build/stm32f4xx_it.o
+LOAD build/gpio.o
+LOAD build/clock.o
+LOAD build/uart.o
+LOAD build/heap_4.o
+LOAD build/port.o
+LOAD build/croutine.o
+LOAD build/event_groups.o
+LOAD build/list.o
+LOAD build/queue.o
+LOAD build/tasks.o
+LOAD build/timers.o
+LOAD build/startup_stm32f411xe.o
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libm.a
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a
+START GROUP
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a
+END GROUP
+START GROUP
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a
+END GROUP
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+LOAD c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+                0x20020000                _estack = 0x20020000
+                0x00000200                _Min_Heap_Size = 0x200
+                0x00000400                _Min_Stack_Size = 0x400
+
+.isr_vector     0x08000000      0x198
+                0x08000000                . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x198 build/startup_stm32f411xe.o
+                0x08000000                g_pfnVectors
+                0x08000198                . = ALIGN (0x4)
+
+.text           0x080001a0     0x2ac4
+                0x080001a0                . = ALIGN (0x4)
+ *(.text)
+ .text          0x080001a0       0x40 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .text          0x080001e0      0x378 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+                0x080001e0                __aeabi_drsub
+                0x080001e8                __aeabi_dsub
+                0x080001e8                __subdf3
+                0x080001ec                __aeabi_dadd
+                0x080001ec                __adddf3
+                0x08000464                __floatunsidf
+                0x08000464                __aeabi_ui2d
+                0x08000484                __floatsidf
+                0x08000484                __aeabi_i2d
+                0x080004a8                __aeabi_f2d
+                0x080004a8                __extendsfdf2
+                0x080004ec                __floatundidf
+                0x080004ec                __aeabi_ul2d
+                0x080004fc                __floatdidf
+                0x080004fc                __aeabi_l2d
+ .text          0x08000558      0x424 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+                0x08000558                __aeabi_dmul
+                0x08000558                __muldf3
+                0x080007ac                __divdf3
+                0x080007ac                __aeabi_ddiv
+ .text          0x0800097c       0xa0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_truncdfsf2.o)
+                0x0800097c                __truncdfsf2
+                0x0800097c                __aeabi_d2f
+ *(.text*)
+ .text.idle_task
+                0x08000a1c       0x1c build/main.o
+                0x08000a1c                idle_task
+ .text.notify_take_task
+                0x08000a38       0x34 build/main.o
+                0x08000a38                notify_take_task
+ .text.USART1_IRQHandler
+                0x08000a6c       0xac build/main.o
+                0x08000a6c                USART1_IRQHandler
+ .text.vApplicationIdleHook
+                0x08000b18        0x2 build/main.o
+                0x08000b18                vApplicationIdleHook
+ .text.vApplicationStackOverflowHook
+                0x08000b1a        0x2 build/main.o
+                0x08000b1a                vApplicationStackOverflowHook
+ .text.vApplicationMallocFailedHook
+                0x08000b1c        0x2 build/main.o
+                0x08000b1c                vApplicationMallocFailedHook
+ *fill*         0x08000b1e        0x2 
+ .text.rcc_enableclk
+                0x08000b20       0x10 build/main.o
+                0x08000b20                rcc_enableclk
+ .text.init_interrupt
+                0x08000b30       0x30 build/main.o
+                0x08000b30                init_interrupt
+ .text.config_pin
+                0x08000b60       0x40 build/main.o
+                0x08000b60                config_pin
+ .text.vUart_Send
+                0x08000ba0       0x1c build/main.o
+                0x08000ba0                vUart_Send
+ .text.test_task_send
+                0x08000bbc       0x24 build/main.o
+                0x08000bbc                test_task_send
+ .text.main     0x08000be0       0x94 build/main.o
+                0x08000be0                main
+ .text.NMI_Handler
+                0x08000c74        0x2 build/stm32f4xx_it.o
+                0x08000c74                NMI_Handler
+ .text.HardFault_Handler
+                0x08000c76        0x2 build/stm32f4xx_it.o
+                0x08000c76                HardFault_Handler
+ .text.MemManage_Handler
+                0x08000c78        0x2 build/stm32f4xx_it.o
+                0x08000c78                MemManage_Handler
+ .text.BusFault_Handler
+                0x08000c7a        0x2 build/stm32f4xx_it.o
+                0x08000c7a                BusFault_Handler
+ .text.UsageFault_Handler
+                0x08000c7c        0x2 build/stm32f4xx_it.o
+                0x08000c7c                UsageFault_Handler
+ .text.DebugMon_Handler
+                0x08000c7e        0x2 build/stm32f4xx_it.o
+                0x08000c7e                DebugMon_Handler
+ .text.mNVIC_SetPriority
+                0x08000c80       0x1e build/stm32f4xx_it.o
+                0x08000c80                mNVIC_SetPriority
+ .text.mNVIC_EnableIRQ
+                0x08000c9e       0x1a build/stm32f4xx_it.o
+                0x08000c9e                mNVIC_EnableIRQ
+ .text.init_pin
+                0x08000cb8       0x84 build/gpio.o
+                0x08000cb8                init_pin
+ .text.GPIO_TongglePin
+                0x08000d3c        0x8 build/gpio.o
+                0x08000d3c                GPIO_TongglePin
+ .text.system_init
+                0x08000d44      0x1d4 build/clock.o
+                0x08000d44                system_init
+ .text.usart_send_byte
+                0x08000f18       0x20 build/uart.o
+                0x08000f18                usart_send_byte
+ .text.uart_pin_init
+                0x08000f38       0x64 build/uart.o
+                0x08000f38                uart_pin_init
+ *fill*         0x08000f9c        0x4 
+ .text.uart_init
+                0x08000fa0       0x9c build/uart.o
+                0x08000fa0                uart_init
+ .text.prvHeapInit
+                0x0800103c       0x64 build/heap_4.o
+ .text.prvInsertBlockIntoFreeList
+                0x080010a0       0x58 build/heap_4.o
+ .text.pvPortMalloc
+                0x080010f8      0x11c build/heap_4.o
+                0x080010f8                pvPortMalloc
+ .text.vPortFree
+                0x08001214       0x70 build/heap_4.o
+                0x08001214                vPortFree
+ .text.prvTaskExitError
+                0x08001284       0x40 build/port.o
+ .text.prvPortStartFirstTask
+                0x080012c4       0x28 build/port.o
+ .text.vPortEnableVFP
+                0x080012ec       0x14 build/port.o
+ .text.pxPortInitialiseStack
+                0x08001300       0x2c build/port.o
+                0x08001300                pxPortInitialiseStack
+ *fill*         0x0800132c        0x4 
+ .text.SVC_Handler
+                0x08001330       0x24 build/port.o
+                0x08001330                SVC_Handler
+ .text.vPortEnterCritical
+                0x08001354       0x44 build/port.o
+                0x08001354                vPortEnterCritical
+ .text.vPortExitCritical
+                0x08001398       0x2c build/port.o
+                0x08001398                vPortExitCritical
+ *fill*         0x080013c4        0xc 
+ .text.PendSV_Handler
+                0x080013d0       0x64 build/port.o
+                0x080013d0                PendSV_Handler
+ .text.SysTick_Handler
+                0x08001434       0x2c build/port.o
+                0x08001434                SysTick_Handler
+ .text.vPortSetupTimerInterrupt
+                0x08001460       0x28 build/port.o
+                0x08001460                vPortSetupTimerInterrupt
+ .text.xPortStartScheduler
+                0x08001488      0x110 build/port.o
+                0x08001488                xPortStartScheduler
+ .text.vPortValidateInterruptPriority
+                0x08001598       0x5c build/port.o
+                0x08001598                vPortValidateInterruptPriority
+ .text.vListInitialise
+                0x080015f4       0x16 build/list.o
+                0x080015f4                vListInitialise
+ .text.vListInitialiseItem
+                0x0800160a        0x6 build/list.o
+                0x0800160a                vListInitialiseItem
+ .text.vListInsertEnd
+                0x08001610       0x18 build/list.o
+                0x08001610                vListInsertEnd
+ .text.vListInsert
+                0x08001628       0x34 build/list.o
+                0x08001628                vListInsert
+ .text.uxListRemove
+                0x0800165c       0x28 build/list.o
+                0x0800165c                uxListRemove
+ .text.prvIsQueueFull
+                0x08001684       0x1e build/queue.o
+ .text.prvIsQueueEmpty
+                0x080016a2       0x1a build/queue.o
+ .text.prvCopyDataToQueue
+                0x080016bc       0x76 build/queue.o
+ .text.prvCopyDataFromQueue
+                0x08001732       0x24 build/queue.o
+ .text.prvUnlockQueue
+                0x08001756       0x6e build/queue.o
+ .text.xQueueGenericReset
+                0x080017c4       0x84 build/queue.o
+                0x080017c4                xQueueGenericReset
+ .text.prvInitialiseNewQueue
+                0x08001848       0x22 build/queue.o
+ .text.xQueueGenericCreate
+                0x0800186a       0x48 build/queue.o
+                0x0800186a                xQueueGenericCreate
+ *fill*         0x080018b2        0x2 
+ .text.xQueueGenericSend
+                0x080018b4      0x17c build/queue.o
+                0x080018b4                xQueueGenericSend
+ .text.xQueueGenericSendFromISR
+                0x08001a30       0xcc build/queue.o
+                0x08001a30                xQueueGenericSendFromISR
+ .text.xQueueReceive
+                0x08001afc      0x158 build/queue.o
+                0x08001afc                xQueueReceive
+ .text.vQueueAddToRegistry
+                0x08001c54       0x28 build/queue.o
+                0x08001c54                vQueueAddToRegistry
+ .text.vQueueWaitForMessageRestricted
+                0x08001c7c       0x52 build/queue.o
+                0x08001c7c                vQueueWaitForMessageRestricted
+ *fill*         0x08001cce        0x2 
+ .text.prvResetNextTaskUnblockTime
+                0x08001cd0       0x2c build/tasks.o
+ .text.prvDeleteTCB
+                0x08001cfc       0x12 build/tasks.o
+ .text.prvInitialiseNewTask
+                0x08001d0e       0x90 build/tasks.o
+ *fill*         0x08001d9e        0x2 
+ .text.prvInitialiseTaskLists
+                0x08001da0       0x68 build/tasks.o
+ .text.prvAddNewTaskToReadyList
+                0x08001e08       0xac build/tasks.o
+ .text.prvCheckTasksWaitingTermination
+                0x08001eb4       0x4c build/tasks.o
+ .text.prvAddCurrentTaskToDelayedList
+                0x08001f00       0x98 build/tasks.o
+ .text.prvIdleTask
+                0x08001f98       0x30 build/tasks.o
+ .text.xTaskCreate
+                0x08001fc8       0x62 build/tasks.o
+                0x08001fc8                xTaskCreate
+ *fill*         0x0800202a        0x2 
+ .text.vTaskStartScheduler
+                0x0800202c       0x84 build/tasks.o
+                0x0800202c                vTaskStartScheduler
+ .text.vTaskSuspendAll
+                0x080020b0       0x10 build/tasks.o
+                0x080020b0                vTaskSuspendAll
+ .text.xTaskGetTickCount
+                0x080020c0        0xc build/tasks.o
+                0x080020c0                xTaskGetTickCount
+ .text.xTaskIncrementTick
+                0x080020cc      0x118 build/tasks.o
+                0x080020cc                xTaskIncrementTick
+ .text.xTaskResumeAll
+                0x080021e4       0xf4 build/tasks.o
+                0x080021e4                xTaskResumeAll
+ .text.vTaskDelay
+                0x080022d8       0x4c build/tasks.o
+                0x080022d8                vTaskDelay
+ .text.vTaskSwitchContext
+                0x08002324       0xc8 build/tasks.o
+                0x08002324                vTaskSwitchContext
+ .text.vTaskPlaceOnEventList
+                0x080023ec       0x30 build/tasks.o
+                0x080023ec                vTaskPlaceOnEventList
+ .text.vTaskPlaceOnEventListRestricted
+                0x0800241c       0x38 build/tasks.o
+                0x0800241c                vTaskPlaceOnEventListRestricted
+ .text.xTaskRemoveFromEventList
+                0x08002454       0x8c build/tasks.o
+                0x08002454                xTaskRemoveFromEventList
+ .text.vTaskInternalSetTimeOutState
+                0x080024e0       0x18 build/tasks.o
+                0x080024e0                vTaskInternalSetTimeOutState
+ .text.xTaskCheckForTimeOut
+                0x080024f8       0x80 build/tasks.o
+                0x080024f8                xTaskCheckForTimeOut
+ .text.vTaskMissedYield
+                0x08002578        0xc build/tasks.o
+                0x08002578                vTaskMissedYield
+ .text.xTaskGetSchedulerState
+                0x08002584       0x20 build/tasks.o
+                0x08002584                xTaskGetSchedulerState
+ .text.xTaskPriorityDisinherit
+                0x080025a4       0xb0 build/tasks.o
+                0x080025a4                xTaskPriorityDisinherit
+ .text.ulTaskNotifyTake
+                0x08002654       0x78 build/tasks.o
+                0x08002654                ulTaskNotifyTake
+ .text.vTaskNotifyGiveFromISR
+                0x080026cc       0xd0 build/tasks.o
+                0x080026cc                vTaskNotifyGiveFromISR
+ .text.prvGetNextExpireTime
+                0x0800279c       0x20 build/timers.o
+ .text.prvInsertTimerInActiveList
+                0x080027bc       0x48 build/timers.o
+ .text.prvCheckForValidListAndQueue
+                0x08002804       0x5c build/timers.o
+ .text.xTimerCreateTimerTask
+                0x08002860       0x50 build/timers.o
+                0x08002860                xTimerCreateTimerTask
+ .text.xTimerGenericCommand
+                0x080028b0       0x6c build/timers.o
+                0x080028b0                xTimerGenericCommand
+ .text.prvSwitchTimerLists
+                0x0800291c       0x78 build/timers.o
+ .text.prvSampleTimeNow
+                0x08002994       0x2c build/timers.o
+ .text.prvProcessExpiredTimer
+                0x080029c0       0x60 build/timers.o
+ .text.prvProcessTimerOrBlockTask
+                0x08002a20       0x74 build/timers.o
+ .text.prvProcessReceivedCommands
+                0x08002a94       0xe0 build/timers.o
+ .text.prvTimerTask
+                0x08002b74       0x16 build/timers.o
+ *fill*         0x08002b8a        0x2 
+ .text.Reset_Handler
+                0x08002b8c       0x4c build/startup_stm32f411xe.o
+                0x08002b8c                Reset_Handler
+ .text.Default_Handler
+                0x08002bd8        0x2 build/startup_stm32f411xe.o
+                0x08002bd8                RTC_Alarm_IRQHandler
+                0x08002bd8                EXTI2_IRQHandler
+                0x08002bd8                SPI4_IRQHandler
+                0x08002bd8                TIM1_CC_IRQHandler
+                0x08002bd8                DMA2_Stream5_IRQHandler
+                0x08002bd8                DMA1_Stream5_IRQHandler
+                0x08002bd8                PVD_IRQHandler
+                0x08002bd8                SDIO_IRQHandler
+                0x08002bd8                TAMP_STAMP_IRQHandler
+                0x08002bd8                EXTI3_IRQHandler
+                0x08002bd8                TIM1_UP_TIM10_IRQHandler
+                0x08002bd8                I2C3_ER_IRQHandler
+                0x08002bd8                EXTI0_IRQHandler
+                0x08002bd8                I2C2_EV_IRQHandler
+                0x08002bd8                DMA1_Stream2_IRQHandler
+                0x08002bd8                FPU_IRQHandler
+                0x08002bd8                DMA2_Stream2_IRQHandler
+                0x08002bd8                SPI1_IRQHandler
+                0x08002bd8                TIM1_BRK_TIM9_IRQHandler
+                0x08002bd8                DMA2_Stream3_IRQHandler
+                0x08002bd8                USART6_IRQHandler
+                0x08002bd8                DMA2_Stream0_IRQHandler
+                0x08002bd8                TIM4_IRQHandler
+                0x08002bd8                I2C1_EV_IRQHandler
+                0x08002bd8                DMA1_Stream6_IRQHandler
+                0x08002bd8                DMA1_Stream1_IRQHandler
+                0x08002bd8                TIM3_IRQHandler
+                0x08002bd8                RCC_IRQHandler
+                0x08002bd8                Default_Handler
+                0x08002bd8                EXTI15_10_IRQHandler
+                0x08002bd8                ADC_IRQHandler
+                0x08002bd8                DMA1_Stream7_IRQHandler
+                0x08002bd8                SPI5_IRQHandler
+                0x08002bd8                TIM5_IRQHandler
+                0x08002bd8                DMA2_Stream7_IRQHandler
+                0x08002bd8                I2C3_EV_IRQHandler
+                0x08002bd8                EXTI9_5_IRQHandler
+                0x08002bd8                RTC_WKUP_IRQHandler
+                0x08002bd8                SPI2_IRQHandler
+                0x08002bd8                DMA1_Stream0_IRQHandler
+                0x08002bd8                EXTI4_IRQHandler
+                0x08002bd8                WWDG_IRQHandler
+                0x08002bd8                TIM2_IRQHandler
+                0x08002bd8                OTG_FS_WKUP_IRQHandler
+                0x08002bd8                TIM1_TRG_COM_TIM11_IRQHandler
+                0x08002bd8                EXTI1_IRQHandler
+                0x08002bd8                USART2_IRQHandler
+                0x08002bd8                I2C2_ER_IRQHandler
+                0x08002bd8                DMA2_Stream1_IRQHandler
+                0x08002bd8                FLASH_IRQHandler
+                0x08002bd8                DMA2_Stream4_IRQHandler
+                0x08002bd8                OTG_FS_IRQHandler
+                0x08002bd8                SPI3_IRQHandler
+                0x08002bd8                DMA1_Stream4_IRQHandler
+                0x08002bd8                I2C1_ER_IRQHandler
+                0x08002bd8                DMA2_Stream6_IRQHandler
+                0x08002bd8                DMA1_Stream3_IRQHandler
+ *fill*         0x08002bda        0x2 
+ .text.__libc_init_array
+                0x08002bdc       0x48 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+                0x08002bdc                __libc_init_array
+ .text.memcpy   0x08002c24       0x16 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+                0x08002c24                memcpy
+ .text.memset   0x08002c3a       0x10 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+                0x08002c3a                memset
+ *(.glue_7)
+ .glue_7        0x08002c4a        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x08002c4a        0x0 linker stubs
+ *(.eh_frame)
+ *fill*         0x08002c4a        0x2 
+ .eh_frame      0x08002c4c        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ *(.init)
+ .init          0x08002c4c        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x08002c4c                _init
+ .init          0x08002c50        0x8 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ *(.fini)
+ .fini          0x08002c58        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x08002c58                _fini
+ .fini          0x08002c5c        0x8 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+                0x08002c64                . = ALIGN (0x4)
+                0x08002c64                _etext = .
+
+.vfp11_veneer   0x08002c64        0x0
+ .vfp11_veneer  0x08002c64        0x0 linker stubs
+
+.v4_bx          0x08002c64        0x0
+ .v4_bx         0x08002c64        0x0 linker stubs
+
+.iplt           0x08002c64        0x0
+ .iplt          0x08002c64        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+
+.rodata         0x08002c64       0x40
+                0x08002c64                . = ALIGN (0x4)
+ *(.rodata)
+ *(.rodata*)
+ .rodata.main.str1.4
+                0x08002c64       0x26 build/main.o
+ *fill*         0x08002c8a        0x2 
+ .rodata.vTaskStartScheduler.str1.4
+                0x08002c8c        0x5 build/tasks.o
+ *fill*         0x08002c91        0x3 
+ .rodata.prvCheckForValidListAndQueue.str1.4
+                0x08002c94        0x5 build/timers.o
+ *fill*         0x08002c99        0x3 
+ .rodata.xTimerCreateTimerTask.str1.4
+                0x08002c9c        0x8 build/timers.o
+                0x08002ca4                . = ALIGN (0x4)
+
+.rel.dyn        0x08002ca4        0x0
+ .rel.iplt      0x08002ca4        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+
+.ARM            0x08002ca4        0x0
+                0x08002ca4                __exidx_start = .
+ *(.ARM.exidx*)
+                0x08002ca4                __exidx_end = .
+
+.preinit_array  0x08002ca4        0x0
+                0x08002ca4                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array*)
+                0x08002ca4                PROVIDE (__preinit_array_end, .)
+
+.init_array     0x08002ca4        0x4
+                0x08002ca4                PROVIDE (__init_array_start, .)
+ *(SORT_BY_NAME(.init_array.*))
+ *(.init_array*)
+ .init_array    0x08002ca4        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x08002ca8                PROVIDE (__init_array_end, .)
+
+.fini_array     0x08002ca8        0x4
+                [!provide]                PROVIDE (__fini_array_start, .)
+ *(SORT_BY_NAME(.fini_array.*))
+ *(.fini_array*)
+ .fini_array    0x08002ca8        0x4 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                [!provide]                PROVIDE (__fini_array_end, .)
+                0x08002cac                _sidata = LOADADDR (.data)
+
+.data           0x20000000        0xc load address 0x08002cac
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _sdata = .
+ *(.data)
+ *(.data*)
+ .data.mpin12   0x20000000        0x4 build/main.o
+                0x20000000                mpin12
+ .data.ok       0x20000004        0x1 build/main.o
+                0x20000004                ok
+ *fill*         0x20000005        0x3 
+ .data.uxCriticalNesting
+                0x20000008        0x4 build/port.o
+                0x2000000c                . = ALIGN (0x4)
+                0x2000000c                _edata = .
+
+.igot.plt       0x2000000c        0x0 load address 0x08002cb8
+ .igot.plt      0x2000000c        0x0 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x2000000c                . = ALIGN (0x4)
+
+.bss            0x2000000c    0x12dd8 load address 0x08002cb8
+                0x2000000c                _sbss = .
+                0x2000000c                __bss_start__ = _sbss
+ *(.bss)
+ .bss           0x2000000c       0x1c c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ *(.bss*)
+ .bss.pxTask    0x20000028        0x4 build/main.o
+                0x20000028                pxTask
+ .bss.pxTask_receive
+                0x2000002c        0x4 build/main.o
+                0x2000002c                pxTask_receive
+ .bss.pxEnd     0x20000030        0x4 build/heap_4.o
+ .bss.ucHeap    0x20000034    0x12c00 build/heap_4.o
+ .bss.xBlockAllocatedBit
+                0x20012c34        0x4 build/heap_4.o
+ .bss.xFreeBytesRemaining
+                0x20012c38        0x4 build/heap_4.o
+ .bss.xMinimumEverFreeBytesRemaining
+                0x20012c3c        0x4 build/heap_4.o
+ .bss.xStart    0x20012c40        0x8 build/heap_4.o
+ .bss.ucMaxSysCallPriority
+                0x20012c48        0x1 build/port.o
+ *fill*         0x20012c49        0x3 
+ .bss.ulMaxPRIGROUPValue
+                0x20012c4c        0x4 build/port.o
+ .bss.pxCurrentTCB
+                0x20012c50        0x4 build/tasks.o
+                0x20012c50                pxCurrentTCB
+ .bss.pxDelayedTaskList
+                0x20012c54        0x4 build/tasks.o
+ .bss.pxOverflowDelayedTaskList
+                0x20012c58        0x4 build/tasks.o
+ .bss.pxReadyTasksLists
+                0x20012c5c       0x78 build/tasks.o
+ .bss.uxCurrentNumberOfTasks
+                0x20012cd4        0x4 build/tasks.o
+ .bss.uxDeletedTasksWaitingCleanUp
+                0x20012cd8        0x4 build/tasks.o
+ .bss.uxPendedTicks
+                0x20012cdc        0x4 build/tasks.o
+ .bss.uxSchedulerSuspended
+                0x20012ce0        0x4 build/tasks.o
+ .bss.uxTaskNumber
+                0x20012ce4        0x4 build/tasks.o
+ .bss.uxTopReadyPriority
+                0x20012ce8        0x4 build/tasks.o
+ .bss.xDelayedTaskList1
+                0x20012cec       0x14 build/tasks.o
+ .bss.xDelayedTaskList2
+                0x20012d00       0x14 build/tasks.o
+ .bss.xIdleTaskHandle
+                0x20012d14        0x4 build/tasks.o
+ .bss.xNextTaskUnblockTime
+                0x20012d18        0x4 build/tasks.o
+ .bss.xNumOfOverflows
+                0x20012d1c        0x4 build/tasks.o
+ .bss.xPendingReadyList
+                0x20012d20       0x14 build/tasks.o
+ .bss.xSchedulerRunning
+                0x20012d34        0x4 build/tasks.o
+ .bss.xSuspendedTaskList
+                0x20012d38       0x14 build/tasks.o
+ .bss.xTasksWaitingTermination
+                0x20012d4c       0x14 build/tasks.o
+ .bss.xTickCount
+                0x20012d60        0x4 build/tasks.o
+ .bss.xYieldPending
+                0x20012d64        0x4 build/tasks.o
+ .bss.pxCurrentTimerList
+                0x20012d68        0x4 build/timers.o
+ .bss.pxOverflowTimerList
+                0x20012d6c        0x4 build/timers.o
+ .bss.xActiveTimerList1
+                0x20012d70       0x14 build/timers.o
+ .bss.xActiveTimerList2
+                0x20012d84       0x14 build/timers.o
+ .bss.xLastTime.6697
+                0x20012d98        0x4 build/timers.o
+ .bss.xTimerQueue
+                0x20012d9c        0x4 build/timers.o
+ .bss.xTimerTaskHandle
+                0x20012da0        0x4 build/timers.o
+ *(COMMON)
+ COMMON         0x20012da4       0x40 build/queue.o
+                0x20012da4                xQueueRegistry
+                0x20012de4                . = ALIGN (0x4)
+                0x20012de4                _ebss = .
+                0x20012de4                __bss_end__ = _ebss
+
+._user_heap_stack
+                0x20012de4      0x604 load address 0x08002cb8
+                0x20012de8                . = ALIGN (0x8)
+ *fill*         0x20012de4        0x4 
+                [!provide]                PROVIDE (end, .)
+                [!provide]                PROVIDE (_end, .)
+                0x20012fe8                . = (. + _Min_Heap_Size)
+ *fill*         0x20012de8      0x200 
+                0x200133e8                . = (. + _Min_Stack_Size)
+ *fill*         0x20012fe8      0x400 
+                0x200133e8                . = ALIGN (0x8)
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+
+.ARM.attributes
+                0x00000000       0x30
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x22 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+ .ARM.attributes
+                0x00000022       0x34 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .ARM.attributes
+                0x00000056       0x39 build/main.o
+ .ARM.attributes
+                0x0000008f       0x39 build/stm32f4xx_it.o
+ .ARM.attributes
+                0x000000c8       0x39 build/gpio.o
+ .ARM.attributes
+                0x00000101       0x39 build/clock.o
+ .ARM.attributes
+                0x0000013a       0x39 build/uart.o
+ .ARM.attributes
+                0x00000173       0x39 build/heap_4.o
+ .ARM.attributes
+                0x000001ac       0x39 build/port.o
+ .ARM.attributes
+                0x000001e5       0x39 build/list.o
+ .ARM.attributes
+                0x0000021e       0x39 build/queue.o
+ .ARM.attributes
+                0x00000257       0x39 build/tasks.o
+ .ARM.attributes
+                0x00000290       0x39 build/timers.o
+ .ARM.attributes
+                0x000002c9       0x21 build/startup_stm32f411xe.o
+ .ARM.attributes
+                0x000002ea       0x34 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000031e       0x34 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000352       0x34 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000386       0x22 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x000003a8       0x22 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+ .ARM.attributes
+                0x000003ca       0x22 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .ARM.attributes
+                0x000003ec       0x22 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+OUTPUT(build/freertos_uart.elf elf32-littlearm)
+
+.debug_info     0x00000000     0xb069
+ .debug_info    0x00000000     0x1187 build/main.o
+ .debug_info    0x00001187      0x36b build/stm32f4xx_it.o
+ .debug_info    0x000014f2      0x1ec build/gpio.o
+ .debug_info    0x000016de       0xeb build/clock.o
+ .debug_info    0x000017c9      0x1c9 build/uart.o
+ .debug_info    0x00001992      0xdc2 build/heap_4.o
+ .debug_info    0x00002754      0x59f build/port.o
+ .debug_info    0x00002cf3      0xbd4 build/list.o
+ .debug_info    0x000038c7     0x2955 build/queue.o
+ .debug_info    0x0000621c     0x33cb build/tasks.o
+ .debug_info    0x000095e7     0x1a60 build/timers.o
+ .debug_info    0x0000b047       0x22 build/startup_stm32f411xe.o
+
+.debug_abbrev   0x00000000     0x18f9
+ .debug_abbrev  0x00000000      0x2d9 build/main.o
+ .debug_abbrev  0x000002d9       0xda build/stm32f4xx_it.o
+ .debug_abbrev  0x000003b3       0xd2 build/gpio.o
+ .debug_abbrev  0x00000485       0x6b build/clock.o
+ .debug_abbrev  0x000004f0       0xef build/uart.o
+ .debug_abbrev  0x000005df      0x340 build/heap_4.o
+ .debug_abbrev  0x0000091f      0x246 build/port.o
+ .debug_abbrev  0x00000b65      0x21e build/list.o
+ .debug_abbrev  0x00000d83      0x3f4 build/queue.o
+ .debug_abbrev  0x00001177      0x41c build/tasks.o
+ .debug_abbrev  0x00001593      0x354 build/timers.o
+ .debug_abbrev  0x000018e7       0x12 build/startup_stm32f411xe.o
+
+.debug_loc      0x00000000     0x5138
+ .debug_loc     0x00000000      0x2af build/main.o
+ .debug_loc     0x000002af       0x9c build/stm32f4xx_it.o
+ .debug_loc     0x0000034b      0x1d5 build/gpio.o
+ .debug_loc     0x00000520      0x104 build/clock.o
+ .debug_loc     0x00000624      0x310 build/uart.o
+ .debug_loc     0x00000934      0x332 build/heap_4.o
+ .debug_loc     0x00000c66      0x160 build/port.o
+ .debug_loc     0x00000dc6       0x9c build/list.o
+ .debug_loc     0x00000e62     0x1549 build/queue.o
+ .debug_loc     0x000023ab     0x2134 build/tasks.o
+ .debug_loc     0x000044df      0xc59 build/timers.o
+
+.debug_aranges  0x00000000      0x680
+ .debug_aranges
+                0x00000000       0x78 build/main.o
+ .debug_aranges
+                0x00000078       0x58 build/stm32f4xx_it.o
+ .debug_aranges
+                0x000000d0       0x38 build/gpio.o
+ .debug_aranges
+                0x00000108       0x20 build/clock.o
+ .debug_aranges
+                0x00000128       0x40 build/uart.o
+ .debug_aranges
+                0x00000168       0x50 build/heap_4.o
+ .debug_aranges
+                0x000001b8       0x80 build/port.o
+ .debug_aranges
+                0x00000238       0x40 build/list.o
+ .debug_aranges
+                0x00000278      0x130 build/queue.o
+ .debug_aranges
+                0x000003a8      0x1e8 build/tasks.o
+ .debug_aranges
+                0x00000590       0xc8 build/timers.o
+ .debug_aranges
+                0x00000658       0x28 build/startup_stm32f411xe.o
+
+.debug_ranges   0x00000000      0x790
+ .debug_ranges  0x00000000       0x68 build/main.o
+ .debug_ranges  0x00000068       0x48 build/stm32f4xx_it.o
+ .debug_ranges  0x000000b0       0x28 build/gpio.o
+ .debug_ranges  0x000000d8       0x10 build/clock.o
+ .debug_ranges  0x000000e8       0x30 build/uart.o
+ .debug_ranges  0x00000118       0x40 build/heap_4.o
+ .debug_ranges  0x00000158       0x70 build/port.o
+ .debug_ranges  0x000001c8       0x30 build/list.o
+ .debug_ranges  0x000001f8      0x200 build/queue.o
+ .debug_ranges  0x000003f8      0x2c0 build/tasks.o
+ .debug_ranges  0x000006b8       0xb8 build/timers.o
+ .debug_ranges  0x00000770       0x20 build/startup_stm32f411xe.o
+
+.debug_line     0x00000000     0x2c0e
+ .debug_line    0x00000000      0x36b build/main.o
+ .debug_line    0x0000036b      0x13a build/stm32f4xx_it.o
+ .debug_line    0x000004a5       0xfc build/gpio.o
+ .debug_line    0x000005a1      0x11f build/clock.o
+ .debug_line    0x000006c0      0x117 build/uart.o
+ .debug_line    0x000007d7      0x32b build/heap_4.o
+ .debug_line    0x00000b02      0x2cd build/port.o
+ .debug_line    0x00000dcf      0x25b build/list.o
+ .debug_line    0x0000102a      0x973 build/queue.o
+ .debug_line    0x0000199d      0xd2a build/tasks.o
+ .debug_line    0x000026c7      0x4d4 build/timers.o
+ .debug_line    0x00002b9b       0x73 build/startup_stm32f411xe.o
+
+.debug_str      0x00000000     0x2963
+ .debug_str     0x00000000      0xaec build/main.o
+                                0xb7c (size before relaxing)
+ .debug_str     0x00000aec       0x94 build/stm32f4xx_it.o
+                                0x5fb (size before relaxing)
+ .debug_str     0x00000b80       0x7c build/gpio.o
+                                0x1ff (size before relaxing)
+ .debug_str     0x00000bfc       0x7d build/clock.o
+                                0x1ae (size before relaxing)
+ .debug_str     0x00000c79       0xb3 build/uart.o
+                                0x209 (size before relaxing)
+ .debug_str     0x00000d2c      0x23a build/heap_4.o
+                                0x7dd (size before relaxing)
+ .debug_str     0x00000f66      0x271 build/port.o
+                                0x45d (size before relaxing)
+ .debug_str     0x000011d7      0x12c build/list.o
+                                0x6d7 (size before relaxing)
+ .debug_str     0x00001303      0x76c build/queue.o
+                                0xecd (size before relaxing)
+ .debug_str     0x00001a6f      0xa90 build/tasks.o
+                               0x1549 (size before relaxing)
+ .debug_str     0x000024ff      0x43f build/timers.o
+                                0xc9b (size before relaxing)
+ .debug_str     0x0000293e       0x25 build/startup_stm32f411xe.o
+                                 0x5b (size before relaxing)
+
+.comment        0x00000000       0x7e
+ .comment       0x00000000       0x7e build/main.o
+                                 0x7f (size before relaxing)
+ .comment       0x0000007e       0x7f build/stm32f4xx_it.o
+ .comment       0x0000007e       0x7f build/gpio.o
+ .comment       0x0000007e       0x7f build/clock.o
+ .comment       0x0000007e       0x7f build/uart.o
+ .comment       0x0000007e       0x7f build/heap_4.o
+ .comment       0x0000007e       0x7f build/port.o
+ .comment       0x0000007e       0x7f build/list.o
+ .comment       0x0000007e       0x7f build/queue.o
+ .comment       0x0000007e       0x7f build/tasks.o
+ .comment       0x0000007e       0x7f build/timers.o
+
+.debug_frame    0x00000000     0x146c
+ .debug_frame   0x00000000      0x144 build/main.o
+ .debug_frame   0x00000144       0x90 build/stm32f4xx_it.o
+ .debug_frame   0x000001d4       0x6c build/gpio.o
+ .debug_frame   0x00000240       0x38 build/clock.o
+ .debug_frame   0x00000278       0x94 build/uart.o
+ .debug_frame   0x0000030c       0xbc build/heap_4.o
+ .debug_frame   0x000003c8      0x104 build/port.o
+ .debug_frame   0x000004cc       0x70 build/list.o
+ .debug_frame   0x0000053c      0x42c build/queue.o
+ .debug_frame   0x00000968      0x6d8 build/tasks.o
+ .debug_frame   0x00001040      0x298 build/timers.o
+ .debug_frame   0x000012d8       0x2c c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+ .debug_frame   0x00001304       0x28 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x0000132c       0x20 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+ .debug_frame   0x0000134c       0xac c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x000013f8       0x50 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00001448       0x24 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_truncdfsf2.o)
+
+Cross Reference Table
+
+Symbol                                            File
+ADC_IRQHandler                                    build/startup_stm32f411xe.o
+BusFault_Handler                                  build/stm32f4xx_it.o
+DMA1_Stream0_IRQHandler                           build/startup_stm32f411xe.o
+DMA1_Stream1_IRQHandler                           build/startup_stm32f411xe.o
+DMA1_Stream2_IRQHandler                           build/startup_stm32f411xe.o
+DMA1_Stream3_IRQHandler                           build/startup_stm32f411xe.o
+DMA1_Stream4_IRQHandler                           build/startup_stm32f411xe.o
+DMA1_Stream5_IRQHandler                           build/startup_stm32f411xe.o
+DMA1_Stream6_IRQHandler                           build/startup_stm32f411xe.o
+DMA1_Stream7_IRQHandler                           build/startup_stm32f411xe.o
+DMA2_Stream0_IRQHandler                           build/startup_stm32f411xe.o
+DMA2_Stream1_IRQHandler                           build/startup_stm32f411xe.o
+DMA2_Stream2_IRQHandler                           build/startup_stm32f411xe.o
+DMA2_Stream3_IRQHandler                           build/startup_stm32f411xe.o
+DMA2_Stream4_IRQHandler                           build/startup_stm32f411xe.o
+DMA2_Stream5_IRQHandler                           build/startup_stm32f411xe.o
+DMA2_Stream6_IRQHandler                           build/startup_stm32f411xe.o
+DMA2_Stream7_IRQHandler                           build/startup_stm32f411xe.o
+DebugMon_Handler                                  build/stm32f4xx_it.o
+Default_Handler                                   build/startup_stm32f411xe.o
+EXTI0_IRQHandler                                  build/startup_stm32f411xe.o
+EXTI15_10_IRQHandler                              build/startup_stm32f411xe.o
+EXTI1_IRQHandler                                  build/startup_stm32f411xe.o
+EXTI2_IRQHandler                                  build/startup_stm32f411xe.o
+EXTI3_IRQHandler                                  build/startup_stm32f411xe.o
+EXTI4_IRQHandler                                  build/startup_stm32f411xe.o
+EXTI9_5_IRQHandler                                build/startup_stm32f411xe.o
+FLASH_IRQHandler                                  build/startup_stm32f411xe.o
+FPU_IRQHandler                                    build/startup_stm32f411xe.o
+GPIO_TongglePin                                   build/gpio.o
+                                                  build/main.o
+HardFault_Handler                                 build/stm32f4xx_it.o
+I2C1_ER_IRQHandler                                build/startup_stm32f411xe.o
+I2C1_EV_IRQHandler                                build/startup_stm32f411xe.o
+I2C2_ER_IRQHandler                                build/startup_stm32f411xe.o
+I2C2_EV_IRQHandler                                build/startup_stm32f411xe.o
+I2C3_ER_IRQHandler                                build/startup_stm32f411xe.o
+I2C3_EV_IRQHandler                                build/startup_stm32f411xe.o
+MemManage_Handler                                 build/stm32f4xx_it.o
+NMI_Handler                                       build/stm32f4xx_it.o
+OTG_FS_IRQHandler                                 build/startup_stm32f411xe.o
+OTG_FS_WKUP_IRQHandler                            build/startup_stm32f411xe.o
+PVD_IRQHandler                                    build/startup_stm32f411xe.o
+PendSV_Handler                                    build/port.o
+RCC_IRQHandler                                    build/startup_stm32f411xe.o
+RTC_Alarm_IRQHandler                              build/startup_stm32f411xe.o
+RTC_WKUP_IRQHandler                               build/startup_stm32f411xe.o
+Reset_Handler                                     build/startup_stm32f411xe.o
+SDIO_IRQHandler                                   build/startup_stm32f411xe.o
+SPI1_IRQHandler                                   build/startup_stm32f411xe.o
+SPI2_IRQHandler                                   build/startup_stm32f411xe.o
+SPI3_IRQHandler                                   build/startup_stm32f411xe.o
+SPI4_IRQHandler                                   build/startup_stm32f411xe.o
+SPI5_IRQHandler                                   build/startup_stm32f411xe.o
+SVC_Handler                                       build/port.o
+SysTick_Handler                                   build/port.o
+TAMP_STAMP_IRQHandler                             build/startup_stm32f411xe.o
+TIM1_BRK_TIM9_IRQHandler                          build/startup_stm32f411xe.o
+TIM1_CC_IRQHandler                                build/startup_stm32f411xe.o
+TIM1_TRG_COM_TIM11_IRQHandler                     build/startup_stm32f411xe.o
+TIM1_UP_TIM10_IRQHandler                          build/startup_stm32f411xe.o
+TIM2_IRQHandler                                   build/startup_stm32f411xe.o
+TIM3_IRQHandler                                   build/startup_stm32f411xe.o
+TIM4_IRQHandler                                   build/startup_stm32f411xe.o
+TIM5_IRQHandler                                   build/startup_stm32f411xe.o
+USART1_IRQHandler                                 build/main.o
+USART2_IRQHandler                                 build/startup_stm32f411xe.o
+USART6_IRQHandler                                 build/startup_stm32f411xe.o
+UsageFault_Handler                                build/stm32f4xx_it.o
+WWDG_IRQHandler                                   build/startup_stm32f411xe.o
+__adddf3                                          c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_d2f                                       c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_truncdfsf2.o)
+                                                  build/uart.o
+__aeabi_dadd                                      c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_ddiv                                      c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+                                                  build/uart.o
+__aeabi_dmul                                      c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+                                                  build/uart.o
+__aeabi_drsub                                     c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_dsub                                      c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_f2d                                       c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_i2d                                       c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_l2d                                       c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__aeabi_ui2d                                      c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+                                                  build/uart.o
+__aeabi_ul2d                                      c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__bss_end__                                       c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+__bss_start__                                     c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+__call_exitprocs                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+__deregister_frame_info                           c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+__divdf3                                          c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+__dso_handle                                      c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+__extendsfdf2                                     c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__floatdidf                                       c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__floatsidf                                       c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__floatundidf                                     c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__floatunsidf                                     c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__init_array_end                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+__init_array_start                                c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+__libc_fini_array                                 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+__libc_init_array                                 c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+                                                  build/startup_stm32f411xe.o
+                                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+__muldf3                                          c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_muldivdf3.o)
+__preinit_array_end                               c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+__preinit_array_start                             c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+__register_frame_info                             c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+__sf_fake_stderr                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+__sf_fake_stdin                                   c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+__sf_fake_stdout                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+__stack                                           c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+__subdf3                                          c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_addsubdf3.o)
+__truncdfsf2                                      c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard\libgcc.a(_arm_truncdfsf2.o)
+_ebss                                             build/startup_stm32f411xe.o
+_edata                                            build/startup_stm32f411xe.o
+_estack                                           build/startup_stm32f411xe.o
+_exit                                             c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libnosys.a(_exit.o)
+                                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+_fini                                             c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+_global_impure_ptr                                c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+                                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+_impure_ptr                                       c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+_init                                             c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-init.o)
+_mainCRTStartup                                   c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+_sbss                                             build/startup_stm32f411xe.o
+_sdata                                            build/startup_stm32f411xe.o
+_sidata                                           build/startup_stm32f411xe.o
+_start                                            c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+atexit                                            c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+config_pin                                        build/main.o
+eTaskGetState                                     build/tasks.o
+exit                                              c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-exit.o)
+                                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+g_pfnVectors                                      build/startup_stm32f411xe.o
+hardware_init_hook                                c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+idle_task                                         build/main.o
+init_interrupt                                    build/main.o
+init_pin                                          build/gpio.o
+                                                  build/main.o
+led_off                                           build/gpio.o
+led_on                                            build/gpio.o
+mNVIC_EnableIRQ                                   build/stm32f4xx_it.o
+                                                  build/main.o
+mNVIC_SetPriority                                 build/stm32f4xx_it.o
+                                                  build/main.o
+main                                              build/main.o
+                                                  build/startup_stm32f411xe.o
+                                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+memcpy                                            c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memcpy-stub.o)
+                                                  build/queue.o
+memset                                            c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-memset.o)
+                                                  build/tasks.o
+                                                  c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+mpin12                                            build/main.o
+mpin13                                            build/main.o
+mpin14                                            build/main.o
+mpin15                                            build/main.o
+notify_take_task                                  build/main.o
+ok                                                build/main.o
+pcQueueGetName                                    build/queue.o
+pcTaskGetName                                     build/tasks.o
+pcTimerGetName                                    build/timers.o
+pvPortMalloc                                      build/heap_4.o
+                                                  build/timers.o
+                                                  build/tasks.o
+                                                  build/queue.o
+                                                  build/event_groups.o
+pvTaskIncrementMutexHeldCount                     build/tasks.o
+                                                  build/queue.o
+pvTimerGetTimerID                                 build/timers.o
+pxCurrentTCB                                      build/tasks.o
+                                                  build/port.o
+pxPortInitialiseStack                             build/port.o
+                                                  build/tasks.o
+pxTask                                            build/main.o
+pxTask_receive                                    build/main.o
+rcc_enableclk                                     build/main.o
+software_init_hook                                c:/tools/gcc7_2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+system_init                                       build/clock.o
+                                                  build/main.o
+test_task_send                                    build/main.o
+uart_init                                         build/uart.o
+                                                  build/main.o
+uart_pin_init                                     build/uart.o
+ucQueueGetQueueType                               build/queue.o
+ulTaskNotifyTake                                  build/tasks.o
+                                                  build/main.o
+usart_dma_en                                      build/uart.o
+usart_send_byte                                   build/uart.o
+                                                  build/main.o
+usart_send_string                                 build/uart.o
+uxEventGroupGetNumber                             build/event_groups.o
+uxListRemove                                      build/list.o
+                                                  build/timers.o
+                                                  build/tasks.o
+uxQueueGetQueueNumber                             build/queue.o
+uxQueueMessagesWaiting                            build/queue.o
+uxQueueMessagesWaitingFromISR                     build/queue.o
+uxQueueSpacesAvailable                            build/queue.o
+uxTaskGetNumberOfTasks                            build/tasks.o
+uxTaskGetSystemState                              build/tasks.o
+uxTaskGetTaskNumber                               build/tasks.o
+uxTaskPriorityGet                                 build/tasks.o
+uxTaskPriorityGetFromISR                          build/tasks.o
+uxTaskResetEventItemValue                         build/tasks.o
+                                                  build/event_groups.o
+uxTimerGetTimerNumber                             build/timers.o
+vApplicationIdleHook                              build/main.o
+                                                  build/tasks.o
+vApplicationMallocFailedHook                      build/main.o
+                                                  build/heap_4.o
+vApplicationStackOverflowHook                     build/main.o
+                                                  build/tasks.o
+vEventGroupClearBitsCallback                      build/event_groups.o
+vEventGroupDelete                                 build/event_groups.o
+vEventGroupSetBitsCallback                        build/event_groups.o
+vEventGroupSetNumber                              build/event_groups.o
+vListInitialise                                   build/list.o
+                                                  build/timers.o
+                                                  build/tasks.o
+                                                  build/queue.o
+                                                  build/event_groups.o
+vListInitialiseItem                               build/list.o
+                                                  build/timers.o
+                                                  build/tasks.o
+vListInsert                                       build/list.o
+                                                  build/timers.o
+                                                  build/tasks.o
+vListInsertEnd                                    build/list.o
+                                                  build/tasks.o
+vPortEndScheduler                                 build/port.o
+                                                  build/tasks.o
+vPortEnterCritical                                build/port.o
+                                                  build/timers.o
+                                                  build/tasks.o
+                                                  build/queue.o
+                                                  build/event_groups.o
+vPortExitCritical                                 build/port.o
+                                                  build/timers.o
+                                                  build/tasks.o
+                                                  build/queue.o
+                                                  build/event_groups.o
+vPortFree                                         build/heap_4.o
+                                                  build/timers.o
+                                                  build/tasks.o
+                                                  build/queue.o
+                                                  build/event_groups.o
+vPortInitialiseBlocks                             build/heap_4.o
+vPortSetupTimerInterrupt                          build/port.o
+vPortValidateInterruptPriority                    build/port.o
+                                                  build/tasks.o
+                                                  build/queue.o
+vQueueAddToRegistry                               build/queue.o
+                                                  build/timers.o
+vQueueDelete                                      build/queue.o
+vQueueSetQueueNumber                              build/queue.o
+vQueueUnregisterQueue                             build/queue.o
+vQueueWaitForMessageRestricted                    build/queue.o
+                                                  build/timers.o
+vTaskDelay                                        build/tasks.o
+                                                  build/main.o
+vTaskDelayUntil                                   build/tasks.o
+vTaskDelete                                       build/tasks.o
+vTaskEndScheduler                                 build/tasks.o
+vTaskGetInfo                                      build/tasks.o
+vTaskInternalSetTimeOutState                      build/tasks.o
+                                                  build/queue.o
+vTaskMissedYield                                  build/tasks.o
+                                                  build/queue.o
+vTaskNotifyGiveFromISR                            build/tasks.o
+                                                  build/main.o
+vTaskPlaceOnEventList                             build/tasks.o
+                                                  build/queue.o
+vTaskPlaceOnEventListRestricted                   build/tasks.o
+                                                  build/queue.o
+vTaskPlaceOnUnorderedEventList                    build/tasks.o
+                                                  build/event_groups.o
+vTaskPriorityDisinheritAfterTimeout               build/tasks.o
+                                                  build/queue.o
+vTaskPrioritySet                                  build/tasks.o
+vTaskRemoveFromUnorderedEventList                 build/tasks.o
+                                                  build/event_groups.o
+vTaskResume                                       build/tasks.o
+vTaskSetTaskNumber                                build/tasks.o
+vTaskSetTimeOutState                              build/tasks.o
+vTaskStartScheduler                               build/tasks.o
+                                                  build/main.o
+vTaskSuspend                                      build/tasks.o
+vTaskSuspendAll                                   build/tasks.o
+                                                  build/timers.o
+                                                  build/queue.o
+                                                  build/event_groups.o
+                                                  build/heap_4.o
+vTaskSwitchContext                                build/tasks.o
+                                                  build/port.o
+vTimerSetTimerID                                  build/timers.o
+vTimerSetTimerNumber                              build/timers.o
+vUart_Send                                        build/main.o
+xEventGroupClearBits                              build/event_groups.o
+xEventGroupCreate                                 build/event_groups.o
+xEventGroupGetBitsFromISR                         build/event_groups.o
+xEventGroupSetBits                                build/event_groups.o
+xEventGroupSync                                   build/event_groups.o
+xEventGroupWaitBits                               build/event_groups.o
+xPortGetFreeHeapSize                              build/heap_4.o
+xPortGetMinimumEverFreeHeapSize                   build/heap_4.o
+xPortStartScheduler                               build/port.o
+                                                  build/tasks.o
+xQueueCreateCountingSemaphore                     build/queue.o
+xQueueCreateMutex                                 build/queue.o
+xQueueGenericCreate                               build/queue.o
+                                                  build/timers.o
+xQueueGenericReset                                build/queue.o
+xQueueGenericSend                                 build/queue.o
+                                                  build/timers.o
+xQueueGenericSendFromISR                          build/queue.o
+                                                  build/timers.o
+xQueueGiveFromISR                                 build/queue.o
+xQueueGiveMutexRecursive                          build/queue.o
+xQueueIsQueueEmptyFromISR                         build/queue.o
+xQueueIsQueueFullFromISR                          build/queue.o
+xQueuePeek                                        build/queue.o
+xQueuePeekFromISR                                 build/queue.o
+xQueueReceive                                     build/queue.o
+                                                  build/timers.o
+xQueueReceiveFromISR                              build/queue.o
+xQueueRegistry                                    build/queue.o
+xQueueSemaphoreTake                               build/queue.o
+xQueueTakeMutexRecursive                          build/queue.o
+xTaskCheckForTimeOut                              build/tasks.o
+                                                  build/queue.o
+xTaskCreate                                       build/tasks.o
+                                                  build/timers.o
+                                                  build/main.o
+xTaskGenericNotify                                build/tasks.o
+xTaskGenericNotifyFromISR                         build/tasks.o
+xTaskGetCurrentTaskHandle                         build/tasks.o
+                                                  build/queue.o
+xTaskGetSchedulerState                            build/tasks.o
+                                                  build/timers.o
+                                                  build/queue.o
+                                                  build/event_groups.o
+xTaskGetTickCount                                 build/tasks.o
+                                                  build/timers.o
+xTaskGetTickCountFromISR                          build/tasks.o
+xTaskIncrementTick                                build/tasks.o
+                                                  build/port.o
+xTaskNotifyStateClear                             build/tasks.o
+xTaskNotifyWait                                   build/tasks.o
+xTaskPriorityDisinherit                           build/tasks.o
+                                                  build/queue.o
+xTaskPriorityInherit                              build/tasks.o
+                                                  build/queue.o
+xTaskRemoveFromEventList                          build/tasks.o
+                                                  build/queue.o
+xTaskResumeAll                                    build/tasks.o
+                                                  build/timers.o
+                                                  build/queue.o
+                                                  build/event_groups.o
+                                                  build/heap_4.o
+xTaskResumeFromISR                                build/tasks.o
+xTimerCreate                                      build/timers.o
+xTimerCreateTimerTask                             build/timers.o
+                                                  build/tasks.o
+xTimerGenericCommand                              build/timers.o
+xTimerGetExpiryTime                               build/timers.o
+xTimerGetPeriod                                   build/timers.o
+xTimerGetTimerDaemonTaskHandle                    build/timers.o
+xTimerIsTimerActive                               build/timers.o

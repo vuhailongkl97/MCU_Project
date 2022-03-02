@@ -1,0 +1,18 @@
+1.các lệnh thực hiện theo cơ chế Read-modify-write . trong đó có quá trình race condition >> đã cấm truy cập từ nơi khác đến 
+. >> tại sao lại cần bit-banding ( mdk5 sử dụng __LOCK_ , __UNLOCK ) .. 
+  Optional bit-banding ( user guide 2.2.5 ) và chỉ có 1 số thanh ghi sử dụng 2 hàm trên ạ ( như HSI , HSE , PLL .)
+  
+2.PRIGROUP . 
+  __STATIC_INLINE void NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
+{
+  uint32_t reg_value;
+  uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);             /* only values 0..7 are used          */
+
+  reg_value  =  SCB->AIRCR;                                                   /* read old register configuration    */
+  reg_value &= ~((uint32_t)(SCB_AIRCR_VECTKEY_Msk | SCB_AIRCR_PRIGROUP_Msk)); /* clear bits to change               */
+  reg_value  =  (reg_value                                   |
+                ((uint32_t)0x5FAUL << SCB_AIRCR_VECTKEY_Pos) |
+                (PriorityGroupTmp << 8U)                      );              /* Insert write key and priorty group */
+  SCB->AIRCR =  reg_value;
+}
+3. event mask register trong EXTI . sử dụng nó như nào ạ 

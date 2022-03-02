@@ -1,0 +1,299 @@
+ARM GAS  E:\msys32\tmp\ccCrCrzo.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.init_pin,"ax",%progbits
+  18              		.align	1
+  19              		.global	init_pin
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	init_pin:
+  26              	.LFB0:
+  27              		.file 1 "Src/gpio.c"
+   1:Src/gpio.c    **** 
+   2:Src/gpio.c    **** #include "project.h"
+   3:Src/gpio.c    **** 
+   4:Src/gpio.c    **** void init_pin(u32_t mgpio_port , mGPIO_TypeDef *gpio_init){
+  28              		.loc 1 4 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+   5:Src/gpio.c    **** 
+   6:Src/gpio.c    **** 	u32_t temp_reg, gpio_pin = 0;
+   7:Src/gpio.c    **** 	unsigned int i = 0 ;
+   8:Src/gpio.c    **** 	
+   9:Src/gpio.c    **** 	for ( i = 0 ; i < 16 ; i ++){
+  34              		.loc 1 9 0
+  35 0000 0023     		movs	r3, #0
+  36              	.LVL1:
+  37 0002 0F2B     		cmp	r3, #15
+  38 0004 2BD8     		bhi	.L8
+   4:Src/gpio.c    **** 
+  39              		.loc 1 4 0
+  40 0006 F0B4     		push	{r4, r5, r6, r7}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 16
+  43              		.cfi_offset 4, -16
+  44              		.cfi_offset 5, -12
+  45              		.cfi_offset 6, -8
+  46              		.cfi_offset 7, -4
+  47 0008 02E0     		b	.L4
+  48              	.LVL2:
+ARM GAS  E:\msys32\tmp\ccCrCrzo.s 			page 2
+
+
+  49              	.L3:
+  50              		.loc 1 9 0 discriminator 2
+  51 000a 0133     		adds	r3, r3, #1
+  52              	.LVL3:
+  53 000c 0F2B     		cmp	r3, #15
+  54 000e 24D8     		bhi	.L9
+  55              	.L4:
+  10:Src/gpio.c    **** 		
+  11:Src/gpio.c    **** 		gpio_pin = (gpio_init->mpin) & (1u << i );
+  56              		.loc 1 11 0
+  57 0010 0A68     		ldr	r2, [r1]
+  58 0012 0124     		movs	r4, #1
+  59 0014 9C40     		lsls	r4, r4, r3
+  60              	.LVL4:
+  12:Src/gpio.c    **** 	//*Configure GPIO MODER pin
+  13:Src/gpio.c    **** 		if( gpio_pin != 0){
+  61              		.loc 1 13 0
+  62 0016 2242     		tst	r2, r4
+  63 0018 F7D0     		beq	.L3
+  14:Src/gpio.c    **** 			//moder
+  15:Src/gpio.c    **** 			temp_reg = read_reg(GPIO_MODER(mgpio_port) ,~(3u << (i *2)));
+  64              		.loc 1 15 0
+  65 001a 0568     		ldr	r5, [r0]
+  66 001c 5E00     		lsls	r6, r3, #1
+  67 001e 0322     		movs	r2, #3
+  68              	.LVL5:
+  69 0020 B240     		lsls	r2, r2, r6
+  70 0022 D243     		mvns	r2, r2
+  71 0024 05EA0207 		and	r7, r5, r2
+  72              	.LVL6:
+  16:Src/gpio.c    **** 			temp_reg |= (( gpio_init->moder) << (2 * i)); 
+  73              		.loc 1 16 0
+  74 0028 4D68     		ldr	r5, [r1, #4]
+  75 002a B540     		lsls	r5, r5, r6
+  76 002c 3D43     		orrs	r5, r5, r7
+  77              	.LVL7:
+  17:Src/gpio.c    **** 			write_reg(GPIO_MODER(mgpio_port) , temp_reg);
+  78              		.loc 1 17 0
+  79 002e 0560     		str	r5, [r0]
+  80              	.LVL8:
+  18:Src/gpio.c    **** 
+  19:Src/gpio.c    **** 			//opendrain or opensource
+  20:Src/gpio.c    **** 			temp_reg = read_reg(GPIO_OTYPER(mgpio_port) , ~(1u << i ));
+  81              		.loc 1 20 0
+  82 0030 4568     		ldr	r5, [r0, #4]
+  83              	.LVL9:
+  84 0032 25EA0404 		bic	r4, r5, r4
+  85              	.LVL10:
+  21:Src/gpio.c    **** 			temp_reg |= ((gpio_init->type) << i);
+  86              		.loc 1 21 0
+  87 0036 8D68     		ldr	r5, [r1, #8]
+  88 0038 9D40     		lsls	r5, r5, r3
+  89 003a 2543     		orrs	r5, r5, r4
+  90              	.LVL11:
+  22:Src/gpio.c    **** 			write_reg(GPIO_OTYPER(mgpio_port) , temp_reg);
+  91              		.loc 1 22 0
+  92 003c 4560     		str	r5, [r0, #4]
+ARM GAS  E:\msys32\tmp\ccCrCrzo.s 			page 3
+
+
+  23:Src/gpio.c    **** 
+  24:Src/gpio.c    **** 			//pull type
+  25:Src/gpio.c    **** 			temp_reg = read_reg(GPIO_PUPDR(mgpio_port) ,~(3u << (i *2)));
+  93              		.loc 1 25 0
+  94 003e C568     		ldr	r5, [r0, #12]
+  95              	.LVL12:
+  96 0040 02EA0504 		and	r4, r2, r5
+  97              	.LVL13:
+  26:Src/gpio.c    **** 			temp_reg |= (( gpio_init->pull) << (2 * i)); 
+  98              		.loc 1 26 0
+  99 0044 CD68     		ldr	r5, [r1, #12]
+ 100 0046 B540     		lsls	r5, r5, r6
+ 101 0048 2543     		orrs	r5, r5, r4
+ 102              	.LVL14:
+  27:Src/gpio.c    **** 			write_reg(GPIO_PUPDR(mgpio_port) , temp_reg );
+ 103              		.loc 1 27 0
+ 104 004a C560     		str	r5, [r0, #12]
+  28:Src/gpio.c    **** 
+  29:Src/gpio.c    **** 			//speed
+  30:Src/gpio.c    **** 			temp_reg = read_reg(GPIO_OSPEEDR(mgpio_port) ,~(3u << (i *2)));
+ 105              		.loc 1 30 0
+ 106 004c 8468     		ldr	r4, [r0, #8]
+ 107 004e 2240     		ands	r2, r2, r4
+ 108              	.LVL15:
+  31:Src/gpio.c    **** 			temp_reg |= (( gpio_init->speed) << (2 * i)); 
+ 109              		.loc 1 31 0
+ 110 0050 0C69     		ldr	r4, [r1, #16]
+ 111 0052 B440     		lsls	r4, r4, r6
+ 112 0054 2243     		orrs	r2, r2, r4
+ 113              	.LVL16:
+  32:Src/gpio.c    **** 			write_reg(GPIO_OSPEEDR(mgpio_port) , temp_reg );
+ 114              		.loc 1 32 0
+ 115 0056 8260     		str	r2, [r0, #8]
+ 116 0058 D7E7     		b	.L3
+ 117              	.LVL17:
+ 118              	.L9:
+  33:Src/gpio.c    **** 			
+  34:Src/gpio.c    **** 			// alternate
+  35:Src/gpio.c    **** 		     
+  36:Src/gpio.c    **** 		}		
+  37:Src/gpio.c    **** 	}
+  38:Src/gpio.c    **** }
+ 119              		.loc 1 38 0
+ 120 005a F0BC     		pop	{r4, r5, r6, r7}
+ 121              	.LCFI1:
+ 122              		.cfi_restore 7
+ 123              		.cfi_restore 6
+ 124              		.cfi_restore 5
+ 125              		.cfi_restore 4
+ 126              		.cfi_def_cfa_offset 0
+ 127 005c 7047     		bx	lr
+ 128              	.LVL18:
+ 129              	.L8:
+ 130 005e 7047     		bx	lr
+ 131              		.cfi_endproc
+ 132              	.LFE0:
+ 134              		.section	.text.led_on,"ax",%progbits
+ARM GAS  E:\msys32\tmp\ccCrCrzo.s 			page 4
+
+
+ 135              		.align	1
+ 136              		.global	led_on
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 140              		.fpu fpv4-sp-d16
+ 142              	led_on:
+ 143              	.LFB1:
+  39:Src/gpio.c    **** 
+  40:Src/gpio.c    **** void led_on(unsigned long mPORT , unsigned int pin){
+ 144              		.loc 1 40 0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+ 149              	.LVL19:
+  41:Src/gpio.c    **** 	write_reg(  GPIO_BSRR(mPORT) ,  pin);
+ 150              		.loc 1 41 0
+ 151 0000 8161     		str	r1, [r0, #24]
+  42:Src/gpio.c    **** }
+ 152              		.loc 1 42 0
+ 153 0002 7047     		bx	lr
+ 154              		.cfi_endproc
+ 155              	.LFE1:
+ 157              		.section	.text.led_off,"ax",%progbits
+ 158              		.align	1
+ 159              		.global	led_off
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 163              		.fpu fpv4-sp-d16
+ 165              	led_off:
+ 166              	.LFB2:
+  43:Src/gpio.c    **** void led_off(unsigned long mPORT  ,unsigned int  pin){
+ 167              		.loc 1 43 0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171              		@ link register save eliminated.
+ 172              	.LVL20:
+  44:Src/gpio.c    **** 	write_reg(	GPIO_BSRR(mPORT) ,   pin << 16);
+ 173              		.loc 1 44 0
+ 174 0000 0904     		lsls	r1, r1, #16
+ 175              	.LVL21:
+ 176 0002 8161     		str	r1, [r0, #24]
+  45:Src/gpio.c    **** }
+ 177              		.loc 1 45 0
+ 178 0004 7047     		bx	lr
+ 179              		.cfi_endproc
+ 180              	.LFE2:
+ 182              		.section	.text.GPIO_TongglePin,"ax",%progbits
+ 183              		.align	1
+ 184              		.global	GPIO_TongglePin
+ 185              		.syntax unified
+ 186              		.thumb
+ 187              		.thumb_func
+ 188              		.fpu fpv4-sp-d16
+ARM GAS  E:\msys32\tmp\ccCrCrzo.s 			page 5
+
+
+ 190              	GPIO_TongglePin:
+ 191              	.LFB3:
+  46:Src/gpio.c    **** void GPIO_TongglePin( unsigned long mPORT , unsigned int pin){
+ 192              		.loc 1 46 0
+ 193              		.cfi_startproc
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196              		@ link register save eliminated.
+ 197              	.LVL22:
+  47:Src/gpio.c    **** 	// temp_reg1 get bit[8:0]; temp_reg2 get bit[15:8] of ODR
+  48:Src/gpio.c    **** 	unsigned int temp_reg1 = read_reg(GPIO_ODR(mPORT) , ~(0xFFu));
+ 198              		.loc 1 48 0
+ 199 0000 4369     		ldr	r3, [r0, #20]
+ 200 0002 23F0FF02 		bic	r2, r3, #255
+ 201              	.LVL23:
+  49:Src/gpio.c    **** 	unsigned int temp_reg2 = read_reg(GPIO_ODR(mPORT) , ~(0xFF00u));
+  50:Src/gpio.c    **** 	
+  51:Src/gpio.c    **** 	temp_reg1 = (temp_reg2 << 16) | temp_reg1;
+ 202              		.loc 1 51 0
+ 203 0006 1B04     		lsls	r3, r3, #16
+ 204              	.LVL24:
+ 205 0008 03F47F03 		and	r3, r3, #16711680
+ 206 000c 1343     		orrs	r3, r3, r2
+ 207              	.LVL25:
+  52:Src/gpio.c    **** 	temp_reg1 = ~temp_reg1;
+ 208              		.loc 1 52 0
+ 209 000e DB43     		mvns	r3, r3
+ 210              	.LVL26:
+  53:Src/gpio.c    **** 	write_reg(GPIO_BSRR(mPORT) , temp_reg1);
+ 211              		.loc 1 53 0
+ 212 0010 8361     		str	r3, [r0, #24]
+  54:Src/gpio.c    **** 	
+  55:Src/gpio.c    **** }
+ 213              		.loc 1 55 0
+ 214 0012 7047     		bx	lr
+ 215              		.cfi_endproc
+ 216              	.LFE3:
+ 218              		.text
+ 219              	.Letext0:
+ 220              		.file 2 "Inc/main.h"
+ 221              		.file 3 "Inc/stm32f4xx_it.h"
+ARM GAS  E:\msys32\tmp\ccCrCrzo.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+E:\msys32\tmp\ccCrCrzo.s:18     .text.init_pin:00000000 $t
+E:\msys32\tmp\ccCrCrzo.s:25     .text.init_pin:00000000 init_pin
+E:\msys32\tmp\ccCrCrzo.s:135    .text.led_on:00000000 $t
+E:\msys32\tmp\ccCrCrzo.s:142    .text.led_on:00000000 led_on
+E:\msys32\tmp\ccCrCrzo.s:158    .text.led_off:00000000 $t
+E:\msys32\tmp\ccCrCrzo.s:165    .text.led_off:00000000 led_off
+E:\msys32\tmp\ccCrCrzo.s:183    .text.GPIO_TongglePin:00000000 $t
+E:\msys32\tmp\ccCrCrzo.s:190    .text.GPIO_TongglePin:00000000 GPIO_TongglePin
+
+NO UNDEFINED SYMBOLS

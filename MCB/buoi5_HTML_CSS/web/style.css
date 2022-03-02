@@ -1,0 +1,107 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    font-size: 18px;    
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+#div-taskbar{
+    width: 50%;
+    height: 7%;
+    margin: auto;
+    margin-top: 3%;
+    text-align: center;
+}
+
+#div-taskbar ul{
+    width: auto;
+    height: auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+#div-taskbar ul li{
+    float: left;
+    padding: 0;
+    height:100px;
+    width: 16.5%;
+
+}
+
+#div-taskbar ul li a{
+    text-decoration: none;
+    width:90%;
+    height:100%;
+}
+
+
+#div-content{
+    width: 100%;
+    height: 90%;
+    margin: auto;
+}
+
+#div-content .class-haft{
+    width: 49.8%;
+    height: 100%;
+    margin: auto;
+    float: left;
+}
+
+#div-content .class-haft #div-profile-picture{
+    width: 30%;
+    height: 30%;
+    margin: auto;
+    margin-top: 25%;
+    border: solid 1px;
+}
+
+#div-content .class-haft #div-sub-profile-picture{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    text-align: center;
+}
+
+#div-content .class-haft #div-information{
+    width: auto;
+    height: auto;
+    margin-top: 25%;
+    margin-left: 10%;
+    border: solid 1px;
+}
+
+#div-content .class-haft #div-information table{
+    font-size: 150%;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: green;
+}
+
+.topnav a {
+  float :left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+

@@ -1,0 +1,34 @@
+1.	Reliability: Any RTOS must be reliable. 
+This means that it operates for a reasonably long time without human interference
+. Reliability also means the configuration to enable the system to choose the right 
+or most profitable action for current operations. For example, a system for the telecom or banking industries 
+needs to consider the cost of terminating or engaging certain actions, compared to a phone or calculator
+whose cost is limited to an individual, game, app function, etc.
+
+
+2.	Predictability: A system must execute actions within a known time frame 
+and produce known results
+. Such results are determined by the procedures or operations taking place.
+ The determination is by targets set during production or procedural planning.
+ 
+ 
+ 
+3.	Performance: real-time operating systems are designed to make work easier. 
+Every system must solve a problem or reduce the workload. 
+As such, the developer should provide a system that is easily assimilated with existing software 
+and hardware as well as aligned to the goals of the organization.
+
+
+
+4.	 : This means a system whose veracity or bulkiness is manageable. 
+The software and hardware required to operate the RTOS must be of reasonable size. 
+Technicians should also be easy to find and orient. The idea is to reduce the cost of implementation.
+
+
+5.	Scalability: The needs of any production or event environment change with time. 
+ This means that a system may require an upgrade or downgrade.
+Such provisions must be made during design and installation of any RTOS.
+
+
+
+

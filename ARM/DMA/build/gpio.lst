@@ -1,0 +1,347 @@
+ARM GAS  E:\msys32\tmp\ccNcLFWq.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.init_pin,"ax",%progbits
+  18              		.align	1
+  19              		.global	init_pin
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	init_pin:
+  26              	.LFB0:
+  27              		.file 1 "E:/Users/VuHaiLong/Documents/stm/mylib/mSrc/gpio.c"
+   1:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** #include "all_lib.h"
+   2:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+   3:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** void init_pin(u32_t mgpio_port , mGPIO_TypeDef *gpio_init){
+  28              		.loc 1 3 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+   4:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+   5:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	u32_t temp_reg, gpio_pin = 0, addr;
+   6:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	unsigned int i = 0 ;
+   7:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	
+   8:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	for ( i = 0 ; i < 16 ; i ++){
+  34              		.loc 1 8 0
+  35 0000 0023     		movs	r3, #0
+  36              	.LVL1:
+  37 0002 0F2B     		cmp	r3, #15
+  38 0004 3DD8     		bhi	.L10
+   3:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+  39              		.loc 1 3 0
+  40 0006 F0B4     		push	{r4, r5, r6, r7}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 16
+  43              		.cfi_offset 4, -16
+  44              		.cfi_offset 5, -12
+  45              		.cfi_offset 6, -8
+  46              		.cfi_offset 7, -4
+  47 0008 10E0     		b	.L6
+  48              	.LVL2:
+  49              	.L4:
+ARM GAS  E:\msys32\tmp\ccNcLFWq.s 			page 2
+
+
+   9:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 		gpio_pin = (gpio_init->mpin) & (1u << i );
+  10:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	//*Configure GPIO MODER pin
+  11:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 		if( gpio_pin != 0){
+  12:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			//moder
+  13:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg = read_reg(mGPIO_MODER(mgpio_port) ,~(3u << (i *2)));
+  14:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= (( gpio_init->moder) << (2 * i)); 
+  15:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(mGPIO_MODER(mgpio_port) , temp_reg);
+  16:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+  17:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			//opendrain or opensource
+  18:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg = read_reg(mGPIO_OTYPER(mgpio_port) , ~(1u << i ));
+  19:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= ((gpio_init->type) << i);
+  20:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(mGPIO_OTYPER(mgpio_port) , temp_reg);
+  21:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+  22:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			//pull type
+  23:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg = read_reg(mGPIO_PUPDR(mgpio_port) ,~(3u << (i *2)));
+  24:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= (( gpio_init->pull) << (2 * i)); 
+  25:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(mGPIO_PUPDR(mgpio_port) , temp_reg );
+  26:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+  27:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			//speed
+  28:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg = read_reg(mGPIO_OSPEEDR(mgpio_port) ,~(3u << (i *2)));
+  29:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= (( gpio_init->speed) << (2 * i)); 
+  30:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(mGPIO_OSPEEDR(mgpio_port) , temp_reg );
+  31:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			
+  32:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			// alternate
+  33:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			if (i > 7 ) 
+  34:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 				addr = mGPIO_AFRH(mgpio_port);
+  35:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			else 
+  36:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 				addr = mGPIO_AFRL(mgpio_port);
+  50              		.loc 1 36 0
+  51 000a 00F12006 		add	r6, r0, #32
+  52              	.LVL3:
+  53              	.L5:
+  37:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg = read_reg(addr ,~(0xFu << ( (i&7u) *4 )));
+  54              		.loc 1 37 0
+  55 000e 3568     		ldr	r5, [r6]
+  56 0010 03F00702 		and	r2, r3, #7
+  57              	.LVL4:
+  58 0014 9400     		lsls	r4, r2, #2
+  59 0016 0F22     		movs	r2, #15
+  60 0018 A240     		lsls	r2, r2, r4
+  61 001a 25EA0205 		bic	r5, r5, r2
+  62              	.LVL5:
+  38:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= (( gpio_init->alternate) << ( (i&7u) *4 )) ; 
+  63              		.loc 1 38 0
+  64 001e 4A69     		ldr	r2, [r1, #20]
+  65 0020 A240     		lsls	r2, r2, r4
+  66 0022 2A43     		orrs	r2, r2, r5
+  67              	.LVL6:
+  39:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(addr , temp_reg );
+  68              		.loc 1 39 0
+  69 0024 3260     		str	r2, [r6]
+  70              	.LVL7:
+  71              	.L3:
+   8:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 		gpio_pin = (gpio_init->mpin) & (1u << i );
+  72              		.loc 1 8 0 discriminator 2
+  73 0026 0133     		adds	r3, r3, #1
+  74              	.LVL8:
+ARM GAS  E:\msys32\tmp\ccNcLFWq.s 			page 3
+
+
+  75 0028 0F2B     		cmp	r3, #15
+  76 002a 28D8     		bhi	.L11
+  77              	.L6:
+   9:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	//*Configure GPIO MODER pin
+  78              		.loc 1 9 0
+  79 002c 0A68     		ldr	r2, [r1]
+  80 002e 0124     		movs	r4, #1
+  81 0030 9C40     		lsls	r4, r4, r3
+  82              	.LVL9:
+  11:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			//moder
+  83              		.loc 1 11 0
+  84 0032 2242     		tst	r2, r4
+  85 0034 F7D0     		beq	.L3
+  13:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= (( gpio_init->moder) << (2 * i)); 
+  86              		.loc 1 13 0
+  87 0036 0568     		ldr	r5, [r0]
+  88 0038 5E00     		lsls	r6, r3, #1
+  89 003a 0322     		movs	r2, #3
+  90              	.LVL10:
+  91 003c B240     		lsls	r2, r2, r6
+  92 003e D243     		mvns	r2, r2
+  93 0040 05EA0207 		and	r7, r5, r2
+  94              	.LVL11:
+  14:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(mGPIO_MODER(mgpio_port) , temp_reg);
+  95              		.loc 1 14 0
+  96 0044 4D68     		ldr	r5, [r1, #4]
+  97 0046 B540     		lsls	r5, r5, r6
+  98 0048 3D43     		orrs	r5, r5, r7
+  99              	.LVL12:
+  15:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+ 100              		.loc 1 15 0
+ 101 004a 0560     		str	r5, [r0]
+ 102              	.LVL13:
+  18:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= ((gpio_init->type) << i);
+ 103              		.loc 1 18 0
+ 104 004c 4568     		ldr	r5, [r0, #4]
+ 105              	.LVL14:
+ 106 004e 25EA0404 		bic	r4, r5, r4
+ 107              	.LVL15:
+  19:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(mGPIO_OTYPER(mgpio_port) , temp_reg);
+ 108              		.loc 1 19 0
+ 109 0052 8D68     		ldr	r5, [r1, #8]
+ 110 0054 9D40     		lsls	r5, r5, r3
+ 111 0056 2543     		orrs	r5, r5, r4
+ 112              	.LVL16:
+  20:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+ 113              		.loc 1 20 0
+ 114 0058 4560     		str	r5, [r0, #4]
+  23:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= (( gpio_init->pull) << (2 * i)); 
+ 115              		.loc 1 23 0
+ 116 005a C568     		ldr	r5, [r0, #12]
+ 117              	.LVL17:
+ 118 005c 02EA0504 		and	r4, r2, r5
+ 119              	.LVL18:
+  24:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(mGPIO_PUPDR(mgpio_port) , temp_reg );
+ 120              		.loc 1 24 0
+ 121 0060 CD68     		ldr	r5, [r1, #12]
+ARM GAS  E:\msys32\tmp\ccNcLFWq.s 			page 4
+
+
+ 122 0062 B540     		lsls	r5, r5, r6
+ 123 0064 2543     		orrs	r5, r5, r4
+ 124              	.LVL19:
+  25:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+ 125              		.loc 1 25 0
+ 126 0066 C560     		str	r5, [r0, #12]
+  28:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			temp_reg |= (( gpio_init->speed) << (2 * i)); 
+ 127              		.loc 1 28 0
+ 128 0068 8468     		ldr	r4, [r0, #8]
+ 129 006a 2240     		ands	r2, r2, r4
+ 130              	.LVL20:
+  29:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			write_reg(mGPIO_OSPEEDR(mgpio_port) , temp_reg );
+ 131              		.loc 1 29 0
+ 132 006c 0C69     		ldr	r4, [r1, #16]
+ 133 006e B440     		lsls	r4, r4, r6
+ 134 0070 2243     		orrs	r2, r2, r4
+ 135              	.LVL21:
+  30:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			
+ 136              		.loc 1 30 0
+ 137 0072 8260     		str	r2, [r0, #8]
+  33:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 				addr = mGPIO_AFRH(mgpio_port);
+ 138              		.loc 1 33 0
+ 139 0074 072B     		cmp	r3, #7
+ 140 0076 C8D9     		bls	.L4
+  34:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 			else 
+ 141              		.loc 1 34 0
+ 142 0078 00F12406 		add	r6, r0, #36
+ 143              	.LVL22:
+ 144 007c C7E7     		b	.L5
+ 145              	.LVL23:
+ 146              	.L11:
+  40:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+  41:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 		}		
+  42:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	}
+  43:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** }
+ 147              		.loc 1 43 0
+ 148 007e F0BC     		pop	{r4, r5, r6, r7}
+ 149              	.LCFI1:
+ 150              		.cfi_restore 7
+ 151              		.cfi_restore 6
+ 152              		.cfi_restore 5
+ 153              		.cfi_restore 4
+ 154              		.cfi_def_cfa_offset 0
+ 155 0080 7047     		bx	lr
+ 156              	.LVL24:
+ 157              	.L10:
+ 158 0082 7047     		bx	lr
+ 159              		.cfi_endproc
+ 160              	.LFE0:
+ 162              		.section	.text.led_on,"ax",%progbits
+ 163              		.align	1
+ 164              		.global	led_on
+ 165              		.syntax unified
+ 166              		.thumb
+ 167              		.thumb_func
+ 168              		.fpu fpv4-sp-d16
+ 170              	led_on:
+ARM GAS  E:\msys32\tmp\ccNcLFWq.s 			page 5
+
+
+ 171              	.LFB1:
+  44:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 
+  45:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** void led_on(unsigned long mPORT , unsigned int pin){
+ 172              		.loc 1 45 0
+ 173              		.cfi_startproc
+ 174              		@ args = 0, pretend = 0, frame = 0
+ 175              		@ frame_needed = 0, uses_anonymous_args = 0
+ 176              		@ link register save eliminated.
+ 177              	.LVL25:
+  46:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	write_reg(  mGPIO_BSRR(mPORT) ,  pin);
+ 178              		.loc 1 46 0
+ 179 0000 8161     		str	r1, [r0, #24]
+  47:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** }
+ 180              		.loc 1 47 0
+ 181 0002 7047     		bx	lr
+ 182              		.cfi_endproc
+ 183              	.LFE1:
+ 185              		.section	.text.led_off,"ax",%progbits
+ 186              		.align	1
+ 187              		.global	led_off
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.fpu fpv4-sp-d16
+ 193              	led_off:
+ 194              	.LFB2:
+  48:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** void led_off(unsigned long mPORT  ,unsigned int  pin){
+ 195              		.loc 1 48 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		@ link register save eliminated.
+ 200              	.LVL26:
+  49:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	write_reg(	mGPIO_BSRR(mPORT) ,   pin << 16);
+ 201              		.loc 1 49 0
+ 202 0000 0904     		lsls	r1, r1, #16
+ 203              	.LVL27:
+ 204 0002 8161     		str	r1, [r0, #24]
+  50:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** }
+ 205              		.loc 1 50 0
+ 206 0004 7047     		bx	lr
+ 207              		.cfi_endproc
+ 208              	.LFE2:
+ 210              		.section	.text.GPIO_TongglePin,"ax",%progbits
+ 211              		.align	1
+ 212              		.global	GPIO_TongglePin
+ 213              		.syntax unified
+ 214              		.thumb
+ 215              		.thumb_func
+ 216              		.fpu fpv4-sp-d16
+ 218              	GPIO_TongglePin:
+ 219              	.LFB3:
+  51:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** void GPIO_TongglePin( unsigned long mPORT , unsigned int pin){
+ 220              		.loc 1 51 0
+ 221              		.cfi_startproc
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  E:\msys32\tmp\ccNcLFWq.s 			page 6
+
+
+ 224              		@ link register save eliminated.
+ 225              	.LVL28:
+  52:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	// temp_reg1 get bit[8:0]; temp_reg2 get bit[15:8] of ODR
+  53:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	unsigned int temp_reg1 = read_reg(mGPIO_ODR(mPORT) , ~0u);
+ 226              		.loc 1 53 0
+ 227 0000 4369     		ldr	r3, [r0, #20]
+ 228              	.LVL29:
+  54:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	u32_t temp_reg;
+  55:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	// dao pin
+  56:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	temp_reg = ((~temp_reg1) & pin);
+  57:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	//xoa pin
+  58:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	temp_reg1 &= ~(pin);
+  59:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	// nap pin
+  60:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	temp_reg1 |= temp_reg;
+ 229              		.loc 1 60 0
+ 230 0002 5940     		eors	r1, r1, r3
+ 231              	.LVL30:
+  61:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	write_reg(mGPIO_ODR(mPORT) , temp_reg1);
+ 232              		.loc 1 61 0
+ 233 0004 4161     		str	r1, [r0, #20]
+  62:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** 	
+  63:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\gpio.c **** }
+ 234              		.loc 1 63 0
+ 235 0006 7047     		bx	lr
+ 236              		.cfi_endproc
+ 237              	.LFE3:
+ 239              		.text
+ 240              	.Letext0:
+ 241              		.file 2 "E:/Users/VuHaiLong/Documents/stm/mylib/mInc/mtype.h"
+ARM GAS  E:\msys32\tmp\ccNcLFWq.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+E:\msys32\tmp\ccNcLFWq.s:18     .text.init_pin:00000000 $t
+E:\msys32\tmp\ccNcLFWq.s:25     .text.init_pin:00000000 init_pin
+E:\msys32\tmp\ccNcLFWq.s:163    .text.led_on:00000000 $t
+E:\msys32\tmp\ccNcLFWq.s:170    .text.led_on:00000000 led_on
+E:\msys32\tmp\ccNcLFWq.s:186    .text.led_off:00000000 $t
+E:\msys32\tmp\ccNcLFWq.s:193    .text.led_off:00000000 led_off
+E:\msys32\tmp\ccNcLFWq.s:211    .text.GPIO_TongglePin:00000000 $t
+E:\msys32\tmp\ccNcLFWq.s:218    .text.GPIO_TongglePin:00000000 GPIO_TongglePin
+
+NO UNDEFINED SYMBOLS

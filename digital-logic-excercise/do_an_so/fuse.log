@@ -1,0 +1,24 @@
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/tb_isim_beh.exe -prj E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/tb_beh.prj work.tb 
+ISim P.20131013 (signature 0x8ef4fb42)
+Number of CPUs detected in this system: 2
+Turning on mult-threading, number of parallel sub-compilation jobs: 4 
+Determining compilation order of HDL files
+Parsing VHDL file "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/main.vhd" into library work
+WARNING:HDLCompiler:1369 - "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/main.vhd" Line 60: Possible infinite loop; process does not have a wait statement
+Parsing VHDL file "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/tb.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 102044 KB
+Fuse CPU Usage: 358 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling architecture behavioral of entity stepper_test [stepper_test_default]
+Compiling architecture behavior of entity tb
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 7 VHDL Units
+Built simulation executable E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/tb_isim_beh.exe
+Fuse Memory Usage: 117068 KB
+Fuse CPU Usage: 560 ms

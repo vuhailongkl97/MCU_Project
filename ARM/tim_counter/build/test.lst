@@ -1,0 +1,470 @@
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"test.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.config_ext_clk1,"ax",%progbits
+  18              		.align	1
+  19              		.global	config_ext_clk1
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	config_ext_clk1:
+  26              	.LFB0:
+  27              		.file 1 "Src/test.c"
+   1:Src/test.c    **** #include "project.h"
+   2:Src/test.c    **** 
+   3:Src/test.c    **** // 1. Configure the timers to use the TIx pin as input:
+   4:Src/test.c    **** // a) Select the pin to be used by writing CCxS bits in the TIMx_CCMR1 register.
+   5:Src/test.c    **** // b) Select the polarity of the input:
+   6:Src/test.c    **** // For the STM32F100/101/102/103/105/107 lines: by writing CCxP in the
+   7:Src/test.c    **** // mTIM_CCER register to select the rising or the falling edge;
+   8:Src/test.c    **** // For the other series & lines: by writing CCxP and CCxNP in the mTIM_CCER
+   9:Src/test.c    **** // register to select the rising/falling edge, or both edges (a) .
+  10:Src/test.c    **** // c) Enable corresponding channel by setting the CCEx bit in the mTIM_CCER register.
+  11:Src/test.c    **** // 2. Select the timer TIx as the trigger input source by writing TS bits in the TIMx_SMCR
+  12:Src/test.c    **** // register.
+  13:Src/test.c    **** // 3. Select the external clock mode1 by writing SMS=111 in the TIMx_SMCR register.
+  14:Src/test.c    **** void config_ext_clk1(){
+  28              		.loc 1 14 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  15:Src/test.c    **** 	u32_t temp_reg;
+  16:Src/test.c    **** 	// 1.Configure channel 2 to detect rising edges on the TI2 input
+  17:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR1(mTIM2) , ~3u);
+  33              		.loc 1 17 0
+  34 0000 124A     		ldr	r2, .L2
+  35 0002 1368     		ldr	r3, [r2]
+  36 0004 23F00303 		bic	r3, r3, #3
+  37              	.LVL0:
+  18:Src/test.c    **** 	temp_reg |= 1u;
+  38              		.loc 1 18 0
+  39 0008 43F00103 		orr	r3, r3, #1
+  40              	.LVL1:
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 2
+
+
+  19:Src/test.c    **** 	write_reg(mTIM_CCMR1(mTIM2) , temp_reg);
+  20:Src/test.c    **** 	
+  21:Src/test.c    **** 	//2.Configure the input filter duration by writing the IC1F[3:0] bits in the TIMx_CCMR1
+  22:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR1(mTIM2) , ~(0xFU << 4));
+  41              		.loc 1 22 0
+  42 000c 23F0F003 		bic	r3, r3, #240
+  43              	.LVL2:
+  23:Src/test.c    **** 	temp_reg |= (3u<<4);
+  44              		.loc 1 23 0
+  45 0010 43F03003 		orr	r3, r3, #48
+  46              	.LVL3:
+  24:Src/test.c    **** 	write_reg(mTIM_CCMR1(mTIM2) , temp_reg);
+  47              		.loc 1 24 0
+  48 0014 1360     		str	r3, [r2]
+  25:Src/test.c    **** 	
+  26:Src/test.c    **** 	
+  27:Src/test.c    **** 	//3. Select rising edge polarity by writing CC1P=0 and CC1NP=0 in the mTIM_CCER
+  28:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCER(mTIM2) , ~0xFU);
+  49              		.loc 1 28 0
+  50 0016 0832     		adds	r2, r2, #8
+  51 0018 1368     		ldr	r3, [r2]
+  52              	.LVL4:
+  53 001a 23F00F03 		bic	r3, r3, #15
+  54              	.LVL5:
+  29:Src/test.c    **** 	write_reg(mTIM_CCER(mTIM2) , temp_reg);
+  55              		.loc 1 29 0
+  56 001e 1360     		str	r3, [r2]
+  30:Src/test.c    **** 
+  31:Src/test.c    **** 	// 4. Select the external clock mode1 by writing SMS=111 in the TIMx_SMCR register.
+  32:Src/test.c    **** 	temp_reg = read_reg(mTIM_SMCR(mTIM2) , ~(7u << 0));
+  57              		.loc 1 32 0
+  58 0020 183A     		subs	r2, r2, #24
+  59 0022 1368     		ldr	r3, [r2]
+  60              	.LVL6:
+  33:Src/test.c    **** 	temp_reg |= 7U;
+  61              		.loc 1 33 0
+  62 0024 43F00703 		orr	r3, r3, #7
+  63              	.LVL7:
+  34:Src/test.c    **** 	write_reg(mTIM_SMCR(mTIM2) , temp_reg);
+  35:Src/test.c    **** 	
+  36:Src/test.c    **** 	// 5.Select TI1 as the input source by writing TS=101 in the TIMx_SMCR register
+  37:Src/test.c    **** 	temp_reg = read_reg(mTIM_SMCR(mTIM2) , ~(7u << 4));
+  64              		.loc 1 37 0
+  65 0028 23F07003 		bic	r3, r3, #112
+  66              	.LVL8:
+  38:Src/test.c    **** 	temp_reg |= (5U <<4);
+  67              		.loc 1 38 0
+  68 002c 43F05003 		orr	r3, r3, #80
+  69              	.LVL9:
+  39:Src/test.c    **** 	write_reg(mTIM_SMCR(mTIM2) , temp_reg);
+  70              		.loc 1 39 0
+  71 0030 1360     		str	r3, [r2]
+  40:Src/test.c    **** 	
+  41:Src/test.c    **** 	//6.update event
+  42:Src/test.c    **** 	temp_reg = read_reg(mTIM_EGR(mTIM2) , ~1u);
+  72              		.loc 1 42 0
+  73 0032 0C32     		adds	r2, r2, #12
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 3
+
+
+  74 0034 1368     		ldr	r3, [r2]
+  75              	.LVL10:
+  43:Src/test.c    **** 	temp_reg |= 1u;
+  76              		.loc 1 43 0
+  77 0036 43F00103 		orr	r3, r3, #1
+  78              	.LVL11:
+  44:Src/test.c    **** 	write_reg(mTIM_EGR(mTIM2) , temp_reg);
+  79              		.loc 1 44 0
+  80 003a 1360     		str	r3, [r2]
+  45:Src/test.c    **** 	
+  46:Src/test.c    **** 		temp_reg = read_reg(mTIM_CR1(mTIM2) , ~(1u << 0));
+  81              		.loc 1 46 0
+  82 003c 4FF08042 		mov	r2, #1073741824
+  83 0040 1368     		ldr	r3, [r2]
+  84              	.LVL12:
+  47:Src/test.c    **** 	temp_reg |=(1U<<0);
+  85              		.loc 1 47 0
+  86 0042 43F00103 		orr	r3, r3, #1
+  87              	.LVL13:
+  48:Src/test.c    **** 	write_reg(mTIM_CR1(mTIM2) , temp_reg);
+  88              		.loc 1 48 0
+  89 0046 1360     		str	r3, [r2]
+  49:Src/test.c    **** 
+  50:Src/test.c    **** 	
+  51:Src/test.c    **** }
+  90              		.loc 1 51 0
+  91 0048 7047     		bx	lr
+  92              	.L3:
+  93 004a 00BF     		.align	2
+  94              	.L2:
+  95 004c 18000040 		.word	1073741848
+  96              		.cfi_endproc
+  97              	.LFE0:
+  99              		.section	.text.input_capture_config,"ax",%progbits
+ 100              		.align	1
+ 101              		.global	input_capture_config
+ 102              		.syntax unified
+ 103              		.thumb
+ 104              		.thumb_func
+ 105              		.fpu fpv4-sp-d16
+ 107              	input_capture_config:
+ 108              	.LFB1:
+  52:Src/test.c    **** void input_capture_config(){
+ 109              		.loc 1 52 0
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113              		@ link register save eliminated.
+  53:Src/test.c    **** 	u32_t temp_reg;
+  54:Src/test.c    **** 	// Select the active input:01: CC1 channel is configured as input, IC1 is mapped on TI1.
+  55:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR1(mTIM2), ~3u);
+ 114              		.loc 1 55 0
+ 115 0000 0C4A     		ldr	r2, .L5
+ 116 0002 1368     		ldr	r3, [r2]
+ 117 0004 23F00303 		bic	r3, r3, #3
+ 118              	.LVL14:
+  56:Src/test.c    **** 	//01: CC1 channel is configured as input, IC1 is mapped on TI1.
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 4
+
+
+  57:Src/test.c    **** 	temp_reg |= 1u;
+  58:Src/test.c    **** 	
+  59:Src/test.c    **** 	// IC1F Input capture 1 filter
+  60:Src/test.c    **** 	temp_reg |= (15u << 4);
+ 119              		.loc 1 60 0
+ 120 0008 43F0F103 		orr	r3, r3, #241
+ 121              	.LVL15:
+  61:Src/test.c    **** 	write_reg(mTIM_CCMR1(mTIM2) , temp_reg);
+ 122              		.loc 1 61 0
+ 123 000c 1360     		str	r3, [r2]
+  62:Src/test.c    **** 	
+  63:Src/test.c    **** 	
+  64:Src/test.c    **** 	// Select the edge of the active transition on the TI1 channel by writing the CC1P and
+  65:Src/test.c    **** 	// CC1NP bits to 00 in the mTIM_CCER register (rising edge in this case).
+  66:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCER(mTIM2) , ~0xFU);
+ 124              		.loc 1 66 0
+ 125 000e 0832     		adds	r2, r2, #8
+ 126 0010 1268     		ldr	r2, [r2]
+ 127              	.LVL16:
+  67:Src/test.c    **** 	write_reg(mTIM_CCER(mTIM4) , temp_reg);
+  68:Src/test.c    **** 	
+  69:Src/test.c    **** 	// Program the input prescaler. In our example, we wish the capture to be performed at
+  70:Src/test.c    **** 	// each valid transition, so the prescaler is disabled (write IC1PS bits to 00 in the
+  71:Src/test.c    **** 	// TIMx_CCMR1 register).
+  72:Src/test.c    **** 	
+  73:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR1(mTIM2) , ~(3u << 2));
+ 128              		.loc 1 73 0
+ 129 0012 23F00C03 		bic	r3, r3, #12
+ 130              	.LVL17:
+  74:Src/test.c    **** 	write_reg(mTIM_CCMR1(mTIM4) , temp_reg);
+ 131              		.loc 1 74 0
+ 132 0016 0849     		ldr	r1, .L5+4
+ 133 0018 0B60     		str	r3, [r1]
+  75:Src/test.c    **** 	
+  76:Src/test.c    **** 	// Enable capture from the counter into the capture register by setting the CC1E bit in the
+  77:Src/test.c    **** 	// mTIM_CCER register.
+  78:Src/test.c    **** 	
+  79:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCER(mTIM2) , ~(3u << 2));
+ 134              		.loc 1 79 0
+ 135 001a 22F00C03 		bic	r3, r2, #12
+ 136              	.LVL18:
+  80:Src/test.c    **** 	temp_reg |=1U;
+ 137              		.loc 1 80 0
+ 138 001e 43F00103 		orr	r3, r3, #1
+ 139              	.LVL19:
+  81:Src/test.c    **** 	write_reg(mTIM_CCER(mTIM4) , temp_reg);
+ 140              		.loc 1 81 0
+ 141 0022 064A     		ldr	r2, .L5+8
+ 142 0024 1360     		str	r3, [r2]
+  82:Src/test.c    **** 	
+  83:Src/test.c    **** 	
+  84:Src/test.c    **** 	// If needed, enable the related interrupt request by setting the CC1IE bit in the
+  85:Src/test.c    **** 	// TIMx_DIER register, and/or the DMA request by setting the CC1DE bit in the
+  86:Src/test.c    **** 	// TIMx_DIER register
+  87:Src/test.c    **** 	
+  88:Src/test.c    **** 	// An interrupt is generated depending on the CC1IE bit.
+  89:Src/test.c    **** 	temp_reg = read_reg(mTIM_DIER(mTIM2) , ~(1u << 1));
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 5
+
+
+ 143              		.loc 1 89 0
+ 144 0026 064B     		ldr	r3, .L5+12
+ 145              	.LVL20:
+ 146 0028 1B68     		ldr	r3, [r3]
+ 147              	.LVL21:
+  90:Src/test.c    **** 	temp_reg |=(1U<<1);
+ 148              		.loc 1 90 0
+ 149 002a 43F00203 		orr	r3, r3, #2
+ 150              	.LVL22:
+  91:Src/test.c    **** 	write_reg(mTIM_DIER(mTIM4) , temp_reg);
+ 151              		.loc 1 91 0
+ 152 002e 143A     		subs	r2, r2, #20
+ 153 0030 1360     		str	r3, [r2]
+  92:Src/test.c    **** 	
+  93:Src/test.c    **** 
+  94:Src/test.c    **** 	
+  95:Src/test.c    **** 	
+  96:Src/test.c    **** 
+  97:Src/test.c    **** }
+ 154              		.loc 1 97 0
+ 155 0032 7047     		bx	lr
+ 156              	.L6:
+ 157              		.align	2
+ 158              	.L5:
+ 159 0034 18000040 		.word	1073741848
+ 160 0038 18080040 		.word	1073743896
+ 161 003c 20080040 		.word	1073743904
+ 162 0040 0C000040 		.word	1073741836
+ 163              		.cfi_endproc
+ 164              	.LFE1:
+ 166              		.section	.text.tim4_pwm_config,"ax",%progbits
+ 167              		.align	1
+ 168              		.global	tim4_pwm_config
+ 169              		.syntax unified
+ 170              		.thumb
+ 171              		.thumb_func
+ 172              		.fpu fpv4-sp-d16
+ 174              	tim4_pwm_config:
+ 175              	.LFB2:
+  98:Src/test.c    **** 
+  99:Src/test.c    **** //confgig tim 4 with output compare on pd12 13 14 15 16 
+ 100:Src/test.c    **** void tim4_pwm_config(){
+ 176              		.loc 1 100 0
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 181 0000 30B4     		push	{r4, r5}
+ 182              	.LCFI0:
+ 183              		.cfi_def_cfa_offset 8
+ 184              		.cfi_offset 4, -8
+ 185              		.cfi_offset 5, -4
+ 101:Src/test.c    **** // 1. Configure the output pin:
+ 102:Src/test.c    **** // a) Select the output mode by writing CCS bits in CCMRx register.
+ 103:Src/test.c    **** 	u32_t temp_reg;
+ 104:Src/test.c    **** 	// 1.Configure channel 4 to detect rising edges on the TI2 input
+ 105:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR2(mTIM4) , ~( 3u << 8));
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 6
+
+
+ 186              		.loc 1 105 0
+ 187 0002 1348     		ldr	r0, .L9
+ 188 0004 0368     		ldr	r3, [r0]
+ 189              	.LVL23:
+ 106:Src/test.c    **** 	write_reg(mTIM_CCMR2(mTIM4) , temp_reg);
+ 107:Src/test.c    **** 	
+ 108:Src/test.c    **** // b) Select the polarity by writing the CCxP bit in CCER register.
+ 109:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCER(mTIM4) , ~(0xFU <<12));
+ 190              		.loc 1 109 0
+ 191 0006 1349     		ldr	r1, .L9+4
+ 192 0008 0A68     		ldr	r2, [r1]
+ 193 000a 22F47042 		bic	r2, r2, #61440
+ 194              	.LVL24:
+ 110:Src/test.c    **** 	write_reg(mTIM_CCER(mTIM4) , temp_reg);
+ 111:Src/test.c    **** 
+ 112:Src/test.c    **** 
+ 113:Src/test.c    **** // 2. Select the PWM mode (PWM1 or PWM2) by writing OCxM bits in CCMRx register.
+ 114:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR2(mTIM4) , ~(7U << 12));
+ 195              		.loc 1 114 0
+ 196 000e 23F4E643 		bic	r3, r3, #29440
+ 197              	.LVL25:
+ 115:Src/test.c    **** 	temp_reg |= (6u <<12);
+ 198              		.loc 1 115 0
+ 199 0012 43F4C043 		orr	r3, r3, #24576
+ 200              	.LVL26:
+ 116:Src/test.c    **** 	write_reg(mTIM_CCMR2(mTIM4) , temp_reg);
+ 117:Src/test.c    **** 	
+ 118:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR2(mTIM4) , ~(7U << 4));
+ 201              		.loc 1 118 0
+ 202 0016 23F07003 		bic	r3, r3, #112
+ 203              	.LVL27:
+ 119:Src/test.c    **** 	temp_reg |= (6u <<4);
+ 120:Src/test.c    **** 	write_reg(mTIM_CCMR2(mTIM4) , temp_reg);
+ 121:Src/test.c    **** 	
+ 122:Src/test.c    **** 
+ 123:Src/test.c    **** // 3. Program the period and the duty cycle respectively in ARR and CCRx registers.
+ 124:Src/test.c    **** 	
+ 125:Src/test.c    **** 	temp_reg = 400u;
+ 126:Src/test.c    **** 	write_reg(mTIM_ARR(mTIM4) , temp_reg);
+ 204              		.loc 1 126 0
+ 205 001a 0F4C     		ldr	r4, .L9+8
+ 206 001c 4FF4C875 		mov	r5, #400
+ 207 0020 2560     		str	r5, [r4]
+ 208              	.LVL28:
+ 127:Src/test.c    **** 	
+ 128:Src/test.c    **** 	temp_reg = 200;
+ 129:Src/test.c    **** 	write_reg(mTIM_CCR1(mTIM4) , temp_reg);
+ 209              		.loc 1 129 0
+ 210 0022 0834     		adds	r4, r4, #8
+ 211 0024 C825     		movs	r5, #200
+ 212 0026 2560     		str	r5, [r4]
+ 213              	.LVL29:
+ 130:Src/test.c    **** 	
+ 131:Src/test.c    **** // 4. Set the preload bit in CCMRx register and the ARPE bit in the CR1 register.
+ 132:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR2(mTIM4) , ~(1u << 11));
+ 133:Src/test.c    **** 	temp_reg |= (1u << 11);
+ 134:Src/test.c    **** 	write_reg(mTIM_CCMR2(mTIM4) , temp_reg);
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 7
+
+
+ 135:Src/test.c    **** 	
+ 136:Src/test.c    **** 	//channel 3
+ 137:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCMR2(mTIM4) , ~(1u << 3));
+ 138:Src/test.c    **** 	temp_reg |= (1u << 3);
+ 214              		.loc 1 138 0
+ 215 0028 43F40663 		orr	r3, r3, #2144
+ 216              	.LVL30:
+ 217 002c 43F00803 		orr	r3, r3, #8
+ 218              	.LVL31:
+ 139:Src/test.c    **** 	write_reg(mTIM_CCMR2(mTIM4) , temp_reg);
+ 219              		.loc 1 139 0
+ 220 0030 0360     		str	r3, [r0]
+ 140:Src/test.c    **** 	
+ 141:Src/test.c    **** 	temp_reg = read_reg(mTIM_CR1(mTIM4) , ~(1u<<7));
+ 221              		.loc 1 141 0
+ 222 0032 1C38     		subs	r0, r0, #28
+ 223 0034 0368     		ldr	r3, [r0]
+ 224              	.LVL32:
+ 142:Src/test.c    **** 	temp_reg |= (1u<<7);
+ 225              		.loc 1 142 0
+ 226 0036 43F08003 		orr	r3, r3, #128
+ 227              	.LVL33:
+ 143:Src/test.c    **** 	write_reg(mTIM_CR1(mTIM4) , temp_reg);
+ 228              		.loc 1 143 0
+ 229 003a 0360     		str	r3, [r0]
+ 144:Src/test.c    **** 	
+ 145:Src/test.c    **** 	temp_reg = read_reg(mTIM_EGR(mTIM4) , ~1u);
+ 230              		.loc 1 145 0
+ 231 003c 1430     		adds	r0, r0, #20
+ 232 003e 0368     		ldr	r3, [r0]
+ 233              	.LVL34:
+ 146:Src/test.c    **** 	temp_reg |= 1u;
+ 234              		.loc 1 146 0
+ 235 0040 43F00103 		orr	r3, r3, #1
+ 236              	.LVL35:
+ 147:Src/test.c    **** 	write_reg(mTIM_EGR(mTIM4) , temp_reg);	
+ 237              		.loc 1 147 0
+ 238 0044 0360     		str	r3, [r0]
+ 239              	.LVL36:
+ 148:Src/test.c    **** 	
+ 149:Src/test.c    **** 	
+ 150:Src/test.c    **** 
+ 151:Src/test.c    **** // 5. Select the counting mode:
+ 152:Src/test.c    **** // a) PWM edge-aligned mode: the counter must be configured up-counting or down-
+ 153:Src/test.c    **** // counting.
+ 154:Src/test.c    **** 
+ 155:Src/test.c    **** // using edge-aligned mode by default
+ 156:Src/test.c    **** 	
+ 157:Src/test.c    **** // b) PWM center aligned mode: the counter mode must be center aligned counting
+ 158:Src/test.c    **** // mode (CMS bits different from '00').
+ 159:Src/test.c    **** 
+ 160:Src/test.c    **** 		
+ 161:Src/test.c    **** 
+ 162:Src/test.c    **** // 6. Enable the capture compare.
+ 163:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCER(mTIM4) , ~(1u <<12));
+ 164:Src/test.c    **** 	temp_reg |= (1u <<12);
+ 165:Src/test.c    **** 	write_reg(mTIM_CCER(mTIM4) , temp_reg);
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 8
+
+
+ 166:Src/test.c    **** 	
+ 167:Src/test.c    **** 	temp_reg = read_reg(mTIM_CCER(mTIM4) , ~(1u <<8));
+ 168:Src/test.c    **** 	temp_reg |= (1u <<8);
+ 240              		.loc 1 168 0
+ 241 0046 42F48852 		orr	r2, r2, #4352
+ 242              	.LVL37:
+ 169:Src/test.c    **** 	write_reg(mTIM_CCER(mTIM4) , temp_reg);
+ 243              		.loc 1 169 0
+ 244 004a 0A60     		str	r2, [r1]
+ 170:Src/test.c    **** 	
+ 171:Src/test.c    **** // 7. Enable the counter.
+ 172:Src/test.c    **** }
+ 245              		.loc 1 172 0
+ 246 004c 30BC     		pop	{r4, r5}
+ 247              	.LCFI1:
+ 248              		.cfi_restore 5
+ 249              		.cfi_restore 4
+ 250              		.cfi_def_cfa_offset 0
+ 251 004e 7047     		bx	lr
+ 252              	.L10:
+ 253              		.align	2
+ 254              	.L9:
+ 255 0050 1C080040 		.word	1073743900
+ 256 0054 20080040 		.word	1073743904
+ 257 0058 2C080040 		.word	1073743916
+ 258              		.cfi_endproc
+ 259              	.LFE2:
+ 261              		.text
+ 262              	.Letext0:
+ 263              		.file 2 "E:/Users/VuHaiLong/Documents/stm/mylib/mInc/mtype.h"
+ 264              		.file 3 "Inc/stm32f4xx_it.h"
+ARM GAS  E:\msys32\tmp\ccvBiZxd.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 test.c
+E:\msys32\tmp\ccvBiZxd.s:18     .text.config_ext_clk1:00000000 $t
+E:\msys32\tmp\ccvBiZxd.s:25     .text.config_ext_clk1:00000000 config_ext_clk1
+E:\msys32\tmp\ccvBiZxd.s:95     .text.config_ext_clk1:0000004c $d
+E:\msys32\tmp\ccvBiZxd.s:100    .text.input_capture_config:00000000 $t
+E:\msys32\tmp\ccvBiZxd.s:107    .text.input_capture_config:00000000 input_capture_config
+E:\msys32\tmp\ccvBiZxd.s:159    .text.input_capture_config:00000034 $d
+E:\msys32\tmp\ccvBiZxd.s:167    .text.tim4_pwm_config:00000000 $t
+E:\msys32\tmp\ccvBiZxd.s:174    .text.tim4_pwm_config:00000000 tim4_pwm_config
+E:\msys32\tmp\ccvBiZxd.s:255    .text.tim4_pwm_config:00000050 $d
+
+NO UNDEFINED SYMBOLS

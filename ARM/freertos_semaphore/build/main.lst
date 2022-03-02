@@ -1,0 +1,757 @@
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.lowerTaskAsPeriodic,"ax",%progbits
+  18              		.align	1
+  19              		.global	lowerTaskAsPeriodic
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	lowerTaskAsPeriodic:
+  26              	.LFB11:
+  27              		.file 1 "Src/main.c"
+   1:Src/main.c    **** 
+   2:Src/main.c    **** #include "project.h"
+   3:Src/main.c    **** #include "string.h"
+   4:Src/main.c    **** #include <stdlib.h>
+   5:Src/main.c    **** #include "semphr.h"
+   6:Src/main.c    **** TaskHandle_t pxTask = NULL;
+   7:Src/main.c    **** TaskHandle_t pxTask_receive = NULL;
+   8:Src/main.c    **** SemaphoreHandle_t semaHandle  = NULL;
+   9:Src/main.c    **** 
+  10:Src/main.c    **** 
+  11:Src/main.c    **** void vApplicationIdleHook( void ){
+  12:Src/main.c    **** }
+  13:Src/main.c    **** 
+  14:Src/main.c    **** void vApplicationStackOverflowHook(){
+  15:Src/main.c    **** 	while(1)
+  16:Src/main.c    **** 	{
+  17:Src/main.c    **** 	}
+  18:Src/main.c    **** }
+  19:Src/main.c    **** void vApplicationMallocFailedHook(){
+  20:Src/main.c    **** 	while(1)
+  21:Src/main.c    **** 	{	
+  22:Src/main.c    **** 	}
+  23:Src/main.c    **** }
+  24:Src/main.c    **** void rcc_enableclk(){
+  25:Src/main.c    **** 	enable_rcc_gpioh();
+  26:Src/main.c    **** 	enable_rcc_gpiod();
+  27:Src/main.c    **** 	// for pb6 Rx , PB7 TX
+  28:Src/main.c    **** 	enable_rcc_gpiob();
+  29:Src/main.c    **** }
+  30:Src/main.c    **** void init_interrupt( ){
+  31:Src/main.c    **** 	
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 2
+
+
+  32:Src/main.c    **** 	unsigned int temp_reg;
+  33:Src/main.c    **** 	/* usart1 */
+  34:Src/main.c    **** 
+  35:Src/main.c    ****     /* Tx interrupt */
+  36:Src/main.c    ****     temp_reg = read_reg(mUSART_CR1(mUSART1), ~(1 << 6));
+  37:Src/main.c    ****     temp_reg |= (1 << 6);
+  38:Src/main.c    ****     write_reg(mUSART_CR1(mUSART1), temp_reg);
+  39:Src/main.c    **** 
+  40:Src/main.c    ****     /* Rx interrupt - RXNEIE */
+  41:Src/main.c    ****     temp_reg = read_reg(mUSART_CR1(mUSART1), ~(1 << 5));
+  42:Src/main.c    ****     temp_reg |= (1 << 5);
+  43:Src/main.c    ****     write_reg(mUSART_CR1(mUSART1), temp_reg);
+  44:Src/main.c    **** 	
+  45:Src/main.c    **** 	//temp_reg = read_reg(SCB_AIRCR , ~0u);
+  46:Src/main.c    **** 	temp_reg = (0x5FAu << 16);
+  47:Src/main.c    **** 	write_reg(SCB_AIRCR , temp_reg);
+  48:Src/main.c    **** 	
+  49:Src/main.c    **** 	temp_reg = read_reg(SCB_AIRCR , ~(0xFu << 8));
+  50:Src/main.c    **** 	temp_reg |= (3u << 8);
+  51:Src/main.c    **** 	write_reg(SCB_AIRCR , temp_reg);
+  52:Src/main.c    **** 	
+  53:Src/main.c    **** 	
+  54:Src/main.c    ****     
+  55:Src/main.c    **** 	mNVIC_SetPriority((USART1_IRQn) ,5);
+  56:Src/main.c    **** 	mNVIC_EnableIRQ(USART1_IRQn);
+  57:Src/main.c    **** 
+  58:Src/main.c    ****     asm("cpsie i") ;	
+  59:Src/main.c    **** 	
+  60:Src/main.c    **** }
+  61:Src/main.c    **** void config_pin()
+  62:Src/main.c    **** {
+  63:Src/main.c    **** 	mGPIO_TypeDef GPIO_Init;
+  64:Src/main.c    **** 	GPIO_Init.mpin  =  mGPIO_PIN(15) | mGPIO_PIN(14)|mGPIO_PIN(13)|mGPIO_PIN(12);
+  65:Src/main.c    **** 	GPIO_Init.moder = mGPIO_MODER_OUTPUT;
+  66:Src/main.c    **** 	GPIO_Init.type = mPUSH_PULL;
+  67:Src/main.c    **** 	GPIO_Init.pull  = mNO_PULL;
+  68:Src/main.c    **** 	GPIO_Init.speed = mFAST_SPEED;
+  69:Src/main.c    **** 	init_pin(mGPIOD , &GPIO_Init);
+  70:Src/main.c    **** 	
+  71:Src/main.c    **** 	
+  72:Src/main.c    **** 	// TIM2  EXTERNAL INPUT
+  73:Src/main.c    **** 	GPIO_Init.mpin  =  mGPIO_PIN(0);
+  74:Src/main.c    **** 	GPIO_Init.moder = mGPIO_MODER_ALT;
+  75:Src/main.c    **** 	GPIO_Init.type = mPUSH_PULL;
+  76:Src/main.c    **** 	GPIO_Init.pull  = mNO_PULL;
+  77:Src/main.c    **** 	GPIO_Init.speed = mFAST_SPEED;
+  78:Src/main.c    **** 	GPIO_Init.alternate = 1;
+  79:Src/main.c    **** 	init_pin(mGPIOA , &GPIO_Init); 
+  80:Src/main.c    **** }
+  81:Src/main.c    **** void lowerTaskAsPeriodic(){
+  28              		.loc 1 81 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 3
+
+
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  38              	.L2:
+  82:Src/main.c    **** 
+  83:Src/main.c    **** 	while(1){
+  84:Src/main.c    **** 		
+  85:Src/main.c    **** 		GPIO_TongglePin(mGPIOD , mGPIO_PIN(12));
+  39              		.loc 1 85 0 discriminator 1
+  40 0002 4FF48051 		mov	r1, #4096
+  41 0006 0448     		ldr	r0, .L4
+  42 0008 FFF7FEFF 		bl	GPIO_TongglePin
+  43              	.LVL0:
+  86:Src/main.c    **** 		
+  87:Src/main.c    **** 		vTaskDelay(pdMS_TO_TICKS(500));
+  44              		.loc 1 87 0 discriminator 1
+  45 000c 4FF4FA70 		mov	r0, #500
+  46 0010 FFF7FEFF 		bl	vTaskDelay
+  47              	.LVL1:
+  48 0014 F5E7     		b	.L2
+  49              	.L5:
+  50 0016 00BF     		.align	2
+  51              	.L4:
+  52 0018 000C0240 		.word	1073875968
+  53              		.cfi_endproc
+  54              	.LFE11:
+  56              		.section	.text.midleTaskAsDeferTask,"ax",%progbits
+  57              		.align	1
+  58              		.global	midleTaskAsDeferTask
+  59              		.syntax unified
+  60              		.thumb
+  61              		.thumb_func
+  62              		.fpu fpv4-sp-d16
+  64              	midleTaskAsDeferTask:
+  65              	.LFB12:
+  88:Src/main.c    **** 	}
+  89:Src/main.c    **** 	
+  90:Src/main.c    **** 	
+  91:Src/main.c    **** }
+  92:Src/main.c    **** void midleTaskAsDeferTask(){
+  66              		.loc 1 92 0
+  67              		.cfi_startproc
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70 0000 08B5     		push	{r3, lr}
+  71              	.LCFI1:
+  72              		.cfi_def_cfa_offset 8
+  73              		.cfi_offset 3, -8
+  74              		.cfi_offset 14, -4
+  75              	.L7:
+  93:Src/main.c    **** 	BaseType_t semaValue = pdFALSE;
+  94:Src/main.c    **** 	while(1){
+  95:Src/main.c    **** 		semaValue = xSemaphoreTake(semaHandle , pdMS_TO_TICKS(50));
+  76              		.loc 1 95 0
+  77 0002 3221     		movs	r1, #50
+  78 0004 054B     		ldr	r3, .L10
+  79 0006 1868     		ldr	r0, [r3]
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 4
+
+
+  80 0008 FFF7FEFF 		bl	xQueueSemaphoreTake
+  81              	.LVL2:
+  96:Src/main.c    **** 		if(semaValue == pdPASS)
+  82              		.loc 1 96 0
+  83 000c 0128     		cmp	r0, #1
+  84 000e F8D1     		bne	.L7
+  97:Src/main.c    **** 		{
+  98:Src/main.c    **** 			GPIO_TongglePin(mGPIOD , mGPIO_PIN(13));
+  85              		.loc 1 98 0
+  86 0010 4FF40051 		mov	r1, #8192
+  87 0014 0248     		ldr	r0, .L10+4
+  88              	.LVL3:
+  89 0016 FFF7FEFF 		bl	GPIO_TongglePin
+  90              	.LVL4:
+  91 001a F2E7     		b	.L7
+  92              	.L11:
+  93              		.align	2
+  94              	.L10:
+  95 001c 00000000 		.word	.LANCHOR0
+  96 0020 000C0240 		.word	1073875968
+  97              		.cfi_endproc
+  98              	.LFE12:
+ 100              		.section	.text.highTaskAsInterrupt,"ax",%progbits
+ 101              		.align	1
+ 102              		.global	highTaskAsInterrupt
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 106              		.fpu fpv4-sp-d16
+ 108              	highTaskAsInterrupt:
+ 109              	.LFB13:
+  99:Src/main.c    **** 		}
+ 100:Src/main.c    **** 	}
+ 101:Src/main.c    **** }
+ 102:Src/main.c    **** void highTaskAsInterrupt(){
+ 110              		.loc 1 102 0
+ 111              		.cfi_startproc
+ 112              		@ Volatile: function does not return.
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115 0000 08B5     		push	{r3, lr}
+ 116              	.LCFI2:
+ 117              		.cfi_def_cfa_offset 8
+ 118              		.cfi_offset 3, -8
+ 119              		.cfi_offset 14, -4
+ 120              	.L13:
+ 103:Src/main.c    **** 
+ 104:Src/main.c    **** 	while(1){
+ 105:Src/main.c    **** 		xSemaphoreGive(semaHandle);
+ 121              		.loc 1 105 0 discriminator 1
+ 122 0002 0023     		movs	r3, #0
+ 123 0004 1A46     		mov	r2, r3
+ 124 0006 1946     		mov	r1, r3
+ 125 0008 0448     		ldr	r0, .L15
+ 126 000a 0068     		ldr	r0, [r0]
+ 127 000c FFF7FEFF 		bl	xQueueGenericSend
+ 128              	.LVL5:
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 5
+
+
+ 106:Src/main.c    **** 		vTaskDelay(pdMS_TO_TICKS(1000));
+ 129              		.loc 1 106 0 discriminator 1
+ 130 0010 4FF47A70 		mov	r0, #1000
+ 131 0014 FFF7FEFF 		bl	vTaskDelay
+ 132              	.LVL6:
+ 133 0018 F3E7     		b	.L13
+ 134              	.L16:
+ 135 001a 00BF     		.align	2
+ 136              	.L15:
+ 137 001c 00000000 		.word	.LANCHOR0
+ 138              		.cfi_endproc
+ 139              	.LFE13:
+ 141              		.section	.text.vApplicationIdleHook,"ax",%progbits
+ 142              		.align	1
+ 143              		.global	vApplicationIdleHook
+ 144              		.syntax unified
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.fpu fpv4-sp-d16
+ 149              	vApplicationIdleHook:
+ 150              	.LFB5:
+  11:Src/main.c    **** }
+ 151              		.loc 1 11 0
+ 152              		.cfi_startproc
+ 153              		@ args = 0, pretend = 0, frame = 0
+ 154              		@ frame_needed = 0, uses_anonymous_args = 0
+ 155              		@ link register save eliminated.
+  12:Src/main.c    **** 
+ 156              		.loc 1 12 0
+ 157 0000 7047     		bx	lr
+ 158              		.cfi_endproc
+ 159              	.LFE5:
+ 161              		.section	.text.vApplicationStackOverflowHook,"ax",%progbits
+ 162              		.align	1
+ 163              		.global	vApplicationStackOverflowHook
+ 164              		.syntax unified
+ 165              		.thumb
+ 166              		.thumb_func
+ 167              		.fpu fpv4-sp-d16
+ 169              	vApplicationStackOverflowHook:
+ 170              	.LFB6:
+  14:Src/main.c    **** 	while(1)
+ 171              		.loc 1 14 0
+ 172              		.cfi_startproc
+ 173              		@ Volatile: function does not return.
+ 174              		@ args = 0, pretend = 0, frame = 0
+ 175              		@ frame_needed = 0, uses_anonymous_args = 0
+ 176              		@ link register save eliminated.
+ 177              	.L19:
+ 178 0000 FEE7     		b	.L19
+ 179              		.cfi_endproc
+ 180              	.LFE6:
+ 182              		.section	.text.vApplicationMallocFailedHook,"ax",%progbits
+ 183              		.align	1
+ 184              		.global	vApplicationMallocFailedHook
+ 185              		.syntax unified
+ 186              		.thumb
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 6
+
+
+ 187              		.thumb_func
+ 188              		.fpu fpv4-sp-d16
+ 190              	vApplicationMallocFailedHook:
+ 191              	.LFB7:
+  19:Src/main.c    **** 	while(1)
+ 192              		.loc 1 19 0
+ 193              		.cfi_startproc
+ 194              		@ Volatile: function does not return.
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              		@ link register save eliminated.
+ 198              	.L21:
+ 199 0000 FEE7     		b	.L21
+ 200              		.cfi_endproc
+ 201              	.LFE7:
+ 203              		.section	.text.rcc_enableclk,"ax",%progbits
+ 204              		.align	1
+ 205              		.global	rcc_enableclk
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 209              		.fpu fpv4-sp-d16
+ 211              	rcc_enableclk:
+ 212              	.LFB8:
+  24:Src/main.c    **** 	enable_rcc_gpioh();
+ 213              		.loc 1 24 0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              		@ link register save eliminated.
+  25:Src/main.c    **** 	enable_rcc_gpiod();
+ 218              		.loc 1 25 0
+ 219 0000 024A     		ldr	r2, .L23
+ 220 0002 1368     		ldr	r3, [r2]
+  28:Src/main.c    **** }
+ 221              		.loc 1 28 0
+ 222 0004 43F08A03 		orr	r3, r3, #138
+ 223 0008 1360     		str	r3, [r2]
+  29:Src/main.c    **** void init_interrupt( ){
+ 224              		.loc 1 29 0
+ 225 000a 7047     		bx	lr
+ 226              	.L24:
+ 227              		.align	2
+ 228              	.L23:
+ 229 000c 30380240 		.word	1073887280
+ 230              		.cfi_endproc
+ 231              	.LFE8:
+ 233              		.section	.text.init_interrupt,"ax",%progbits
+ 234              		.align	1
+ 235              		.global	init_interrupt
+ 236              		.syntax unified
+ 237              		.thumb
+ 238              		.thumb_func
+ 239              		.fpu fpv4-sp-d16
+ 241              	init_interrupt:
+ 242              	.LFB9:
+  30:Src/main.c    **** 	
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 7
+
+
+ 243              		.loc 1 30 0
+ 244              		.cfi_startproc
+ 245              		@ args = 0, pretend = 0, frame = 0
+ 246              		@ frame_needed = 0, uses_anonymous_args = 0
+ 247 0000 08B5     		push	{r3, lr}
+ 248              	.LCFI3:
+ 249              		.cfi_def_cfa_offset 8
+ 250              		.cfi_offset 3, -8
+ 251              		.cfi_offset 14, -4
+  36:Src/main.c    ****     temp_reg |= (1 << 6);
+ 252              		.loc 1 36 0
+ 253 0002 084A     		ldr	r2, .L27
+ 254 0004 1368     		ldr	r3, [r2]
+ 255              	.LVL7:
+  42:Src/main.c    ****     write_reg(mUSART_CR1(mUSART1), temp_reg);
+ 256              		.loc 1 42 0
+ 257 0006 43F06003 		orr	r3, r3, #96
+ 258              	.LVL8:
+  43:Src/main.c    **** 	
+ 259              		.loc 1 43 0
+ 260 000a 1360     		str	r3, [r2]
+ 261              	.LVL9:
+  51:Src/main.c    **** 	
+ 262              		.loc 1 51 0
+ 263 000c 064B     		ldr	r3, .L27+4
+ 264 000e 074A     		ldr	r2, .L27+8
+ 265 0010 1A60     		str	r2, [r3]
+  55:Src/main.c    **** 	mNVIC_EnableIRQ(USART1_IRQn);
+ 266              		.loc 1 55 0
+ 267 0012 0521     		movs	r1, #5
+ 268 0014 2520     		movs	r0, #37
+ 269 0016 FFF7FEFF 		bl	mNVIC_SetPriority
+ 270              	.LVL10:
+  56:Src/main.c    **** 
+ 271              		.loc 1 56 0
+ 272 001a 2520     		movs	r0, #37
+ 273 001c FFF7FEFF 		bl	mNVIC_EnableIRQ
+ 274              	.LVL11:
+  58:Src/main.c    **** 	
+ 275              		.loc 1 58 0
+ 276              		.syntax unified
+ 277              	@ 58 "Src/main.c" 1
+ 278 0020 62B6     		cpsie i
+ 279              	@ 0 "" 2
+  60:Src/main.c    **** void config_pin()
+ 280              		.loc 1 60 0
+ 281              		.thumb
+ 282              		.syntax unified
+ 283 0022 08BD     		pop	{r3, pc}
+ 284              	.L28:
+ 285              		.align	2
+ 286              	.L27:
+ 287 0024 0C100140 		.word	1073811468
+ 288 0028 0CED00E0 		.word	-536810228
+ 289 002c 0003FA05 		.word	100270848
+ 290              		.cfi_endproc
+ 291              	.LFE9:
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 8
+
+
+ 293              		.section	.text.config_pin,"ax",%progbits
+ 294              		.align	1
+ 295              		.global	config_pin
+ 296              		.syntax unified
+ 297              		.thumb
+ 298              		.thumb_func
+ 299              		.fpu fpv4-sp-d16
+ 301              	config_pin:
+ 302              	.LFB10:
+  62:Src/main.c    **** 	mGPIO_TypeDef GPIO_Init;
+ 303              		.loc 1 62 0
+ 304              		.cfi_startproc
+ 305              		@ args = 0, pretend = 0, frame = 24
+ 306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 307 0000 70B5     		push	{r4, r5, r6, lr}
+ 308              	.LCFI4:
+ 309              		.cfi_def_cfa_offset 16
+ 310              		.cfi_offset 4, -16
+ 311              		.cfi_offset 5, -12
+ 312              		.cfi_offset 6, -8
+ 313              		.cfi_offset 14, -4
+ 314 0002 86B0     		sub	sp, sp, #24
+ 315              	.LCFI5:
+ 316              		.cfi_def_cfa_offset 40
+  64:Src/main.c    **** 	GPIO_Init.moder = mGPIO_MODER_OUTPUT;
+ 317              		.loc 1 64 0
+ 318 0004 4FF47043 		mov	r3, #61440
+ 319 0008 0093     		str	r3, [sp]
+  65:Src/main.c    **** 	GPIO_Init.type = mPUSH_PULL;
+ 320              		.loc 1 65 0
+ 321 000a 0125     		movs	r5, #1
+ 322 000c 0195     		str	r5, [sp, #4]
+  66:Src/main.c    **** 	GPIO_Init.pull  = mNO_PULL;
+ 323              		.loc 1 66 0
+ 324 000e 0024     		movs	r4, #0
+ 325 0010 0294     		str	r4, [sp, #8]
+  67:Src/main.c    **** 	GPIO_Init.speed = mFAST_SPEED;
+ 326              		.loc 1 67 0
+ 327 0012 0394     		str	r4, [sp, #12]
+  68:Src/main.c    **** 	init_pin(mGPIOD , &GPIO_Init);
+ 328              		.loc 1 68 0
+ 329 0014 0226     		movs	r6, #2
+ 330 0016 0496     		str	r6, [sp, #16]
+  69:Src/main.c    **** 	
+ 331              		.loc 1 69 0
+ 332 0018 6946     		mov	r1, sp
+ 333 001a 0748     		ldr	r0, .L31
+ 334 001c FFF7FEFF 		bl	init_pin
+ 335              	.LVL12:
+  73:Src/main.c    **** 	GPIO_Init.moder = mGPIO_MODER_ALT;
+ 336              		.loc 1 73 0
+ 337 0020 0095     		str	r5, [sp]
+  74:Src/main.c    **** 	GPIO_Init.type = mPUSH_PULL;
+ 338              		.loc 1 74 0
+ 339 0022 0196     		str	r6, [sp, #4]
+  75:Src/main.c    **** 	GPIO_Init.pull  = mNO_PULL;
+ 340              		.loc 1 75 0
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 9
+
+
+ 341 0024 0294     		str	r4, [sp, #8]
+  76:Src/main.c    **** 	GPIO_Init.speed = mFAST_SPEED;
+ 342              		.loc 1 76 0
+ 343 0026 0394     		str	r4, [sp, #12]
+  77:Src/main.c    **** 	GPIO_Init.alternate = 1;
+ 344              		.loc 1 77 0
+ 345 0028 0496     		str	r6, [sp, #16]
+  78:Src/main.c    **** 	init_pin(mGPIOA , &GPIO_Init); 
+ 346              		.loc 1 78 0
+ 347 002a 0595     		str	r5, [sp, #20]
+  79:Src/main.c    **** }
+ 348              		.loc 1 79 0
+ 349 002c 6946     		mov	r1, sp
+ 350 002e 0348     		ldr	r0, .L31+4
+ 351 0030 FFF7FEFF 		bl	init_pin
+ 352              	.LVL13:
+  80:Src/main.c    **** void lowerTaskAsPeriodic(){
+ 353              		.loc 1 80 0
+ 354 0034 06B0     		add	sp, sp, #24
+ 355              	.LCFI6:
+ 356              		.cfi_def_cfa_offset 16
+ 357              		@ sp needed
+ 358 0036 70BD     		pop	{r4, r5, r6, pc}
+ 359              	.L32:
+ 360              		.align	2
+ 361              	.L31:
+ 362 0038 000C0240 		.word	1073875968
+ 363 003c 00000240 		.word	1073872896
+ 364              		.cfi_endproc
+ 365              	.LFE10:
+ 367              		.section	.text.main,"ax",%progbits
+ 368              		.align	1
+ 369              		.global	main
+ 370              		.syntax unified
+ 371              		.thumb
+ 372              		.thumb_func
+ 373              		.fpu fpv4-sp-d16
+ 375              	main:
+ 376              	.LFB14:
+ 107:Src/main.c    **** 	}
+ 108:Src/main.c    **** }
+ 109:Src/main.c    **** 
+ 110:Src/main.c    **** // create  3 task 
+ 111:Src/main.c    **** // task1 priority lowpriority
+ 112:Src/main.c    **** // task3 high priority as an interrupt
+ 113:Src/main.c    **** // task2 priority only lower task2 as defer task 
+ 114:Src/main.c    **** 
+ 115:Src/main.c    **** // cu sau 500ms xay ra ngat 1 lan( task2 running)
+ 116:Src/main.c    **** // khi do task3 se chuyen nhiem vu cua minh cho task 2 xu ly 
+ 117:Src/main.c    **** // task1  bi pre-emp
+ 118:Src/main.c    **** 
+ 119:Src/main.c    **** int main(void)
+ 120:Src/main.c    **** {
+ 377              		.loc 1 120 0
+ 378              		.cfi_startproc
+ 379              		@ Volatile: function does not return.
+ 380              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 10
+
+
+ 381              		@ frame_needed = 0, uses_anonymous_args = 0
+ 382 0000 00B5     		push	{lr}
+ 383              	.LCFI7:
+ 384              		.cfi_def_cfa_offset 4
+ 385              		.cfi_offset 14, -4
+ 386 0002 85B0     		sub	sp, sp, #20
+ 387              	.LCFI8:
+ 388              		.cfi_def_cfa_offset 24
+ 121:Src/main.c    **** 
+ 122:Src/main.c    **** 	//100mhz
+ 123:Src/main.c    **** 	system_init( 8, 200, mPLLP_DIV4 , mSRC_PLL, mAHB_DIV1 ,mAPB_DIV2  , mAPB_DIV1);
+ 389              		.loc 1 123 0
+ 390 0004 0024     		movs	r4, #0
+ 391 0006 0294     		str	r4, [sp, #8]
+ 392 0008 0423     		movs	r3, #4
+ 393 000a 0193     		str	r3, [sp, #4]
+ 394 000c 0094     		str	r4, [sp]
+ 395 000e 0223     		movs	r3, #2
+ 396 0010 0122     		movs	r2, #1
+ 397 0012 C821     		movs	r1, #200
+ 398 0014 0820     		movs	r0, #8
+ 399 0016 FFF7FEFF 		bl	system_init
+ 400              	.LVL14:
+ 124:Src/main.c    **** 	rcc_enableclk();
+ 401              		.loc 1 124 0
+ 402 001a FFF7FEFF 		bl	rcc_enableclk
+ 403              	.LVL15:
+ 125:Src/main.c    **** 	config_pin();
+ 404              		.loc 1 125 0
+ 405 001e FFF7FEFF 		bl	config_pin
+ 406              	.LVL16:
+ 126:Src/main.c    **** 	init_interrupt();
+ 407              		.loc 1 126 0
+ 408 0022 FFF7FEFF 		bl	init_interrupt
+ 409              	.LVL17:
+ 127:Src/main.c    **** 	// CREATE SEMAPHORE BINARY  
+ 128:Src/main.c    **** 	semaHandle  = xSemaphoreCreateBinary();
+ 410              		.loc 1 128 0
+ 411 0026 0322     		movs	r2, #3
+ 412 0028 2146     		mov	r1, r4
+ 413 002a 0120     		movs	r0, #1
+ 414 002c FFF7FEFF 		bl	xQueueGenericCreate
+ 415              	.LVL18:
+ 416 0030 114B     		ldr	r3, .L37
+ 417 0032 1860     		str	r0, [r3]
+ 418              	.L34:
+ 129:Src/main.c    **** 	//failure create semaphore binary 
+ 130:Src/main.c    **** 	while(!semaHandle)
+ 419              		.loc 1 130 0 discriminator 1
+ 420 0034 0028     		cmp	r0, #0
+ 421 0036 FDD0     		beq	.L34
+ 131:Src/main.c    **** 	{
+ 132:Src/main.c    **** 	}
+ 133:Src/main.c    **** 	// successfull create semaphore binary 
+ 134:Src/main.c    **** 	xTaskCreate(lowerTaskAsPeriodic , "idle_task1" , 128 ,NULL ,  1 , NULL);
+ 422              		.loc 1 134 0
+ 423 0038 0024     		movs	r4, #0
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 11
+
+
+ 424 003a 0194     		str	r4, [sp, #4]
+ 425 003c 0123     		movs	r3, #1
+ 426 003e 0093     		str	r3, [sp]
+ 427 0040 2346     		mov	r3, r4
+ 428 0042 8022     		movs	r2, #128
+ 429 0044 0D49     		ldr	r1, .L37+4
+ 430 0046 0E48     		ldr	r0, .L37+8
+ 431 0048 FFF7FEFF 		bl	xTaskCreate
+ 432              	.LVL19:
+ 135:Src/main.c    **** 	xTaskCreate(midleTaskAsDeferTask ,"idle_task2" , 128 ,NULL ,  2 , NULL);
+ 433              		.loc 1 135 0
+ 434 004c 0194     		str	r4, [sp, #4]
+ 435 004e 0223     		movs	r3, #2
+ 436 0050 0093     		str	r3, [sp]
+ 437 0052 2346     		mov	r3, r4
+ 438 0054 8022     		movs	r2, #128
+ 439 0056 0B49     		ldr	r1, .L37+12
+ 440 0058 0B48     		ldr	r0, .L37+16
+ 441 005a FFF7FEFF 		bl	xTaskCreate
+ 442              	.LVL20:
+ 136:Src/main.c    **** 	xTaskCreate(highTaskAsInterrupt , "idle_task3" , 128 ,NULL ,  3 , NULL);
+ 443              		.loc 1 136 0
+ 444 005e 0194     		str	r4, [sp, #4]
+ 445 0060 0323     		movs	r3, #3
+ 446 0062 0093     		str	r3, [sp]
+ 447 0064 2346     		mov	r3, r4
+ 448 0066 8022     		movs	r2, #128
+ 449 0068 0849     		ldr	r1, .L37+20
+ 450 006a 0948     		ldr	r0, .L37+24
+ 451 006c FFF7FEFF 		bl	xTaskCreate
+ 452              	.LVL21:
+ 137:Src/main.c    **** 	vTaskStartScheduler();
+ 453              		.loc 1 137 0
+ 454 0070 FFF7FEFF 		bl	vTaskStartScheduler
+ 455              	.LVL22:
+ 456              	.L35:
+ 457 0074 FEE7     		b	.L35
+ 458              	.L38:
+ 459 0076 00BF     		.align	2
+ 460              	.L37:
+ 461 0078 00000000 		.word	.LANCHOR0
+ 462 007c 00000000 		.word	.LC0
+ 463 0080 00000000 		.word	lowerTaskAsPeriodic
+ 464 0084 0C000000 		.word	.LC1
+ 465 0088 00000000 		.word	midleTaskAsDeferTask
+ 466 008c 18000000 		.word	.LC2
+ 467 0090 00000000 		.word	highTaskAsInterrupt
+ 468              		.cfi_endproc
+ 469              	.LFE14:
+ 471              		.global	semaHandle
+ 472              		.global	pxTask_receive
+ 473              		.global	pxTask
+ 474              		.section	.bss.pxTask,"aw",%nobits
+ 475              		.align	2
+ 478              	pxTask:
+ 479 0000 00000000 		.space	4
+ 480              		.section	.bss.pxTask_receive,"aw",%nobits
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 12
+
+
+ 481              		.align	2
+ 484              	pxTask_receive:
+ 485 0000 00000000 		.space	4
+ 486              		.section	.bss.semaHandle,"aw",%nobits
+ 487              		.align	2
+ 488              		.set	.LANCHOR0,. + 0
+ 491              	semaHandle:
+ 492 0000 00000000 		.space	4
+ 493              		.section	.rodata.main.str1.4,"aMS",%progbits,1
+ 494              		.align	2
+ 495              	.LC0:
+ 496 0000 69646C65 		.ascii	"idle_task1\000"
+ 496      5F746173 
+ 496      6B3100
+ 497 000b 00       		.space	1
+ 498              	.LC1:
+ 499 000c 69646C65 		.ascii	"idle_task2\000"
+ 499      5F746173 
+ 499      6B3200
+ 500 0017 00       		.space	1
+ 501              	.LC2:
+ 502 0018 69646C65 		.ascii	"idle_task3\000"
+ 502      5F746173 
+ 502      6B3300
+ 503              		.text
+ 504              	.Letext0:
+ 505              		.file 2 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 506              		.file 3 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 507              		.file 4 "../FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h"
+ 508              		.file 5 "../FreeRTOS/Source/include/task.h"
+ 509              		.file 6 "../FreeRTOS/Source/include/queue.h"
+ 510              		.file 7 "E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mInc/mtype.h"
+ 511              		.file 8 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\sys\\lock.h"
+ 512              		.file 9 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\sys\\_types.h"
+ 513              		.file 10 "c:\\tools\\gcc7_2017-q4-major\\lib\\gcc\\arm-none-eabi\\7.2.1\\include\\stddef.h"
+ 514              		.file 11 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\sys\\reent.h"
+ 515              		.file 12 "Inc/stm32f4xx_it.h"
+ 516              		.file 13 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\stdlib.h"
+ 517              		.file 14 "../FreeRTOS/Source/include/semphr.h"
+ 518              		.file 15 "E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mInc/clock.h"
+ 519              		.file 16 "E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mInc/gpio.h"
+ 520              		.file 17 "E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mInc/const.h"
+ARM GAS  E:\msys32\tmp\ccE0MDBo.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+E:\msys32\tmp\ccE0MDBo.s:18     .text.lowerTaskAsPeriodic:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:25     .text.lowerTaskAsPeriodic:00000000 lowerTaskAsPeriodic
+E:\msys32\tmp\ccE0MDBo.s:52     .text.lowerTaskAsPeriodic:00000018 $d
+E:\msys32\tmp\ccE0MDBo.s:57     .text.midleTaskAsDeferTask:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:64     .text.midleTaskAsDeferTask:00000000 midleTaskAsDeferTask
+E:\msys32\tmp\ccE0MDBo.s:95     .text.midleTaskAsDeferTask:0000001c $d
+E:\msys32\tmp\ccE0MDBo.s:101    .text.highTaskAsInterrupt:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:108    .text.highTaskAsInterrupt:00000000 highTaskAsInterrupt
+E:\msys32\tmp\ccE0MDBo.s:137    .text.highTaskAsInterrupt:0000001c $d
+E:\msys32\tmp\ccE0MDBo.s:142    .text.vApplicationIdleHook:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:149    .text.vApplicationIdleHook:00000000 vApplicationIdleHook
+E:\msys32\tmp\ccE0MDBo.s:162    .text.vApplicationStackOverflowHook:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:169    .text.vApplicationStackOverflowHook:00000000 vApplicationStackOverflowHook
+E:\msys32\tmp\ccE0MDBo.s:183    .text.vApplicationMallocFailedHook:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:190    .text.vApplicationMallocFailedHook:00000000 vApplicationMallocFailedHook
+E:\msys32\tmp\ccE0MDBo.s:204    .text.rcc_enableclk:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:211    .text.rcc_enableclk:00000000 rcc_enableclk
+E:\msys32\tmp\ccE0MDBo.s:229    .text.rcc_enableclk:0000000c $d
+E:\msys32\tmp\ccE0MDBo.s:234    .text.init_interrupt:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:241    .text.init_interrupt:00000000 init_interrupt
+E:\msys32\tmp\ccE0MDBo.s:287    .text.init_interrupt:00000024 $d
+E:\msys32\tmp\ccE0MDBo.s:294    .text.config_pin:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:301    .text.config_pin:00000000 config_pin
+E:\msys32\tmp\ccE0MDBo.s:362    .text.config_pin:00000038 $d
+E:\msys32\tmp\ccE0MDBo.s:368    .text.main:00000000 $t
+E:\msys32\tmp\ccE0MDBo.s:375    .text.main:00000000 main
+E:\msys32\tmp\ccE0MDBo.s:461    .text.main:00000078 $d
+E:\msys32\tmp\ccE0MDBo.s:491    .bss.semaHandle:00000000 semaHandle
+E:\msys32\tmp\ccE0MDBo.s:484    .bss.pxTask_receive:00000000 pxTask_receive
+E:\msys32\tmp\ccE0MDBo.s:478    .bss.pxTask:00000000 pxTask
+E:\msys32\tmp\ccE0MDBo.s:475    .bss.pxTask:00000000 $d
+E:\msys32\tmp\ccE0MDBo.s:481    .bss.pxTask_receive:00000000 $d
+E:\msys32\tmp\ccE0MDBo.s:487    .bss.semaHandle:00000000 $d
+E:\msys32\tmp\ccE0MDBo.s:494    .rodata.main.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+GPIO_TongglePin
+vTaskDelay
+xQueueSemaphoreTake
+xQueueGenericSend
+mNVIC_SetPriority
+mNVIC_EnableIRQ
+init_pin
+system_init
+xQueueGenericCreate
+xTaskCreate
+vTaskStartScheduler

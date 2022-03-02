@@ -1,0 +1,4 @@
+"Uartmode1.obj",
+"uart1.obj" 
+TO "longptit" 
+RAMSIZE(256) 

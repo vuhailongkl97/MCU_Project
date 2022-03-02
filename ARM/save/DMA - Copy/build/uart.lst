@@ -1,0 +1,531 @@
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"uart.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.usart_send_byte,"ax",%progbits
+  18              		.align	1
+  19              		.global	usart_send_byte
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	usart_send_byte:
+  26              	.LFB1:
+  27              		.file 1 "E:/Users/VuHaiLong/Documents/stm/mylib/mSrc/uart.c"
+   1:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** #include "all_lib.h"
+   2:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 
+   3:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** void uart_pin_init();
+   4:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 
+   5:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** void uart_init(u32_t  fclk ,unsigned  int oversampling ,u32_t baudrate ){
+   6:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+   7:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	u32_t temp_reg ,brr_baud;
+   8:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	float  ftemp  = (1000000.0* fclk) / (baudrate* oversampling);
+   9:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	u32_t     DIV_Mantissa  = (u32_t )ftemp;
+  10:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     float    f_DIV_Fraction = (ftemp - DIV_Mantissa)*oversampling;
+  11:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	u32_t   DIV_Fraction = (u32_t) f_DIV_Fraction;
+  12:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	brr_baud =  ( DIV_Mantissa <<4 ) | DIV_Fraction;
+  13:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  14:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	uart_pin_init();
+  15:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  16:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	//ENABLE UART1
+  17:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mUSART_CR1(mUSART1), ~(1<<13));
+  18:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg |= (1<<13);
+  19:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     write_reg(mUSART_CR1(mUSART1), temp_reg);	
+  20:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 
+  21:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		// data 8bit 	
+  22:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mUSART_CR1(mUSART1) ,~(1 <<12));
+  23:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mUSART_CR1(mUSART1) , temp_reg);
+  24:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  25:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	// 1 stop 
+  26:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mUSART_CR2(mUSART1) ,~(3 <<12));
+  27:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg |= (0 << 12);
+  28:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mUSART_CR2(mUSART1) , temp_reg);		
+  29:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 
+  30:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	//no  parity 
+  31:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mUSART_CR1(mUSART1) ,~(1 <<10));
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 2
+
+
+  32:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mUSART_CR1(mUSART1) , temp_reg);
+  33:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  34:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  35:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	/* Clear CTSE and RTSE bits */
+  36:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mUSART_CR1(mUSART1) ,~(3 <<8));
+  37:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mUSART_CR1(mUSART1) , temp_reg);	
+  38:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	 
+  39:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	//no  sampleing
+  40:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mUSART_CR1(mUSART1) ,~(1 <<15));
+  41:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mUSART_CR1(mUSART1) , temp_reg);
+  42:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		
+  43:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	//setup baudrate
+  44:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mUSART_BRR(mUSART1) , brr_baud);
+  45:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		
+  46:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  47:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	/* Tx Enable */
+  48:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     temp_reg = read_reg(mUSART_CR1(mUSART1), ~(1<<3));
+  49:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     temp_reg |= (1 << 3);
+  50:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     write_reg(mUSART_CR1(mUSART1), temp_reg);
+  51:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 
+  52:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     /* Rx Enable */
+  53:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     temp_reg = read_reg(mUSART_CR1(mUSART1), ~(1<<2));
+  54:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     temp_reg |= (1<<2);
+  55:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     write_reg(mUSART_CR1(mUSART1), temp_reg);
+  56:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  57:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 
+  58:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** }
+  59:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** char usart_send_byte(unsigned char data){
+  28              		.loc 1 59 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  60:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  61:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	u32_t temp_reg ;
+  62:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	// kiem tra TDR san sang nhan du lieu moi hay chua
+  63:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mUSART_SR(mUSART1) , (1 << 7));
+  34              		.loc 1 63 0
+  35 0000 054B     		ldr	r3, .L4
+  36 0002 1B68     		ldr	r3, [r3]
+  37              	.LVL1:
+  64:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	if( temp_reg != 0){
+  38              		.loc 1 64 0
+  39 0004 13F0800F 		tst	r3, #128
+  40 0008 03D0     		beq	.L3
+  65:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		// bat dau truyen 
+  66:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		write_reg(mUSART_DR(mUSART1) , (u32_t)data);
+  41              		.loc 1 66 0
+  42 000a 044B     		ldr	r3, .L4+4
+  43              	.LVL2:
+  44 000c 1860     		str	r0, [r3]
+  67:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		
+  68:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		return 1;
+  45              		.loc 1 68 0
+  46 000e 0120     		movs	r0, #1
+  47              	.LVL3:
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 3
+
+
+  48 0010 7047     		bx	lr
+  49              	.LVL4:
+  50              	.L3:
+  69:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	}
+  70:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	return 0;
+  51              		.loc 1 70 0
+  52 0012 0020     		movs	r0, #0
+  53              	.LVL5:
+  71:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  72:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** }
+  54              		.loc 1 72 0
+  55 0014 7047     		bx	lr
+  56              	.L5:
+  57 0016 00BF     		.align	2
+  58              	.L4:
+  59 0018 00100140 		.word	1073811456
+  60 001c 04100140 		.word	1073811460
+  61              		.cfi_endproc
+  62              	.LFE1:
+  64              		.section	.text.usart_send_string,"ax",%progbits
+  65              		.align	1
+  66              		.global	usart_send_string
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  70              		.fpu fpv4-sp-d16
+  72              	usart_send_string:
+  73              	.LFB2:
+  73:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** char usart_send_string( char *str){
+  74              		.loc 1 73 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              	.LVL6:
+  79 0000 10B5     		push	{r4, lr}
+  80              	.LCFI0:
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 4, -8
+  83              		.cfi_offset 14, -4
+  84 0002 0446     		mov	r4, r0
+  85              	.LVL7:
+  86              	.L7:
+  74:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  75:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		while(*str){
+  87              		.loc 1 75 0
+  88 0004 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+  89 0006 28B1     		cbz	r0, .L11
+  76:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 			if(usart_send_byte(*str))
+  90              		.loc 1 76 0
+  91 0008 FFF7FEFF 		bl	usart_send_byte
+  92              	.LVL8:
+  93 000c 0028     		cmp	r0, #0
+  94 000e F9D0     		beq	.L7
+  77:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 				str++;
+  95              		.loc 1 77 0
+  96 0010 0134     		adds	r4, r4, #1
+  97              	.LVL9:
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 4
+
+
+  98 0012 F7E7     		b	.L7
+  99              	.L11:
+  78:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		}
+  79:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	return 0;
+  80:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** }
+ 100              		.loc 1 80 0
+ 101 0014 10BD     		pop	{r4, pc}
+ 102              		.cfi_endproc
+ 103              	.LFE2:
+ 105              		.section	.text.uart_pin_init,"ax",%progbits
+ 106              		.align	1
+ 107              		.global	uart_pin_init
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 111              		.fpu fpv4-sp-d16
+ 113              	uart_pin_init:
+ 114              	.LFB3:
+  81:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** // using pb7rx pb6 tx
+  82:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** void uart_pin_init(){
+ 115              		.loc 1 82 0
+ 116              		.cfi_startproc
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		@ link register save eliminated.
+ 120 0000 30B4     		push	{r4, r5}
+ 121              	.LCFI1:
+ 122              		.cfi_def_cfa_offset 8
+ 123              		.cfi_offset 4, -8
+ 124              		.cfi_offset 5, -4
+  83:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	u32_t temp_reg;
+  84:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  85:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		//enable clock for uart
+  86:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mRCC_APB2ENR, ~(1u << 4));
+ 125              		.loc 1 86 0
+ 126 0002 144A     		ldr	r2, .L14
+ 127 0004 1368     		ldr	r3, [r2]
+ 128              	.LVL10:
+  87:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     temp_reg |= (1 << 4);
+ 129              		.loc 1 87 0
+ 130 0006 43F01003 		orr	r3, r3, #16
+ 131              	.LVL11:
+  88:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     write_reg(mRCC_APB2ENR, temp_reg);
+ 132              		.loc 1 88 0
+ 133 000a 1360     		str	r3, [r2]
+  89:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  90:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		// Pb7 -RX
+  91:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mGPIO_MODER(mGPIOB) , ~(3u << 14 ));
+ 134              		.loc 1 91 0
+ 135 000c 124D     		ldr	r5, .L14+4
+ 136 000e 2B68     		ldr	r3, [r5]
+ 137              	.LVL12:
+ 138 0010 23F44041 		bic	r1, r3, #49152
+ 139              	.LVL13:
+  92:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg  = temp_reg | (mGPIO_MODER_ALT << 14);
+ 140              		.loc 1 92 0
+ 141 0014 41F40041 		orr	r1, r1, #32768
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 5
+
+
+ 142              	.LVL14:
+  93:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mGPIO_MODER(mGPIOB) , temp_reg );
+  94:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  95:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mGPIO_PUPDR(mGPIOB) , ~(3u << 14 ));
+ 143              		.loc 1 95 0
+ 144 0018 104C     		ldr	r4, .L14+8
+ 145 001a 2368     		ldr	r3, [r4]
+ 146 001c 23F44042 		bic	r2, r3, #49152
+ 147              	.LVL15:
+  96:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg  = temp_reg | (mPULL_UP << 14);
+ 148              		.loc 1 96 0
+ 149 0020 42F48042 		orr	r2, r2, #16384
+ 150              	.LVL16:
+  97:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mGPIO_PUPDR(mGPIOB) , temp_reg );
+  98:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+  99:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 100:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mGPIO_AFRL(mGPIOB) , ~(0x0Fu << 28 ));
+ 151              		.loc 1 100 0
+ 152 0024 0E48     		ldr	r0, .L14+12
+ 153 0026 0368     		ldr	r3, [r0]
+ 154 0028 23F07043 		bic	r3, r3, #-268435456
+ 155              	.LVL17:
+ 101:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg  = temp_reg | (7u << 28);
+ 156              		.loc 1 101 0
+ 157 002c 43F0E043 		orr	r3, r3, #1879048192
+ 158              	.LVL18:
+ 102:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mGPIO_AFRL(mGPIOB) , temp_reg );
+ 103:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 
+ 104:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	//Pb6 - TX
+ 105:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 106:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mGPIO_MODER(mGPIOB) , ~(3u << 12 ));
+ 159              		.loc 1 106 0
+ 160 0030 21F44051 		bic	r1, r1, #12288
+ 161              	.LVL19:
+ 107:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg  = temp_reg | (mGPIO_MODER_ALT << 12);
+ 162              		.loc 1 107 0
+ 163 0034 41F40051 		orr	r1, r1, #8192
+ 164              	.LVL20:
+ 108:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mGPIO_MODER(mGPIOB) , temp_reg );
+ 165              		.loc 1 108 0
+ 166 0038 2960     		str	r1, [r5]
+ 109:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 110:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mGPIO_PUPDR(mGPIOB) , ~(3u << 12 ));
+ 167              		.loc 1 110 0
+ 168 003a 22F44052 		bic	r2, r2, #12288
+ 169              	.LVL21:
+ 111:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg  = temp_reg | (mPULL_UP << 12);
+ 170              		.loc 1 111 0
+ 171 003e 42F48052 		orr	r2, r2, #4096
+ 172              	.LVL22:
+ 112:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mGPIO_PUPDR(mGPIOB) , temp_reg );
+ 173              		.loc 1 112 0
+ 174 0042 2260     		str	r2, [r4]
+ 113:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 114:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg = read_reg(mGPIO_AFRL(mGPIOB) , ~(0x0Fu << 24 ));
+ 175              		.loc 1 114 0
+ 176 0044 23F07063 		bic	r3, r3, #251658240
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 6
+
+
+ 177              	.LVL23:
+ 115:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg  = temp_reg | (7u << 24);
+ 178              		.loc 1 115 0
+ 179 0048 43F0E063 		orr	r3, r3, #117440512
+ 180              	.LVL24:
+ 116:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mGPIO_AFRL(mGPIOB) , temp_reg );
+ 181              		.loc 1 116 0
+ 182 004c 0360     		str	r3, [r0]
+ 117:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 118:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** }
+ 183              		.loc 1 118 0
+ 184 004e 30BC     		pop	{r4, r5}
+ 185              	.LCFI2:
+ 186              		.cfi_restore 5
+ 187              		.cfi_restore 4
+ 188              		.cfi_def_cfa_offset 0
+ 189 0050 7047     		bx	lr
+ 190              	.L15:
+ 191 0052 00BF     		.align	2
+ 192              	.L14:
+ 193 0054 44380240 		.word	1073887300
+ 194 0058 00040240 		.word	1073873920
+ 195 005c 0C040240 		.word	1073873932
+ 196 0060 20040240 		.word	1073873952
+ 197              		.cfi_endproc
+ 198              	.LFE3:
+ 200              		.global	__aeabi_ui2d
+ 201              		.global	__aeabi_dmul
+ 202              		.global	__aeabi_ddiv
+ 203              		.global	__aeabi_d2f
+ 204              		.section	.text.uart_init,"ax",%progbits
+ 205              		.align	1
+ 206              		.global	uart_init
+ 207              		.syntax unified
+ 208              		.thumb
+ 209              		.thumb_func
+ 210              		.fpu fpv4-sp-d16
+ 212              	uart_init:
+ 213              	.LFB0:
+   5:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 214              		.loc 1 5 0
+ 215              		.cfi_startproc
+ 216              		@ args = 0, pretend = 0, frame = 0
+ 217              		@ frame_needed = 0, uses_anonymous_args = 0
+ 218              	.LVL25:
+ 219 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 220              	.LCFI3:
+ 221              		.cfi_def_cfa_offset 24
+ 222              		.cfi_offset 3, -24
+ 223              		.cfi_offset 4, -20
+ 224              		.cfi_offset 5, -16
+ 225              		.cfi_offset 6, -12
+ 226              		.cfi_offset 7, -8
+ 227              		.cfi_offset 14, -4
+ 228 0002 0C46     		mov	r4, r1
+ 229 0004 1546     		mov	r5, r2
+   8:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	u32_t     DIV_Mantissa  = (u32_t )ftemp;
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 7
+
+
+ 230              		.loc 1 8 0
+ 231 0006 FFF7FEFF 		bl	__aeabi_ui2d
+ 232              	.LVL26:
+ 233 000a 22A3     		adr	r3, .L18+12
+ 234 000c D3E90023 		ldrd	r2, [r3]
+ 235 0010 FFF7FEFF 		bl	__aeabi_dmul
+ 236              	.LVL27:
+ 237 0014 0646     		mov	r6, r0
+ 238 0016 0F46     		mov	r7, r1
+ 239 0018 04FB05F0 		mul	r0, r4, r5
+ 240 001c FFF7FEFF 		bl	__aeabi_ui2d
+ 241              	.LVL28:
+ 242 0020 0246     		mov	r2, r0
+ 243 0022 0B46     		mov	r3, r1
+ 244 0024 3046     		mov	r0, r6
+ 245 0026 3946     		mov	r1, r7
+ 246 0028 FFF7FEFF 		bl	__aeabi_ddiv
+ 247              	.LVL29:
+ 248 002c FFF7FEFF 		bl	__aeabi_d2f
+ 249              	.LVL30:
+ 250 0030 07EE900A 		vmov	s15, r0
+ 251              	.LVL31:
+   9:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     float    f_DIV_Fraction = (ftemp - DIV_Mantissa)*oversampling;
+ 252              		.loc 1 9 0
+ 253 0034 FCEEE76A 		vcvt.u32.f32	s13, s15
+ 254              	.LVL32:
+  10:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	u32_t   DIV_Fraction = (u32_t) f_DIV_Fraction;
+ 255              		.loc 1 10 0
+ 256 0038 B8EE667A 		vcvt.f32.u32	s14, s13
+ 257 003c 77EEC77A 		vsub.f32	s15, s15, s14
+ 258 0040 07EE104A 		vmov	s14, r4	@ int
+ 259 0044 B8EE477A 		vcvt.f32.u32	s14, s14
+ 260 0048 67EE877A 		vmul.f32	s15, s15, s14
+ 261              	.LVL33:
+  11:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	brr_baud =  ( DIV_Mantissa <<4 ) | DIV_Fraction;
+ 262              		.loc 1 11 0
+ 263 004c FCEEE77A 		vcvt.u32.f32	s15, s15
+ 264              	.LVL34:
+  12:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 265              		.loc 1 12 0
+ 266 0050 17EE903A 		vmov	r3, s15	@ int
+ 267 0054 16EE902A 		vmov	r2, s13	@ int
+ 268 0058 43EA0214 		orr	r4, r3, r2, lsl #4
+ 269              	.LVL35:
+  14:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 270              		.loc 1 14 0
+ 271 005c FFF7FEFF 		bl	uart_pin_init
+ 272              	.LVL36:
+  17:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg |= (1<<13);
+ 273              		.loc 1 17 0
+ 274 0060 0949     		ldr	r1, .L18
+ 275 0062 0B68     		ldr	r3, [r1]
+ 276              	.LVL37:
+  18:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     write_reg(mUSART_CR1(mUSART1), temp_reg);	
+ 277              		.loc 1 18 0
+ 278 0064 43F40053 		orr	r3, r3, #8192
+ 279              	.LVL38:
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 8
+
+
+  26:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg |= (0 << 12);
+ 280              		.loc 1 26 0
+ 281 0068 0848     		ldr	r0, .L18+4
+ 282 006a 0268     		ldr	r2, [r0]
+ 283 006c 22F44052 		bic	r2, r2, #12288
+ 284              	.LVL39:
+  28:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 
+ 285              		.loc 1 28 0
+ 286 0070 0260     		str	r2, [r0]
+ 287              	.LVL40:
+  44:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 		
+ 288              		.loc 1 44 0
+ 289 0072 074A     		ldr	r2, .L18+8
+ 290 0074 1460     		str	r4, [r2]
+  48:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     temp_reg |= (1 << 3);
+ 291              		.loc 1 48 0
+ 292 0076 23F41743 		bic	r3, r3, #38656
+ 293              	.LVL41:
+ 294 007a 23F00803 		bic	r3, r3, #8
+ 295              	.LVL42:
+  54:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c ****     write_reg(mUSART_CR1(mUSART1), temp_reg);
+ 296              		.loc 1 54 0
+ 297 007e 43F00C03 		orr	r3, r3, #12
+ 298              	.LVL43:
+  55:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	
+ 299              		.loc 1 55 0
+ 300 0082 0B60     		str	r3, [r1]
+  58:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** char usart_send_byte(unsigned char data){
+ 301              		.loc 1 58 0
+ 302 0084 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 303              	.LVL44:
+ 304              	.L19:
+ 305 0086 00BF     		.align	3
+ 306              	.L18:
+ 307 0088 0C100140 		.word	1073811468
+ 308 008c 10100140 		.word	1073811472
+ 309 0090 08100140 		.word	1073811464
+ 310 0094 00000000 		.word	0
+ 311 0098 80842E41 		.word	1093567616
+ 312              		.cfi_endproc
+ 313              	.LFE0:
+ 315              		.section	.text.usart_dma_en,"ax",%progbits
+ 316              		.align	1
+ 317              		.global	usart_dma_en
+ 318              		.syntax unified
+ 319              		.thumb
+ 320              		.thumb_func
+ 321              		.fpu fpv4-sp-d16
+ 323              	usart_dma_en:
+ 324              	.LFB4:
+ 119:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** void usart_dma_en(){
+ 325              		.loc 1 119 0
+ 326              		.cfi_startproc
+ 327              		@ args = 0, pretend = 0, frame = 0
+ 328              		@ frame_needed = 0, uses_anonymous_args = 0
+ 329              		@ link register save eliminated.
+ 120:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	u32_t temp_reg = read_reg(mUSART_CR3(mUSART1) ,~(1 <<6));
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 9
+
+
+ 330              		.loc 1 120 0
+ 331 0000 024A     		ldr	r2, .L21
+ 332 0002 1368     		ldr	r3, [r2]
+ 333              	.LVL45:
+ 121:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	temp_reg |= (1 << 6);
+ 334              		.loc 1 121 0
+ 335 0004 43F04003 		orr	r3, r3, #64
+ 336              	.LVL46:
+ 122:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** 	write_reg(mUSART_CR3(mUSART1) , temp_reg);		
+ 337              		.loc 1 122 0
+ 338 0008 1360     		str	r3, [r2]
+ 123:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\uart.c **** }
+ 339              		.loc 1 123 0
+ 340 000a 7047     		bx	lr
+ 341              	.L22:
+ 342              		.align	2
+ 343              	.L21:
+ 344 000c 14100140 		.word	1073811476
+ 345              		.cfi_endproc
+ 346              	.LFE4:
+ 348              		.text
+ 349              	.Letext0:
+ 350              		.file 2 "E:/Users/VuHaiLong/Documents/stm/mylib/mInc/mtype.h"
+ARM GAS  E:\msys32\tmp\ccOu7KUJ.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart.c
+E:\msys32\tmp\ccOu7KUJ.s:18     .text.usart_send_byte:00000000 $t
+E:\msys32\tmp\ccOu7KUJ.s:25     .text.usart_send_byte:00000000 usart_send_byte
+E:\msys32\tmp\ccOu7KUJ.s:59     .text.usart_send_byte:00000018 $d
+E:\msys32\tmp\ccOu7KUJ.s:65     .text.usart_send_string:00000000 $t
+E:\msys32\tmp\ccOu7KUJ.s:72     .text.usart_send_string:00000000 usart_send_string
+E:\msys32\tmp\ccOu7KUJ.s:106    .text.uart_pin_init:00000000 $t
+E:\msys32\tmp\ccOu7KUJ.s:113    .text.uart_pin_init:00000000 uart_pin_init
+E:\msys32\tmp\ccOu7KUJ.s:193    .text.uart_pin_init:00000054 $d
+E:\msys32\tmp\ccOu7KUJ.s:205    .text.uart_init:00000000 $t
+E:\msys32\tmp\ccOu7KUJ.s:212    .text.uart_init:00000000 uart_init
+E:\msys32\tmp\ccOu7KUJ.s:307    .text.uart_init:00000088 $d
+E:\msys32\tmp\ccOu7KUJ.s:316    .text.usart_dma_en:00000000 $t
+E:\msys32\tmp\ccOu7KUJ.s:323    .text.usart_dma_en:00000000 usart_dma_en
+E:\msys32\tmp\ccOu7KUJ.s:344    .text.usart_dma_en:0000000c $d
+
+UNDEFINED SYMBOLS
+__aeabi_ui2d
+__aeabi_dmul
+__aeabi_ddiv
+__aeabi_d2f

@@ -1,0 +1,173 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\Users\VuHaiLong\Desktop\longptit\longptit.uvproj
+Project File Date:  06/16/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Uartmode1.c...
+compiling uart1.c...
+uart1.c(2): warning C318: can't open file '../lib/Uartmode1.h'
+UART1.C(15): warning C206: 'UART_WRITE': missing function-prototype
+UART1.C(15): error C267: 'UART_WRITE': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(82): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(83): warning C265: '_quickSort': recursive call to non-reentrant function
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_DATA_READY?UARTMODE1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_READ?UARTMODE1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?UART1
+Program Size: data=129.0 xdata=0 code=1967
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_DATA_READY?UARTMODE1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_READ?UARTMODE1
+Program Size: data=129.0 xdata=0 code=1935
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling Uartmode1.c...
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_DATA_READY?UARTMODE1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_READ?UARTMODE1
+Program Size: data=129.0 xdata=0 code=1935
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling Uartmode1.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_READ?UARTMODE1
+Program Size: data=129.0 xdata=0 code=1929
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Uartmode1.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_DATA_READY?UARTMODE1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_READ?UARTMODE1
+Program Size: data=129.0 xdata=0 code=1935
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Uartmode1.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?UART_READ?UARTMODE1
+Program Size: data=129.0 xdata=0 code=1929
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Uartmode1.c...
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+linking...
+Program Size: data=129.0 xdata=0 code=1924
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=129.0 xdata=0 code=1924
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=129.0 xdata=0 code=1924
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+linking...
+Program Size: data=129.0 xdata=0 code=1948
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(103): error C221: non-constant case/dim expression
+UART1.C(103): error C221: non-constant case/dim expression
+Target not created
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(103): error C221: non-constant case/dim expression
+UART1.C(103): error C221: non-constant case/dim expression
+Target not created
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(99): error C161: 'm': formal parameter ignored
+UART1.C(99): error C141: syntax error near '-', expected ')'
+UART1.C(100): error C161: 'r': formal parameter ignored
+UART1.C(100): error C141: syntax error near '-', expected ')'
+UART1.C(103): error C220: illegal constant expression
+UART1.C(103): error C220: illegal constant expression
+Target not created
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(99): error C161: 'm': formal parameter ignored
+UART1.C(99): error C141: syntax error near '-', expected ')'
+UART1.C(100): error C161: 'r': formal parameter ignored
+UART1.C(100): error C141: syntax error near '-', expected ')'
+UART1.C(103): error C220: illegal constant expression
+UART1.C(103): error C220: illegal constant expression
+Target not created
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(103): error C221: non-constant case/dim expression
+UART1.C(103): error C221: non-constant case/dim expression
+Target not created
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(105): error C141: syntax error near 'int'
+UART1.C(105): error C202: 'L': undefined identifier
+UART1.C(109): error C202: 'L': undefined identifier
+UART1.C(111): error C202: 'R': undefined identifier
+UART1.C(119): error C202: 'L': undefined identifier
+UART1.C(121): error C202: 'L': undefined identifier
+UART1.C(126): error C202: 'R': undefined identifier
+UART1.C(136): error C202: 'L': undefined identifier
+UART1.C(145): error C202: 'R': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling uart1.c...
+UART1.C(77): warning C265: '_quickSort': recursive call to non-reentrant function
+UART1.C(78): warning C265: '_quickSort': recursive call to non-reentrant function
+linking...
+Program Size: data=129.0 xdata=0 code=1948
+creating hex file from "longptit"...
+"longptit" - 0 Error(s), 2 Warning(s).
