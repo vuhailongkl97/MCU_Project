@@ -1,0 +1,830 @@
+Release 14.7 - xst P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.19 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.19 secs
+ 
+--> Reading design: stepper_test.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "stepper_test.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "stepper_test"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : stepper_test
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "E:\Users\VuHaiLong\Desktop\PTIT4\do_an_so\do_an_so\main.vhd" into library work
+Parsing entity <stepper_test>.
+Parsing architecture <Behavioral> of entity <stepper_test>.
+WARNING:HDLCompiler:1369 - "E:\Users\VuHaiLong\Desktop\PTIT4\do_an_so\do_an_so\main.vhd" Line 64: Possible infinite loop; process does not have a wait statement
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <stepper_test> (architecture <Behavioral>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <stepper_test>.
+    Related source file is "E:\Users\VuHaiLong\Desktop\PTIT4\do_an_so\do_an_so\main.vhd".
+WARNING:Xst:647 - Input <sw_dir> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <sw_enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2999 - Signal 'datas', unconnected in block 'stepper_test', is tied to its initial value.
+WARNING:Xst:3035 - Index value(s) does not match array range for signal <datas>, simulation mismatch.
+    Found 18x8-bit single-port Read Only RAM <Mram_datas> for signal <datas>.
+    Found 1-bit register for signal <clk_1hz>.
+    Found 32-bit register for signal <tocdo.check>.
+    Found 32-bit register for signal <persion_number_go_out>.
+    Found 32-bit register for signal <persion_number_come_in>.
+    Found 32-bit register for signal <lcd.i>.
+    Found 1-bit register for signal <lcd_e>.
+    Found 8-bit register for signal <data>.
+    Found 32-bit register for signal <lcd.j>.
+    Found 1-bit register for signal <lcd_rs>.
+    Found 32-bit register for signal <count_clk>.
+    Found finite state machine <FSM_0> for signal <tocdo.check>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clk_1hz (falling_edge)                         |
+    | Power Up State     | 00000000000000000000000000000000               |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 32-bit adder for signal <count_clk[31]_GND_5_o_add_1_OUT> created at line 56.
+    Found 32-bit adder for signal <persion_number_go_out[31]_GND_5_o_add_6_OUT> created at line 72.
+    Found 32-bit adder for signal <persion_number_come_in[31]_GND_5_o_add_12_OUT> created at line 85.
+    Found 32-bit adder for signal <lcd.i[31]_GND_5_o_add_165_OUT> created at line 160.
+    Found 32-bit adder for signal <lcd.j[31]_GND_5_o_add_167_OUT> created at line 163.
+    Found 32-bit comparator greater for signal <GND_5_o_count_clk[31]_LessThan_1_o> created at line 55
+    Found 32-bit comparator lessequal for signal <GND_5_o_persion_number_go_out[31]_LessThan_6_o> created at line 71
+    Found 32-bit comparator lessequal for signal <GND_5_o_persion_number_come_in[31]_LessThan_12_o> created at line 84
+    Found 32-bit comparator greater for signal <n0031> created at line 107
+    Found 32-bit comparator greater for signal <GND_5_o_lcd.i[31]_LessThan_165_o> created at line 159
+    Found 32-bit comparator greater for signal <n0129> created at line 166
+    Summary:
+	inferred   1 RAM(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred 171 D-type flip-flop(s).
+	inferred   6 Comparator(s).
+	inferred  15 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <stepper_test> synthesized.
+
+Synthesizing Unit <div_32s_5s>.
+    Related source file is "".
+    Found 32-bit subtractor for signal <a[31]_unary_minus_1_OUT> created at line 0.
+    Found 5-bit subtractor for signal <b[4]_unary_minus_3_OUT> created at line 0.
+    Found 37-bit adder for signal <n2489> created at line 0.
+    Found 37-bit adder for signal <GND_6_o_b[4]_add_5_OUT> created at line 0.
+    Found 36-bit adder for signal <n2493> created at line 0.
+    Found 36-bit adder for signal <GND_6_o_b[4]_add_7_OUT> created at line 0.
+    Found 35-bit adder for signal <n2497> created at line 0.
+    Found 35-bit adder for signal <GND_6_o_b[4]_add_9_OUT> created at line 0.
+    Found 34-bit adder for signal <n2501> created at line 0.
+    Found 34-bit adder for signal <GND_6_o_b[4]_add_11_OUT> created at line 0.
+    Found 33-bit adder for signal <n2505> created at line 0.
+    Found 33-bit adder for signal <GND_6_o_b[4]_add_13_OUT> created at line 0.
+    Found 32-bit adder for signal <n2509> created at line 0.
+    Found 32-bit adder for signal <a[31]_b[4]_add_15_OUT> created at line 0.
+    Found 32-bit adder for signal <n2513> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_17_OUT> created at line 0.
+    Found 32-bit adder for signal <n2517> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_19_OUT> created at line 0.
+    Found 32-bit adder for signal <n2521> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_21_OUT> created at line 0.
+    Found 32-bit adder for signal <n2525> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_23_OUT> created at line 0.
+    Found 32-bit adder for signal <n2529> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_25_OUT> created at line 0.
+    Found 32-bit adder for signal <n2533> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_27_OUT> created at line 0.
+    Found 32-bit adder for signal <n2537> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_29_OUT> created at line 0.
+    Found 32-bit adder for signal <n2541> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_31_OUT> created at line 0.
+    Found 32-bit adder for signal <n2545> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_33_OUT> created at line 0.
+    Found 32-bit adder for signal <n2549> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_35_OUT> created at line 0.
+    Found 32-bit adder for signal <n2553> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_37_OUT> created at line 0.
+    Found 32-bit adder for signal <n2557> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_39_OUT> created at line 0.
+    Found 32-bit adder for signal <n2561> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_41_OUT> created at line 0.
+    Found 32-bit adder for signal <n2565> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_43_OUT> created at line 0.
+    Found 32-bit adder for signal <n2569> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_45_OUT> created at line 0.
+    Found 32-bit adder for signal <n2573> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_47_OUT> created at line 0.
+    Found 32-bit adder for signal <n2577> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_49_OUT> created at line 0.
+    Found 32-bit adder for signal <n2581> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_51_OUT> created at line 0.
+    Found 32-bit adder for signal <n2585> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_53_OUT> created at line 0.
+    Found 32-bit adder for signal <n2589> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_55_OUT> created at line 0.
+    Found 32-bit adder for signal <n2593> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_57_OUT> created at line 0.
+    Found 32-bit adder for signal <n2597> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_59_OUT> created at line 0.
+    Found 32-bit adder for signal <n2601> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_61_OUT> created at line 0.
+    Found 32-bit adder for signal <n2605> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_63_OUT[31:0]> created at line 0.
+    Found 32-bit adder for signal <n2609> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_65_OUT[31:0]> created at line 0.
+    Found 32-bit adder for signal <n2613> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_6_o_add_67_OUT[31:0]> created at line 0.
+    Found 33-bit adder for signal <GND_6_o_BUS_0001_add_70_OUT[32:0]> created at line 0.
+    Found 37-bit comparator greater for signal <BUS_0001_INV_1181_o> created at line 0
+    Found 36-bit comparator greater for signal <BUS_0002_INV_1180_o> created at line 0
+    Found 35-bit comparator greater for signal <BUS_0003_INV_1179_o> created at line 0
+    Found 34-bit comparator greater for signal <BUS_0004_INV_1178_o> created at line 0
+    Found 33-bit comparator greater for signal <BUS_0005_INV_1177_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0006_INV_1176_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0007_INV_1175_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0008_INV_1174_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0009_INV_1173_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0010_INV_1172_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0011_INV_1171_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0012_INV_1170_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0013_INV_1169_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0014_INV_1168_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0015_INV_1167_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0016_INV_1166_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0017_INV_1165_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0018_INV_1164_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0019_INV_1163_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0020_INV_1162_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0021_INV_1161_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0022_INV_1160_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0023_INV_1159_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0024_INV_1158_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0025_INV_1157_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0026_INV_1156_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0027_INV_1155_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0028_INV_1154_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0029_INV_1153_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0030_INV_1152_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0031_INV_1151_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0032_INV_1150_o> created at line 0
+    Found 32-bit comparator greater for signal <BUS_0033_INV_1149_o> created at line 0
+    Summary:
+	inferred  67 Adder/Subtractor(s).
+	inferred  33 Comparator(s).
+	inferred 934 Multiplexer(s).
+Unit <div_32s_5s> synthesized.
+
+Synthesizing Unit <rem_32s_5s>.
+    Related source file is "".
+    Found 32-bit subtractor for signal <a[31]_unary_minus_1_OUT> created at line 0.
+    Found 5-bit subtractor for signal <b[4]_unary_minus_3_OUT> created at line 0.
+    Found 37-bit adder for signal <n2432> created at line 0.
+    Found 37-bit adder for signal <GND_9_o_b[4]_add_5_OUT> created at line 0.
+    Found 36-bit adder for signal <n2436> created at line 0.
+    Found 36-bit adder for signal <GND_9_o_b[4]_add_7_OUT> created at line 0.
+    Found 35-bit adder for signal <n2440> created at line 0.
+    Found 35-bit adder for signal <GND_9_o_b[4]_add_9_OUT> created at line 0.
+    Found 34-bit adder for signal <n2444> created at line 0.
+    Found 34-bit adder for signal <GND_9_o_b[4]_add_11_OUT> created at line 0.
+    Found 33-bit adder for signal <n2448> created at line 0.
+    Found 33-bit adder for signal <GND_9_o_b[4]_add_13_OUT> created at line 0.
+    Found 32-bit adder for signal <n2452> created at line 0.
+    Found 32-bit adder for signal <a[31]_b[4]_add_15_OUT> created at line 0.
+    Found 32-bit adder for signal <n2456> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_17_OUT> created at line 0.
+    Found 32-bit adder for signal <n2460> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_19_OUT> created at line 0.
+    Found 32-bit adder for signal <n2464> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_21_OUT> created at line 0.
+    Found 32-bit adder for signal <n2468> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_23_OUT> created at line 0.
+    Found 32-bit adder for signal <n2472> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_25_OUT> created at line 0.
+    Found 32-bit adder for signal <n2476> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_27_OUT> created at line 0.
+    Found 32-bit adder for signal <n2480> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_29_OUT> created at line 0.
+    Found 32-bit adder for signal <n2484> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_31_OUT> created at line 0.
+    Found 32-bit adder for signal <n2488> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_33_OUT> created at line 0.
+    Found 32-bit adder for signal <n2492> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_35_OUT> created at line 0.
+    Found 32-bit adder for signal <n2496> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_37_OUT> created at line 0.
+    Found 32-bit adder for signal <n2500> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_39_OUT> created at line 0.
+    Found 32-bit adder for signal <n2504> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_41_OUT> created at line 0.
+    Found 32-bit adder for signal <n2508> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_43_OUT> created at line 0.
+    Found 32-bit adder for signal <n2512> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_45_OUT> created at line 0.
+    Found 32-bit adder for signal <n2516> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_47_OUT> created at line 0.
+    Found 32-bit adder for signal <n2520> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_49_OUT> created at line 0.
+    Found 32-bit adder for signal <n2524> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_51_OUT> created at line 0.
+    Found 32-bit adder for signal <n2528> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_53_OUT> created at line 0.
+    Found 32-bit adder for signal <n2532> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_55_OUT> created at line 0.
+    Found 32-bit adder for signal <n2536> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_57_OUT> created at line 0.
+    Found 32-bit adder for signal <n2540> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_59_OUT> created at line 0.
+    Found 32-bit adder for signal <n2544> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_61_OUT> created at line 0.
+    Found 32-bit adder for signal <n2548> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_63_OUT> created at line 0.
+    Found 32-bit adder for signal <n2552> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_65_OUT> created at line 0.
+    Found 32-bit adder for signal <n2556> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_67_OUT> created at line 0.
+    Found 32-bit adder for signal <n2560> created at line 0.
+    Found 32-bit adder for signal <a[31]_GND_9_o_add_69_OUT> created at line 0.
+    Found 5-bit adder for signal <GND_9_o_a[31]_add_70_OUT[4:0]> created at line 0.
+    Found 37-bit comparator lessequal for signal <BUS_0001> created at line 0
+    Found 36-bit comparator lessequal for signal <BUS_0002> created at line 0
+    Found 35-bit comparator lessequal for signal <BUS_0003> created at line 0
+    Found 34-bit comparator lessequal for signal <BUS_0004> created at line 0
+    Found 33-bit comparator lessequal for signal <BUS_0005> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0006> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0007> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0008> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0009> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0010> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0011> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0012> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0013> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0014> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0015> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0016> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0017> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0018> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0019> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0020> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0021> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0022> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0023> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0024> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0025> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0026> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0027> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0028> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0029> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0030> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0031> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0032> created at line 0
+    Found 32-bit comparator lessequal for signal <BUS_0033> created at line 0
+    Summary:
+	inferred  69 Adder/Subtractor(s).
+	inferred  33 Comparator(s).
+	inferred 1032 Multiplexer(s).
+Unit <rem_32s_5s> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 18x8-bit single-port Read Only RAM                    : 1
+# Adders/Subtractors                                   : 415
+ 32-bit adder                                          : 337
+ 32-bit subtractor                                     : 6
+ 33-bit adder                                          : 14
+ 34-bit adder                                          : 12
+ 35-bit adder                                          : 12
+ 36-bit adder                                          : 12
+ 37-bit adder                                          : 12
+ 5-bit adder                                           : 4
+ 5-bit subtractor                                      : 6
+# Registers                                            : 9
+ 1-bit register                                        : 3
+ 32-bit register                                       : 5
+ 8-bit register                                        : 1
+# Comparators                                          : 204
+ 32-bit comparator greater                             : 60
+ 32-bit comparator lessequal                           : 114
+ 33-bit comparator greater                             : 2
+ 33-bit comparator lessequal                           : 4
+ 34-bit comparator greater                             : 2
+ 34-bit comparator lessequal                           : 4
+ 35-bit comparator greater                             : 2
+ 35-bit comparator lessequal                           : 4
+ 36-bit comparator greater                             : 2
+ 36-bit comparator lessequal                           : 4
+ 37-bit comparator greater                             : 2
+ 37-bit comparator lessequal                           : 4
+# Multiplexers                                         : 6011
+ 1-bit 2-to-1 multiplexer                              : 5972
+ 32-bit 2-to-1 multiplexer                             : 16
+ 33-bit 2-to-1 multiplexer                             : 2
+ 5-bit 2-to-1 multiplexer                              : 10
+ 8-bit 2-to-1 multiplexer                              : 11
+# FSMs                                                 : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <stepper_test>.
+The following registers are absorbed into counter <count_clk>: 1 register on signal <count_clk>.
+The following registers are absorbed into counter <lcd.i>: 1 register on signal <lcd.i>.
+The following registers are absorbed into counter <persion_number_go_out>: 1 register on signal <persion_number_go_out>.
+The following registers are absorbed into counter <persion_number_come_in>: 1 register on signal <persion_number_come_in>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_datas> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 18-word x 8-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <lcd.j<4:0>>    |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <stepper_test> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 18x8-bit single-port distributed Read Only RAM        : 1
+# Adders/Subtractors                                   : 215
+ 32-bit adder                                          : 1
+ 32-bit adder carry in                                 : 192
+ 32-bit subtractor                                     : 6
+ 33-bit adder                                          : 2
+ 5-bit adder                                           : 4
+ 5-bit adder carry in                                  : 4
+ 5-bit subtractor                                      : 6
+# Counters                                             : 4
+ 32-bit up counter                                     : 4
+# Registers                                            : 43
+ Flip-Flops                                            : 43
+# Comparators                                          : 204
+ 32-bit comparator greater                             : 60
+ 32-bit comparator lessequal                           : 114
+ 33-bit comparator greater                             : 2
+ 33-bit comparator lessequal                           : 4
+ 34-bit comparator greater                             : 2
+ 34-bit comparator lessequal                           : 4
+ 35-bit comparator greater                             : 2
+ 35-bit comparator lessequal                           : 4
+ 36-bit comparator greater                             : 2
+ 36-bit comparator lessequal                           : 4
+ 37-bit comparator greater                             : 2
+ 37-bit comparator lessequal                           : 4
+# Multiplexers                                         : 6011
+ 1-bit 2-to-1 multiplexer                              : 5972
+ 32-bit 2-to-1 multiplexer                             : 16
+ 33-bit 2-to-1 multiplexer                             : 2
+ 5-bit 2-to-1 multiplexer                              : 10
+ 8-bit 2-to-1 multiplexer                              : 11
+# FSMs                                                 : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <FSM_0> on signal <tocdo.check[1:2]> with sequential encoding.
+----------------------------------------------
+ State                            | Encoding
+----------------------------------------------
+ 00000000000000000000000000000000 | 00
+ 00000000000000000000000000000011 | 01
+ 00000000000000000000000000000001 | 10
+----------------------------------------------
+
+Optimizing unit <stepper_test> ...
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_7> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_8> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_9> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_10> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_11> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_12> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_13> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_14> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_15> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_16> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_17> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_18> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_19> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_20> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_21> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_22> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_23> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_24> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_25> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_26> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_27> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_28> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_29> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_30> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_come_in_31> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_7> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_8> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_9> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_10> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_11> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_12> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_13> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_14> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_15> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_16> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_17> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_18> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_19> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_20> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_21> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_22> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_23> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_24> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_25> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_26> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_27> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_28> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_29> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_30> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <persion_number_go_out_31> has a constant value of 0 in block <stepper_test>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block stepper_test, actual ratio is 2.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 123
+ Flip-Flops                                            : 123
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : stepper_test.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 2152
+#      GND                         : 1
+#      INV                         : 25
+#      LUT1                        : 114
+#      LUT2                        : 218
+#      LUT3                        : 103
+#      LUT4                        : 217
+#      LUT5                        : 216
+#      LUT6                        : 191
+#      MUXCY                       : 591
+#      MUXF7                       : 5
+#      VCC                         : 1
+#      XORCY                       : 470
+# FlipFlops/Latches                : 123
+#      FD                          : 32
+#      FD_1                        : 2
+#      FDE                         : 22
+#      FDE_1                       : 1
+#      FDR                         : 33
+#      FDRE                        : 32
+#      FDS                         : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 13
+#      IBUF                        : 2
+#      OBUF                        : 11
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             123  out of  126800     0%  
+ Number of Slice LUTs:                 1084  out of  63400     1%  
+    Number used as Logic:              1084  out of  63400     1%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1096
+   Number with an unused Flip Flop:     973  out of   1096    88%  
+   Number with an unused LUT:            12  out of   1096     1%  
+   Number of fully used LUT-FF pairs:   111  out of   1096    10%  
+   Number of unique control sets:        10
+
+IO Utilization: 
+ Number of IOs:                          16
+ Number of bonded IOBs:                  14  out of    210     6%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+---------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)     | Load  |
+-----------------------------------+---------------------------+-------+
+clk                                | BUFGP                     | 107   |
+clk_1hz                            | NONE(tocdo.check_FSM_FFd2)| 16    |
+-----------------------------------+---------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 4.769ns (Maximum Frequency: 209.688MHz)
+   Minimum input arrival time before clock: 1.026ns
+   Maximum output required time after clock: 0.645ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.769ns (frequency: 209.688MHz)
+  Total number of paths / destination ports: 27362 / 214
+-------------------------------------------------------------------------
+Delay:               4.769ns (Levels of Logic = 12)
+  Source:            lcd.i_28 (FF)
+  Destination:       lcd_rs (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: lcd.i_28 to lcd_rs
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             5   0.361   0.702  lcd.i_28 (lcd.i_28)
+     LUT5:I0->O            1   0.097   0.556  Mmux_lcd.j[31]_lcd.j[31]_mux_174_OUT1104 (Mmux_lcd.j[31]_lcd.j[31]_mux_174_OUT1104)
+     LUT6:I2->O           10   0.097   0.553  Mmux_lcd.j[31]_lcd.j[31]_mux_174_OUT1105 (Mmux_lcd.j[31]_lcd.j[31]_mux_174_OUT1105)
+     LUT6:I3->O            3   0.097   0.693  Mmux_lcd.j[31]_lcd.j[31]_mux_174_OUT121 (lcd.j[31]_lcd.j[31]_mux_174_OUT<1>)
+     LUT5:I0->O            1   0.097   0.000  Mcompar_n0129_lut<0> (Mcompar_n0129_lut<0>)
+     MUXCY:S->O            1   0.353   0.000  Mcompar_n0129_cy<0> (Mcompar_n0129_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar_n0129_cy<1> (Mcompar_n0129_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar_n0129_cy<2> (Mcompar_n0129_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar_n0129_cy<3> (Mcompar_n0129_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar_n0129_cy<4> (Mcompar_n0129_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar_n0129_cy<5> (Mcompar_n0129_cy<5>)
+     MUXCY:CI->O           2   0.023   0.284  Mcompar_n0129_cy<6> (Mcompar_n0129_cy<6>)
+     INV:I->O              1   0.113   0.279  Mcompar_n0129_cy<6>_inv_INV_0 (Mcompar_n0129_cy<6>_inv)
+     FDR:R                     0.349          lcd_rs
+    ----------------------------------------
+    Total                      4.769ns (1.702ns logic, 3.067ns route)
+                                       (35.7% logic, 64.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_1hz'
+  Clock period: 2.951ns (frequency: 338.880MHz)
+  Total number of paths / destination ports: 200 / 30
+-------------------------------------------------------------------------
+Delay:               2.951ns (Levels of Logic = 8)
+  Source:            persion_number_come_in_3 (FF)
+  Destination:       persion_number_come_in_0 (FF)
+  Source Clock:      clk_1hz falling
+  Destination Clock: clk_1hz falling
+
+  Data Path: persion_number_come_in_3 to persion_number_come_in_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             13   0.361   0.739  persion_number_come_in_3 (persion_number_come_in_3)
+     LUT5:I0->O            1   0.097   0.000  Mcompar__n0282_lut<0> (Mcompar__n0282_lut<0>)
+     MUXCY:S->O            1   0.353   0.000  Mcompar__n0282_cy<0> (Mcompar__n0282_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar__n0282_cy<1> (Mcompar__n0282_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar__n0282_cy<2> (Mcompar__n0282_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar__n0282_cy<3> (Mcompar__n0282_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  Mcompar__n0282_cy<4> (Mcompar__n0282_cy<4>)
+     MUXCY:CI->O           1   0.253   0.556  Mcompar__n0282_cy<5> (_n0282)
+     LUT4:I0->O            7   0.097   0.307  _n0291_inv1 (_n0291_inv)
+     FDE:CE                    0.095          persion_number_come_in_0
+    ----------------------------------------
+    Total                      2.951ns (1.348ns logic, 1.603ns route)
+                                       (45.7% logic, 54.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_1hz'
+  Total number of paths / destination ports: 25 / 16
+-------------------------------------------------------------------------
+Offset:              1.026ns (Levels of Logic = 2)
+  Source:            sw_speed_up (PAD)
+  Destination:       persion_number_come_in_0 (FF)
+  Destination Clock: clk_1hz falling
+
+  Data Path: sw_speed_up to persion_number_come_in_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.001   0.525  sw_speed_up_IBUF (sw_speed_up_IBUF)
+     LUT4:I1->O            7   0.097   0.307  _n0291_inv1 (_n0291_inv)
+     FDE:CE                    0.095          persion_number_come_in_0
+    ----------------------------------------
+    Total                      1.026ns (0.193ns logic, 0.833ns route)
+                                       (18.8% logic, 81.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 10 / 10
+-------------------------------------------------------------------------
+Offset:              0.645ns (Levels of Logic = 1)
+  Source:            data_7 (FF)
+  Destination:       data<7> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: data_7 to data<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.361   0.283  data_7 (data_7)
+     OBUF:I->O                 0.000          data_7_OBUF (data<7>)
+    ----------------------------------------
+    Total                      0.645ns (0.361ns logic, 0.283ns route)
+                                       (56.0% logic, 44.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    4.769|         |    2.925|         |
+clk_1hz        |         |   13.544|         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clk_1hz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_1hz        |         |         |    2.951|         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 120.00 secs
+Total CPU time to Xst completion: 120.00 secs
+ 
+--> 
+
+Total memory usage is 296048 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   55 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

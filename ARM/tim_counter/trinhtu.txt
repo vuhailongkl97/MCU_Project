@@ -1,0 +1,240 @@
+1. clock setted
+2. config led for test 
+
+3. tim2 config( button  as input  + tim2)
+
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 0;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 10;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  HAL_TIM_Base_Init(htim2)
+
+    /* Init the low level hardware : GPIO, CLOCK, NVIC */
+		HAL_TIM_Base_MspInit(htim);
+				    /* Peripheral clock enable */
+					__HAL_RCC_TIM2_CLK_ENABLE();
+							#define __HAL_RCC_TIM2_CLK_ENABLE()     do { \
+                                        __IO uint32_t tmpreg = 0x00U; \
+                                        SET_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM2EN);\
+                                        /* Delay after an RCC peripheral clock enabling */ \
+                                        tmpreg = READ_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM2EN);\
+                                        UNUSED(tmpreg); \
+                                        } while(0U)
+										
+					/**TIM2 GPIO Configuration    
+					PA0-WKUP     ------> TIM2_CH1 
+					*/
+					GPIO_InitStruct.Pin = GPIO_PIN_0;
+					GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+					GPIO_InitStruct.Pull = GPIO_NOPULL;
+					GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+					GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;
+					HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+							
+
+					/* TIM2 interrupt Init */
+					HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);
+					HAL_NVIC_EnableIRQ(TIM2_IRQn);
+					
+				uint32_t tmpcr1 = 0U;
+				tmpcr1 = TIMx->CR1;
+
+		/* Set TIM Time Base Unit parameters ---------------------------------------*/
+		if(IS_TIM_CC3_INSTANCE(TIMx) != RESET)   
+		{
+		/* Select the Counter Mode */
+		tmpcr1 &= ~(TIM_CR1_DIR | TIM_CR1_CMS);
+		tmpcr1 |= Structure->CounterMode;
+		}
+
+		if(IS_TIM_CC1_INSTANCE(TIMx) != RESET)  
+		{
+		/* Set the clock division */
+		tmpcr1 &= ~TIM_CR1_CKD;
+		tmpcr1 |= (uint32_t)Structure->ClockDivision;
+		}
+
+		TIMx->CR1 = tmpcr1;
+
+		/* Set the Auto-reload value */
+		TIMx->ARR = (uint32_t)Structure->Period ;
+
+		/* Set the Prescaler value */
+		TIMx->PSC = (uint32_t)Structure->Prescaler;
+
+		if(IS_TIM_ADVANCED_INSTANCE(TIMx) != RESET)  
+		{
+		/* Set the Repetition Counter value */
+		TIMx->RCR = Structure->RepetitionCounter;
+		}
+
+		/* Generate an update event to reload the Prescaler 
+		and the repetition counter(only for TIM1 and TIM8) value immediately */
+		TIMx->EGR = TIM_EGR_UG;
+		}
+  
+  
+  /* Set the Time Base configuration */
+  TIM_Base_SetConfig(htim->Instance, &htim->Init); 
+  
+
+	
+    sSlaveConfig.SlaveMode = TIM_SLAVEMODE_EXTERNAL1;
+  sSlaveConfig.InputTrigger = TIM_TS_TI1FP1;
+  sSlaveConfig.TriggerPolarity = TIM_TRIGGERPOLARITY_RISING;
+  sSlaveConfig.TriggerFilter = 15;
+  HAL_TIM_SlaveConfigSynchronization(&htim2, &sSlaveConfig)
+		 
+		__HAL_LOCK(htim);
+
+		htim->State = HAL_TIM_STATE_BUSY;
+
+
+		TIM_SlaveTimer_SetConfig(htim, sSlaveConfig);
+				uint32_t tmpsmcr = 0U;
+				uint32_t tmpccmr1 = 0U;
+				uint32_t tmpccer = 0U;
+
+				/* Get the TIMx SMCR register value */
+				tmpsmcr = htim->Instance->SMCR;
+
+				/* Reset the Trigger Selection Bits */
+				tmpsmcr &= ~TIM_SMCR_TS;
+				/* Set the Input Trigger source */
+				tmpsmcr |= sSlaveConfig->InputTrigger;
+
+				/* Reset the slave mode Bits */
+				tmpsmcr &= ~TIM_SMCR_SMS;
+				/* Set the slave mode */
+				tmpsmcr |= sSlaveConfig->SlaveMode;
+
+				/* Write to TIMx SMCR */
+				htim->Instance->SMCR = tmpsmcr;
+
+				/* Configure the trigger prescaler, filter, and polarity */
+				switch (sSlaveConfig->InputTrigger)
+					  case TIM_TS_TI1FP1:
+    
+						/* Configure TI1 Filter and Polarity */
+						TIM_TI1_ConfigInputStage(htim->Instance,
+											   sSlaveConfig->TriggerPolarity,
+											   sSlaveConfig->TriggerFilter);
+											
+											
+									  /* Disable the Channel 1: Reset the CC1E Bit */
+									  tmpccer = TIMx->CCER;
+									  TIMx->CCER &= ~TIM_CCER_CC1E;
+									  tmpccmr1 = TIMx->CCMR1;    
+									  
+									  /* Set the filter */
+									  tmpccmr1 &= ~TIM_CCMR1_IC1F;
+									  tmpccmr1 |= (TIM_ICFilter << 4U);
+									  
+									  /* Select the Polarity and set the CC1E Bit */
+									  tmpccer &= ~(TIM_CCER_CC1P | TIM_CCER_CC1NP);
+									  tmpccer |= TIM_ICPolarity;
+									  
+									  /* Write to TIMx CCMR1 and CCER registers */
+									  TIMx->CCMR1 = tmpccmr1;
+									  TIMx->CCER = tmpccer;		
+									  
+											
+				/* Disable Trigger Interrupt */
+		__HAL_TIM_DISABLE_IT(htim, TIM_IT_TRIGGER);
+
+		/* Disable Trigger DMA request */
+		__HAL_TIM_DISABLE_DMA(htim, TIM_DMA_TRIGGER);
+
+		htim->State = HAL_TIM_STATE_READY;
+		 
+		__HAL_UNLOCK(htim); 
+
+						
+				
+
+
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) 
+			__HAL_LOCK(htim);
+		  
+		  htim->State = HAL_TIM_STATE_BUSY;
+
+		  /* Reset the MMS Bits */
+		  htim->Instance->CR2 &= ~TIM_CR2_MMS;
+		  /* Select the TRGO source */
+		  htim->Instance->CR2 |= sMasterConfig->MasterOutputTrigger;
+
+		  /* Reset the MSM Bit */
+		  htim->Instance->SMCR &= ~TIM_SMCR_MSM;
+		  /* Set or Reset the MSM Bit */
+		  htim->Instance->SMCR |= sMasterConfig->MasterSlaveMode;
+		  
+		  htim->State = HAL_TIM_STATE_READY;
+		  
+		  __HAL_UNLOCK(htim);
+		  
+	HAL_StatusTypeDef HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim)
+	{
+	  /* Check the parameters */
+	  assert_param(IS_TIM_INSTANCE(htim->Instance));
+	  
+	  /* Enable the TIM Update interrupt */
+	  __HAL_TIM_ENABLE_IT(htim, TIM_IT_UPDATE);
+		  
+	  /* Enable the Peripheral */
+	  __HAL_TIM_ENABLE(htim);
+		  
+	  /* Return function status */
+	  return HAL_OK;
+	}
+4.viet ham ngat 
+	void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+ 
+		if( htim->Instance == htim2.Instance){
+				HAL_GPIO_TogglePin(GPIOD , GPIO_PIN_15);
+		}
+}
+		  
+
+		  
+		  
+		  
+		  
+		  
+		  
+		  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sSlaveConfig.SlaveMode = TIM_SLAVEMODE_EXTERNAL1;
+  sSlaveConfig.InputTrigger = TIM_TS_TI1FP1;
+  sSlaveConfig.TriggerPolarity = TIM_TRIGGERPOLARITY_RISING;
+  sSlaveConfig.TriggerFilter = 15;
+  if (HAL_TIM_SlaveConfigSynchronization(&htim2, &sSlaveConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+	

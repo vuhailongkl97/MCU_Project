@@ -1,0 +1,17 @@
+- Giới thiệu tổng quan về FreeRTOS
+- Task Management
+- Task control block
+- Task notification
+- Priority + Scheduling + Thuật toán Scheduing
+- Context Switching
+- Semaphore
+
+
+
+
+- Mutex
+- Queue
+- Event
+- Message buffer
+- Software timer
+- Stack frame

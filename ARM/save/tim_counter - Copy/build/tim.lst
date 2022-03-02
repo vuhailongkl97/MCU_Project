@@ -1,0 +1,158 @@
+ARM GAS  E:\msys32\tmp\ccgQEzTp.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"tim.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mTIM_Base_SetConfig,"ax",%progbits
+  18              		.align	1
+  19              		.global	mTIM_Base_SetConfig
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	mTIM_Base_SetConfig:
+  26              	.LFB0:
+  27              		.file 1 "E:/Users/VuHaiLong/Documents/stm/mylib/mSrc/tim.c"
+   1:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** #include "all_lib.h"
+   2:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 
+   3:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** void mTIM_Base_SetConfig(u32_t arr , u32_t psc ){
+  28              		.loc 1 3 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+   4:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	u32_t temp_reg;
+   5:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	/* Set the Time Base configuration */
+   6:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	/* 1.Select the Counter Mode CR1*/ 
+   7:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	 
+   8:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	 /* Set TIM Time Base Unit parameters ---------------------------------------*/
+   9:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	// dem suon len 
+  10:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	temp_reg = read_reg(mTIM_CR1(mTIM2), ~(0x07u<<4));
+  34              		.loc 1 10 0
+  35 0000 4FF08042 		mov	r2, #1073741824
+  36 0004 1368     		ldr	r3, [r2]
+  37              	.LVL1:
+  11:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	temp_reg |=  0u<< 4;
+  12:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	write_reg(mTIM_CR1(mTIM2) , temp_reg);
+  13:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	
+  14:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	//ckd ClockDivision / 1
+  15:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	temp_reg = read_reg(mTIM_CR1(mTIM2) , ~(3u << 8));
+  38              		.loc 1 15 0
+  39 0006 23F45C73 		bic	r3, r3, #880
+  40              	.LVL2:
+  16:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	write_reg(mTIM_CR1(mTIM2) , temp_reg);
+  41              		.loc 1 16 0
+  42 000a 1360     		str	r3, [r2]
+ARM GAS  E:\msys32\tmp\ccgQEzTp.s 			page 2
+
+
+  17:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	
+  18:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	
+  19:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	/* Set the Auto-reload value  = 10 */
+  20:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	write_reg(mTIM_ARR(mTIM2) , arr);	
+  43              		.loc 1 20 0
+  44 000c 044B     		ldr	r3, .L2
+  45              	.LVL3:
+  46 000e 1860     		str	r0, [r3]
+  21:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	
+  22:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	/* Set the Prescaler value  */
+  23:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	write_reg(mTIM_PSC(mTIM2) , psc);	
+  47              		.loc 1 23 0
+  48 0010 043B     		subs	r3, r3, #4
+  49 0012 1960     		str	r1, [r3]
+  24:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 
+  25:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 
+  26:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	/* Generate an update event to reload the Prescaler 
+  27:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	and the repetition counter(only for TIM1 and TIM8) value immediately */
+  28:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	temp_reg = read_reg(mTIM_EGR(mTIM2) , ~1u);
+  50              		.loc 1 28 0
+  51 0014 1432     		adds	r2, r2, #20
+  52              	.LVL4:
+  53 0016 1368     		ldr	r3, [r2]
+  54              	.LVL5:
+  29:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	temp_reg |= 1u;
+  55              		.loc 1 29 0
+  56 0018 43F00103 		orr	r3, r3, #1
+  57              	.LVL6:
+  30:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	write_reg(mTIM_EGR(mTIM2) , temp_reg);	
+  58              		.loc 1 30 0
+  59 001c 1360     		str	r3, [r2]
+  31:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** }
+  60              		.loc 1 31 0
+  61 001e 7047     		bx	lr
+  62              	.L3:
+  63              		.align	2
+  64              	.L2:
+  65 0020 2C000040 		.word	1073741868
+  66              		.cfi_endproc
+  67              	.LFE0:
+  69              		.section	.text.tim_start,"ax",%progbits
+  70              		.align	1
+  71              		.global	tim_start
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  75              		.fpu fpv4-sp-d16
+  77              	tim_start:
+  78              	.LFB1:
+  32:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** void tim_start(u32_t tim){
+  79              		.loc 1 32 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  84              	.LVL7:
+  33:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	
+ARM GAS  E:\msys32\tmp\ccgQEzTp.s 			page 3
+
+
+  34:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	u32_t temp_reg;
+  35:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	  /* Enable the Peripheral cr1 cen*/
+  36:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	  //__HAL_TIM_ENABLE(htim);
+  37:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	 temp_reg = read_reg(mTIM_CR1(tim) , ~1u);
+  85              		.loc 1 37 0
+  86 0000 0368     		ldr	r3, [r0]
+  87              	.LVL8:
+  38:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	 temp_reg |=1u;
+  88              		.loc 1 38 0
+  89 0002 43F00103 		orr	r3, r3, #1
+  90              	.LVL9:
+  39:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	 write_reg(mTIM_CR1(tim) , temp_reg);
+  91              		.loc 1 39 0
+  92 0006 0360     		str	r3, [r0]
+  40:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** 	
+  41:E:/Users/VuHaiLong/Documents/stm/mylib/mSrc\tim.c **** }...
+  93              		.loc 1 41 0
+  94 0008 7047     		bx	lr
+  95              		.cfi_endproc
+  96              	.LFE1:
+  98              		.text
+  99              	.Letext0:
+ 100              		.file 2 "E:/Users/VuHaiLong/Documents/stm/mylib/mInc/mtype.h"
+ARM GAS  E:\msys32\tmp\ccgQEzTp.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tim.c
+E:\msys32\tmp\ccgQEzTp.s:18     .text.mTIM_Base_SetConfig:00000000 $t
+E:\msys32\tmp\ccgQEzTp.s:25     .text.mTIM_Base_SetConfig:00000000 mTIM_Base_SetConfig
+E:\msys32\tmp\ccgQEzTp.s:65     .text.mTIM_Base_SetConfig:00000020 $d
+E:\msys32\tmp\ccgQEzTp.s:70     .text.tim_start:00000000 $t
+E:\msys32\tmp\ccgQEzTp.s:77     .text.tim_start:00000000 tim_start
+
+NO UNDEFINED SYMBOLS

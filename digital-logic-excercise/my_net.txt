@@ -1,0 +1,16 @@
+NET "clk" LOC = "E12";
+NET "sw_dir" LOC = "T9";        
+NET "sw_enable" LOC = "U8";     
+NET "sw_speed_up" LOC = "T15";  	 
+NET "sw_speed_down" LOC = "T16";  
+net "lcd_e" loc = "ab4"; 
+net "lcd_rw" loc = "w13"; 
+net "lcd_rs" loc = "y14"; 
+net "data<7>" loc = "y15"; 
+net "data<6>" loc = "ab16"; 
+net "data<5>" loc = "y16"; 
+net "data<4>" loc = "aa12"; 
+net "data<3>" loc = "ab12"; 
+net "data<2>" loc = "ab17"; 
+net "data<1>" loc = "ab18"; 
+net "data<0>" loc = "y13"; 

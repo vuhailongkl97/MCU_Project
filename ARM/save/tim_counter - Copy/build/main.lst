@@ -1,0 +1,270 @@
+ARM GAS  E:\msys32\tmp\ccPuJKzQ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.rcc_enableclk,"ax",%progbits
+  18              		.align	1
+  19              		.global	rcc_enableclk
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	rcc_enableclk:
+  26              	.LFB0:
+  27              		.file 1 "Src/main.c"
+   1:Src/main.c    **** #include "project.h"
+   2:Src/main.c    **** #include "string.h"
+   3:Src/main.c    **** #include <stdlib.h>
+   4:Src/main.c    **** #define USE_HSE
+   5:Src/main.c    **** 
+   6:Src/main.c    **** 
+   7:Src/main.c    **** char times = 0;
+   8:Src/main.c    **** 
+   9:Src/main.c    **** void rcc_enableclk(){
+  28              		.loc 1 9 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  10:Src/main.c    **** 	
+  11:Src/main.c    **** 	enable_rcc_gpioa();
+  33              		.loc 1 11 0
+  34 0000 054A     		ldr	r2, .L2
+  35 0002 1368     		ldr	r3, [r2]
+  12:Src/main.c    **** 	
+  13:Src/main.c    **** 	// enable port h
+  14:Src/main.c    **** 	enable_rcc_gpioh();
+  15:Src/main.c    **** 	//PORT D . for 4 led	
+  16:Src/main.c    **** 	enable_rcc_gpiod();
+  36              		.loc 1 16 0
+  37 0004 43F08903 		orr	r3, r3, #137
+  38 0008 1360     		str	r3, [r2]
+  17:Src/main.c    **** 	// timer4
+  18:Src/main.c    **** 	enable_rcc_tim4();
+  39              		.loc 1 18 0
+  40 000a 1032     		adds	r2, r2, #16
+ARM GAS  E:\msys32\tmp\ccPuJKzQ.s 			page 2
+
+
+  41 000c 1368     		ldr	r3, [r2]
+  42 000e 43F00403 		orr	r3, r3, #4
+  43 0012 1360     		str	r3, [r2]
+  19:Src/main.c    **** }
+  44              		.loc 1 19 0
+  45 0014 7047     		bx	lr
+  46              	.L3:
+  47 0016 00BF     		.align	2
+  48              	.L2:
+  49 0018 30380240 		.word	1073887280
+  50              		.cfi_endproc
+  51              	.LFE0:
+  53              		.section	.text.config_pin,"ax",%progbits
+  54              		.align	1
+  55              		.global	config_pin
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  59              		.fpu fpv4-sp-d16
+  61              	config_pin:
+  62              	.LFB1:
+  20:Src/main.c    **** // void config_pin()
+  21:Src/main.c    **** // {
+  22:Src/main.c    **** 	// mGPIO_TypeDef GPIO_Init;
+  23:Src/main.c    **** 	// GPIO_Init.mpin  =  mGPIO_PIN(15) | mGPIO_PIN(14);
+  24:Src/main.c    **** 	// GPIO_Init.moder = mGPIO_MODER_ALT;
+  25:Src/main.c    **** 	// GPIO_Init.type = mPUSH_PULL;
+  26:Src/main.c    **** 	// GPIO_Init.pull  = mNO_PULL;
+  27:Src/main.c    **** 	// GPIO_Init.speed = mFAST_SPEED;
+  28:Src/main.c    **** 	// GPIO_Init.alternate = 2; 
+  29:Src/main.c    **** 	// init_pin(mGPIOD , &GPIO_Init);
+  30:Src/main.c    **** // }
+  31:Src/main.c    **** void config_pin()
+  32:Src/main.c    **** {
+  63              		.loc 1 32 0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 24
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67 0000 00B5     		push	{lr}
+  68              	.LCFI0:
+  69              		.cfi_def_cfa_offset 4
+  70              		.cfi_offset 14, -4
+  71 0002 87B0     		sub	sp, sp, #28
+  72              	.LCFI1:
+  73              		.cfi_def_cfa_offset 32
+  33:Src/main.c    **** 	mGPIO_TypeDef GPIO_Init;
+  34:Src/main.c    **** 	GPIO_Init.mpin  =  mGPIO_PIN(0);
+  74              		.loc 1 34 0
+  75 0004 0123     		movs	r3, #1
+  76 0006 0093     		str	r3, [sp]
+  35:Src/main.c    **** 	GPIO_Init.moder = mGPIO_MODER_ALT;
+  77              		.loc 1 35 0
+  78 0008 0222     		movs	r2, #2
+  79 000a 0192     		str	r2, [sp, #4]
+  36:Src/main.c    **** 	GPIO_Init.type = mPUSH_PULL;
+  80              		.loc 1 36 0
+  81 000c 0021     		movs	r1, #0
+ARM GAS  E:\msys32\tmp\ccPuJKzQ.s 			page 3
+
+
+  82 000e 0291     		str	r1, [sp, #8]
+  37:Src/main.c    **** 	GPIO_Init.pull  = mNO_PULL;
+  83              		.loc 1 37 0
+  84 0010 0391     		str	r1, [sp, #12]
+  38:Src/main.c    **** 	GPIO_Init.speed = mFAST_SPEED;
+  85              		.loc 1 38 0
+  86 0012 0492     		str	r2, [sp, #16]
+  39:Src/main.c    **** 	GPIO_Init.alternate = 1; 
+  87              		.loc 1 39 0
+  88 0014 0593     		str	r3, [sp, #20]
+  40:Src/main.c    **** 	init_pin(mGPIOA , &GPIO_Init);
+  89              		.loc 1 40 0
+  90 0016 6946     		mov	r1, sp
+  91 0018 0248     		ldr	r0, .L6
+  92 001a FFF7FEFF 		bl	init_pin
+  93              	.LVL0:
+  41:Src/main.c    **** }
+  94              		.loc 1 41 0
+  95 001e 07B0     		add	sp, sp, #28
+  96              	.LCFI2:
+  97              		.cfi_def_cfa_offset 4
+  98              		@ sp needed
+  99 0020 5DF804FB 		ldr	pc, [sp], #4
+ 100              	.L7:
+ 101              		.align	2
+ 102              	.L6:
+ 103 0024 00000240 		.word	1073872896
+ 104              		.cfi_endproc
+ 105              	.LFE1:
+ 107              		.section	.text.main,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	main
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 113              		.fpu fpv4-sp-d16
+ 115              	main:
+ 116              	.LFB2:
+  42:Src/main.c    **** 
+  43:Src/main.c    **** //clock config 100mhz 
+  44:Src/main.c    **** int main(void)
+  45:Src/main.c    **** {	
+ 117              		.loc 1 45 0
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121 0000 00B5     		push	{lr}
+ 122              	.LCFI3:
+ 123              		.cfi_def_cfa_offset 4
+ 124              		.cfi_offset 14, -4
+ 125 0002 85B0     		sub	sp, sp, #20
+ 126              	.LCFI4:
+ 127              		.cfi_def_cfa_offset 24
+ 128              	.LVL1:
+  46:Src/main.c    **** 	unsigned int duty4 = 200 ,duty3 = 0, fade = 4;
+  47:Src/main.c    **** 	// use hse
+  48:Src/main.c    **** 	//void system_init( div_m, u32_t mul_n, u32_t div_p, u32_t system_source,u32_t div_ahb,u32_t div_a
+ARM GAS  E:\msys32\tmp\ccPuJKzQ.s 			page 4
+
+
+  49:Src/main.c    **** 	system_init( 8, 200, mPLLP_DIV4 , mSRC_PLL, mAHB_DIV1 ,mAPB_DIV2  , mAPB_DIV1);
+ 129              		.loc 1 49 0
+ 130 0004 0023     		movs	r3, #0
+ 131 0006 0293     		str	r3, [sp, #8]
+ 132 0008 0422     		movs	r2, #4
+ 133 000a 0192     		str	r2, [sp, #4]
+ 134 000c 0093     		str	r3, [sp]
+ 135 000e 0223     		movs	r3, #2
+ 136 0010 0122     		movs	r2, #1
+ 137 0012 C821     		movs	r1, #200
+ 138 0014 0820     		movs	r0, #8
+ 139 0016 FFF7FEFF 		bl	system_init
+ 140              	.LVL2:
+  50:Src/main.c    **** 	rcc_enableclk();
+ 141              		.loc 1 50 0
+ 142 001a FFF7FEFF 		bl	rcc_enableclk
+ 143              	.LVL3:
+  51:Src/main.c    **** 	systick_init();
+ 144              		.loc 1 51 0
+ 145 001e FFF7FEFF 		bl	systick_init
+ 146              	.LVL4:
+  52:Src/main.c    **** 	
+  53:Src/main.c    **** 	//counter2_config();
+  54:Src/main.c    **** 	enable_rcc_tim2();
+ 147              		.loc 1 54 0
+ 148 0022 054A     		ldr	r2, .L11
+ 149 0024 1368     		ldr	r3, [r2]
+ 150 0026 43F00103 		orr	r3, r3, #1
+ 151 002a 1360     		str	r3, [r2]
+  55:Src/main.c    **** 	config_ext_clk1();
+ 152              		.loc 1 55 0
+ 153 002c FFF7FEFF 		bl	config_ext_clk1
+ 154              	.LVL5:
+  56:Src/main.c    **** 	config_pin();
+ 155              		.loc 1 56 0
+ 156 0030 FFF7FEFF 		bl	config_pin
+ 157              	.LVL6:
+ 158              	.L9:
+ 159 0034 FEE7     		b	.L9
+ 160              	.L12:
+ 161 0036 00BF     		.align	2
+ 162              	.L11:
+ 163 0038 40380240 		.word	1073887296
+ 164              		.cfi_endproc
+ 165              	.LFE2:
+ 167              		.global	times
+ 168              		.section	.bss.times,"aw",%nobits
+ 171              	times:
+ 172 0000 00       		.space	1
+ 173              		.text
+ 174              	.Letext0:
+ 175              		.file 2 "E:/Users/VuHaiLong/Documents/stm/mylib/mInc/mtype.h"
+ 176              		.file 3 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\sys\\lock.h"
+ 177              		.file 4 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\sys\\_types.h"
+ 178              		.file 5 "c:\\tools\\gcc7_2017-q4-major\\lib\\gcc\\arm-none-eabi\\7.2.1\\include\\stddef.h"
+ 179              		.file 6 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\sys\\reent.h"
+ 180              		.file 7 "Inc/stm32f4xx_it.h"
+ARM GAS  E:\msys32\tmp\ccPuJKzQ.s 			page 5
+
+
+ 181              		.file 8 "c:\\tools\\gcc7_2017-q4-major\\arm-none-eabi\\include\\stdlib.h"
+ 182              		.file 9 "E:/Users/VuHaiLong/Documents/stm/mylib/mInc/clock.h"
+ 183              		.file 10 "E:/Users/VuHaiLong/Documents/stm/mylib/mInc/systick.h"
+ 184              		.file 11 "Inc/test.h"
+ 185              		.file 12 "E:/Users/VuHaiLong/Documents/stm/mylib/mInc/gpio.h"
+ARM GAS  E:\msys32\tmp\ccPuJKzQ.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+E:\msys32\tmp\ccPuJKzQ.s:18     .text.rcc_enableclk:00000000 $t
+E:\msys32\tmp\ccPuJKzQ.s:25     .text.rcc_enableclk:00000000 rcc_enableclk
+E:\msys32\tmp\ccPuJKzQ.s:49     .text.rcc_enableclk:00000018 $d
+E:\msys32\tmp\ccPuJKzQ.s:54     .text.config_pin:00000000 $t
+E:\msys32\tmp\ccPuJKzQ.s:61     .text.config_pin:00000000 config_pin
+E:\msys32\tmp\ccPuJKzQ.s:103    .text.config_pin:00000024 $d
+E:\msys32\tmp\ccPuJKzQ.s:108    .text.main:00000000 $t
+E:\msys32\tmp\ccPuJKzQ.s:115    .text.main:00000000 main
+E:\msys32\tmp\ccPuJKzQ.s:163    .text.main:00000038 $d
+E:\msys32\tmp\ccPuJKzQ.s:171    .bss.times:00000000 times
+E:\msys32\tmp\ccPuJKzQ.s:172    .bss.times:00000000 $d
+
+UNDEFINED SYMBOLS
+init_pin
+system_init
+systick_init
+config_ext_clk1

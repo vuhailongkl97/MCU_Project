@@ -1,0 +1,439 @@
+ARM GAS  E:\msys32\tmp\ccUVjSgK.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4xx_it.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.EXTI0_IRQHandler,"ax",%progbits
+  18              		.align	1
+  19              		.global	EXTI0_IRQHandler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	EXTI0_IRQHandler:
+  26              	.LFB0:
+  27              		.file 1 "Src/stm32f4xx_it.c"
+   1:Src/stm32f4xx_it.c **** #include "project.h"
+   2:Src/stm32f4xx_it.c **** 
+   3:Src/stm32f4xx_it.c **** void EXTI0_IRQHandler(void)
+   4:Src/stm32f4xx_it.c **** {
+  28              		.loc 1 4 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+   5:Src/stm32f4xx_it.c **** 	u32_t temp_reg;
+   6:Src/stm32f4xx_it.c **** 	// process with event 
+   7:Src/stm32f4xx_it.c **** 	GPIO_TongglePin(mGPIOD,mGPIO_PIN(12));
+  37              		.loc 1 7 0
+  38 0002 4FF48051 		mov	r1, #4096
+  39 0006 0648     		ldr	r0, .L3
+  40 0008 FFF7FEFF 		bl	GPIO_TongglePin
+  41              	.LVL0:
+   8:Src/stm32f4xx_it.c **** 	
+   9:Src/stm32f4xx_it.c **** 	// clear pendding
+  10:Src/stm32f4xx_it.c **** 	temp_reg = read_reg(mNVIC_ICPR(0) , ~(1<< 6));
+  42              		.loc 1 10 0
+  43 000c 054A     		ldr	r2, .L3+4
+  44 000e 1368     		ldr	r3, [r2]
+  45 0010 23F04003 		bic	r3, r3, #64
+  46              	.LVL1:
+  11:Src/stm32f4xx_it.c **** 	write_reg(mEXTI_PR , (1 << 0));
+  47              		.loc 1 11 0
+ARM GAS  E:\msys32\tmp\ccUVjSgK.s 			page 2
+
+
+  48 0014 0449     		ldr	r1, .L3+8
+  49 0016 0120     		movs	r0, #1
+  50 0018 0860     		str	r0, [r1]
+  12:Src/stm32f4xx_it.c **** 	write_reg(mNVIC_ICPR(0) , temp_reg);
+  51              		.loc 1 12 0
+  52 001a 1360     		str	r3, [r2]
+  13:Src/stm32f4xx_it.c **** }
+  53              		.loc 1 13 0
+  54 001c 08BD     		pop	{r3, pc}
+  55              	.LVL2:
+  56              	.L4:
+  57 001e 00BF     		.align	2
+  58              	.L3:
+  59 0020 000C0240 		.word	1073875968
+  60 0024 80E200E0 		.word	-536812928
+  61 0028 143C0140 		.word	1073822740
+  62              		.cfi_endproc
+  63              	.LFE0:
+  65              		.section	.text.NMI_Handler,"ax",%progbits
+  66              		.align	1
+  67              		.global	NMI_Handler
+  68              		.syntax unified
+  69              		.thumb
+  70              		.thumb_func
+  71              		.fpu fpv4-sp-d16
+  73              	NMI_Handler:
+  74              	.LFB1:
+  14:Src/stm32f4xx_it.c **** 
+  15:Src/stm32f4xx_it.c **** void NMI_Handler(void)
+  16:Src/stm32f4xx_it.c **** {
+  75              		.loc 1 16 0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 0
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79              		@ link register save eliminated.
+  17:Src/stm32f4xx_it.c **** }
+  80              		.loc 1 17 0
+  81 0000 7047     		bx	lr
+  82              		.cfi_endproc
+  83              	.LFE1:
+  85              		.section	.text.HardFault_Handler,"ax",%progbits
+  86              		.align	1
+  87              		.global	HardFault_Handler
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  91              		.fpu fpv4-sp-d16
+  93              	HardFault_Handler:
+  94              	.LFB2:
+  18:Src/stm32f4xx_it.c **** 
+  19:Src/stm32f4xx_it.c **** void HardFault_Handler(void)
+  20:Src/stm32f4xx_it.c **** {
+  95              		.loc 1 20 0
+  96              		.cfi_startproc
+  97              		@ Volatile: function does not return.
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  E:\msys32\tmp\ccUVjSgK.s 			page 3
+
+
+ 100              		@ link register save eliminated.
+ 101              	.L7:
+ 102 0000 FEE7     		b	.L7
+ 103              		.cfi_endproc
+ 104              	.LFE2:
+ 106              		.section	.text.MemManage_Handler,"ax",%progbits
+ 107              		.align	1
+ 108              		.global	MemManage_Handler
+ 109              		.syntax unified
+ 110              		.thumb
+ 111              		.thumb_func
+ 112              		.fpu fpv4-sp-d16
+ 114              	MemManage_Handler:
+ 115              	.LFB3:
+  21:Src/stm32f4xx_it.c ****   while (1)
+  22:Src/stm32f4xx_it.c ****   {
+  23:Src/stm32f4xx_it.c ****   }
+  24:Src/stm32f4xx_it.c **** }
+  25:Src/stm32f4xx_it.c **** void MemManage_Handler(void)
+  26:Src/stm32f4xx_it.c **** {
+ 116              		.loc 1 26 0
+ 117              		.cfi_startproc
+ 118              		@ Volatile: function does not return.
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121              		@ link register save eliminated.
+ 122              	.L9:
+ 123 0000 FEE7     		b	.L9
+ 124              		.cfi_endproc
+ 125              	.LFE3:
+ 127              		.section	.text.BusFault_Handler,"ax",%progbits
+ 128              		.align	1
+ 129              		.global	BusFault_Handler
+ 130              		.syntax unified
+ 131              		.thumb
+ 132              		.thumb_func
+ 133              		.fpu fpv4-sp-d16
+ 135              	BusFault_Handler:
+ 136              	.LFB4:
+  27:Src/stm32f4xx_it.c ****   while (1)
+  28:Src/stm32f4xx_it.c ****   {
+  29:Src/stm32f4xx_it.c ****   }
+  30:Src/stm32f4xx_it.c **** }
+  31:Src/stm32f4xx_it.c **** 
+  32:Src/stm32f4xx_it.c **** void BusFault_Handler(void)
+  33:Src/stm32f4xx_it.c **** {
+ 137              		.loc 1 33 0
+ 138              		.cfi_startproc
+ 139              		@ Volatile: function does not return.
+ 140              		@ args = 0, pretend = 0, frame = 0
+ 141              		@ frame_needed = 0, uses_anonymous_args = 0
+ 142              		@ link register save eliminated.
+ 143              	.L11:
+ 144 0000 FEE7     		b	.L11
+ 145              		.cfi_endproc
+ 146              	.LFE4:
+ 148              		.section	.text.UsageFault_Handler,"ax",%progbits
+ARM GAS  E:\msys32\tmp\ccUVjSgK.s 			page 4
+
+
+ 149              		.align	1
+ 150              		.global	UsageFault_Handler
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 154              		.fpu fpv4-sp-d16
+ 156              	UsageFault_Handler:
+ 157              	.LFB5:
+  34:Src/stm32f4xx_it.c ****   while (1)
+  35:Src/stm32f4xx_it.c ****   {
+  36:Src/stm32f4xx_it.c ****   }
+  37:Src/stm32f4xx_it.c **** 
+  38:Src/stm32f4xx_it.c **** }
+  39:Src/stm32f4xx_it.c **** 
+  40:Src/stm32f4xx_it.c **** void UsageFault_Handler(void)
+  41:Src/stm32f4xx_it.c **** {
+ 158              		.loc 1 41 0
+ 159              		.cfi_startproc
+ 160              		@ Volatile: function does not return.
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+ 164              	.L13:
+ 165 0000 FEE7     		b	.L13
+ 166              		.cfi_endproc
+ 167              	.LFE5:
+ 169              		.section	.text.SVC_Handler,"ax",%progbits
+ 170              		.align	1
+ 171              		.global	SVC_Handler
+ 172              		.syntax unified
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.fpu fpv4-sp-d16
+ 177              	SVC_Handler:
+ 178              	.LFB6:
+  42:Src/stm32f4xx_it.c ****   while (1)
+  43:Src/stm32f4xx_it.c ****   {
+  44:Src/stm32f4xx_it.c ****   }
+  45:Src/stm32f4xx_it.c **** }
+  46:Src/stm32f4xx_it.c **** void SVC_Handler(void)
+  47:Src/stm32f4xx_it.c **** {
+ 179              		.loc 1 47 0
+ 180              		.cfi_startproc
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183              		@ link register save eliminated.
+  48:Src/stm32f4xx_it.c **** }
+ 184              		.loc 1 48 0
+ 185 0000 7047     		bx	lr
+ 186              		.cfi_endproc
+ 187              	.LFE6:
+ 189              		.section	.text.DebugMon_Handler,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	DebugMon_Handler
+ 192              		.syntax unified
+ 193              		.thumb
+ 194              		.thumb_func
+ARM GAS  E:\msys32\tmp\ccUVjSgK.s 			page 5
+
+
+ 195              		.fpu fpv4-sp-d16
+ 197              	DebugMon_Handler:
+ 198              	.LFB7:
+  49:Src/stm32f4xx_it.c **** 
+  50:Src/stm32f4xx_it.c **** void DebugMon_Handler(void)
+  51:Src/stm32f4xx_it.c **** {
+ 199              		.loc 1 51 0
+ 200              		.cfi_startproc
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203              		@ link register save eliminated.
+  52:Src/stm32f4xx_it.c **** }
+ 204              		.loc 1 52 0
+ 205 0000 7047     		bx	lr
+ 206              		.cfi_endproc
+ 207              	.LFE7:
+ 209              		.section	.text.PendSV_Handler,"ax",%progbits
+ 210              		.align	1
+ 211              		.global	PendSV_Handler
+ 212              		.syntax unified
+ 213              		.thumb
+ 214              		.thumb_func
+ 215              		.fpu fpv4-sp-d16
+ 217              	PendSV_Handler:
+ 218              	.LFB8:
+  53:Src/stm32f4xx_it.c **** 
+  54:Src/stm32f4xx_it.c **** void PendSV_Handler(void)
+  55:Src/stm32f4xx_it.c **** {
+ 219              		.loc 1 55 0
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223              		@ link register save eliminated.
+  56:Src/stm32f4xx_it.c **** }
+ 224              		.loc 1 56 0
+ 225 0000 7047     		bx	lr
+ 226              		.cfi_endproc
+ 227              	.LFE8:
+ 229              		.section	.text.SysTick_Handler,"ax",%progbits
+ 230              		.align	1
+ 231              		.global	SysTick_Handler
+ 232              		.syntax unified
+ 233              		.thumb
+ 234              		.thumb_func
+ 235              		.fpu fpv4-sp-d16
+ 237              	SysTick_Handler:
+ 238              	.LFB9:
+  57:Src/stm32f4xx_it.c **** 
+  58:Src/stm32f4xx_it.c **** void SysTick_Handler(void)
+  59:Src/stm32f4xx_it.c **** {
+ 239              		.loc 1 59 0
+ 240              		.cfi_startproc
+ 241              		@ args = 0, pretend = 0, frame = 0
+ 242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 243              		@ link register save eliminated.
+  60:Src/stm32f4xx_it.c **** }
+ 244              		.loc 1 60 0
+ARM GAS  E:\msys32\tmp\ccUVjSgK.s 			page 6
+
+
+ 245 0000 7047     		bx	lr
+ 246              		.cfi_endproc
+ 247              	.LFE9:
+ 249              		.section	.text.mNVIC_SetPriority,"ax",%progbits
+ 250              		.align	1
+ 251              		.global	mNVIC_SetPriority
+ 252              		.syntax unified
+ 253              		.thumb
+ 254              		.thumb_func
+ 255              		.fpu fpv4-sp-d16
+ 257              	mNVIC_SetPriority:
+ 258              	.LFB10:
+  61:Src/stm32f4xx_it.c **** void mNVIC_SetPriority(IRQn_Type ipr , u32_t pri){
+ 259              		.loc 1 61 0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 264              	.LVL3:
+  62:Src/stm32f4xx_it.c **** 	// chia 4 .. stm32f4 chi dung 4 bit priority	 
+  63:Src/stm32f4xx_it.c **** 	u32_t addr_ipr = (mNVIC_IPR(( (u32_t)ipr >> 2u ))) ;
+ 265              		.loc 1 63 0
+ 266 0000 8008     		lsrs	r0, r0, #2
+ 267              	.LVL4:
+ 268 0002 00F16050 		add	r0, r0, #939524096
+ 269 0006 00F56450 		add	r0, r0, #14592
+ 270 000a 8000     		lsls	r0, r0, #2
+ 271              	.LVL5:
+  64:Src/stm32f4xx_it.c **** 	u32_t temp_reg = read_reg(addr_ipr, ~0u);
+ 272              		.loc 1 64 0
+ 273 000c 0368     		ldr	r3, [r0]
+ 274              	.LVL6:
+  65:Src/stm32f4xx_it.c **** 	temp_reg |=  ( ((u32_t)pri  & 0xFFu ) << 4u ) ;
+ 275              		.loc 1 65 0
+ 276 000e 0901     		lsls	r1, r1, #4
+ 277              	.LVL7:
+ 278 0010 01F47F61 		and	r1, r1, #4080
+ 279 0014 1943     		orrs	r1, r1, r3
+ 280              	.LVL8:
+  66:Src/stm32f4xx_it.c **** 	write_reg(addr_ipr, temp_reg);
+ 281              		.loc 1 66 0
+ 282 0016 0160     		str	r1, [r0]
+  67:Src/stm32f4xx_it.c **** 	 
+  68:Src/stm32f4xx_it.c **** }
+ 283              		.loc 1 68 0
+ 284 0018 7047     		bx	lr
+ 285              		.cfi_endproc
+ 286              	.LFE10:
+ 288              		.section	.text.mNVIC_EnableIRQ,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	mNVIC_EnableIRQ
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 294              		.fpu fpv4-sp-d16
+ 296              	mNVIC_EnableIRQ:
+ 297              	.LFB11:
+ARM GAS  E:\msys32\tmp\ccUVjSgK.s 			page 7
+
+
+  69:Src/stm32f4xx_it.c **** void mNVIC_EnableIRQ(IRQn_Type irq){
+ 298              		.loc 1 69 0
+ 299              		.cfi_startproc
+ 300              		@ args = 0, pretend = 0, frame = 0
+ 301              		@ frame_needed = 0, uses_anonymous_args = 0
+ 302              		@ link register save eliminated.
+ 303              	.LVL9:
+  70:Src/stm32f4xx_it.c **** 	// iser /32 ,%32
+  71:Src/stm32f4xx_it.c **** 	u32_t addr_irq = mNVIC_ISER( ((u32_t)irq >> 5u) )  ;
+ 304              		.loc 1 71 0
+ 305 0000 4309     		lsrs	r3, r0, #5
+ 306 0002 03F13823 		add	r3, r3, #939538432
+ 307 0006 4033     		adds	r3, r3, #64
+ 308 0008 9B00     		lsls	r3, r3, #2
+ 309              	.LVL10:
+  72:Src/stm32f4xx_it.c **** 	
+  73:Src/stm32f4xx_it.c **** 	u32_t temp_reg = read_reg(addr_irq , ~0u);
+ 310              		.loc 1 73 0
+ 311 000a 1968     		ldr	r1, [r3]
+ 312              	.LVL11:
+  74:Src/stm32f4xx_it.c **** 	temp_reg |=  (u32_t)(1UL << ((u32_t)irq & 0x1Fu )) ;
+ 313              		.loc 1 74 0
+ 314 000c 00F01F02 		and	r2, r0, #31
+ 315 0010 0120     		movs	r0, #1
+ 316              	.LVL12:
+ 317 0012 9040     		lsls	r0, r0, r2
+ 318 0014 0843     		orrs	r0, r0, r1
+ 319              	.LVL13:
+  75:Src/stm32f4xx_it.c **** 	write_reg(addr_irq, temp_reg);
+ 320              		.loc 1 75 0
+ 321 0016 1860     		str	r0, [r3]
+  76:Src/stm32f4xx_it.c **** 	
+  77:Src/stm32f4xx_it.c **** }
+ 322              		.loc 1 77 0
+ 323 0018 7047     		bx	lr
+ 324              		.cfi_endproc
+ 325              	.LFE11:
+ 327              		.text
+ 328              	.Letext0:
+ 329              		.file 2 "E:/Users/VuHaiLong/Desktop/mbed/arm_new/mylib/mInc/mtype.h"
+ 330              		.file 3 "E:/Users/VuHaiLong/Desktop/mbed/arm_new/mylib/mInc/const.h"
+ 331              		.file 4 "Inc/stm32f4xx_it.h"
+ 332              		.file 5 "E:/Users/VuHaiLong/Desktop/mbed/arm_new/mylib/mInc/gpio.h"
+ARM GAS  E:\msys32\tmp\ccUVjSgK.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_it.c
+E:\msys32\tmp\ccUVjSgK.s:18     .text.EXTI0_IRQHandler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:25     .text.EXTI0_IRQHandler:00000000 EXTI0_IRQHandler
+E:\msys32\tmp\ccUVjSgK.s:59     .text.EXTI0_IRQHandler:00000020 $d
+E:\msys32\tmp\ccUVjSgK.s:66     .text.NMI_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:73     .text.NMI_Handler:00000000 NMI_Handler
+E:\msys32\tmp\ccUVjSgK.s:86     .text.HardFault_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:93     .text.HardFault_Handler:00000000 HardFault_Handler
+E:\msys32\tmp\ccUVjSgK.s:107    .text.MemManage_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:114    .text.MemManage_Handler:00000000 MemManage_Handler
+E:\msys32\tmp\ccUVjSgK.s:128    .text.BusFault_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:135    .text.BusFault_Handler:00000000 BusFault_Handler
+E:\msys32\tmp\ccUVjSgK.s:149    .text.UsageFault_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:156    .text.UsageFault_Handler:00000000 UsageFault_Handler
+E:\msys32\tmp\ccUVjSgK.s:170    .text.SVC_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:177    .text.SVC_Handler:00000000 SVC_Handler
+E:\msys32\tmp\ccUVjSgK.s:190    .text.DebugMon_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:197    .text.DebugMon_Handler:00000000 DebugMon_Handler
+E:\msys32\tmp\ccUVjSgK.s:210    .text.PendSV_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:217    .text.PendSV_Handler:00000000 PendSV_Handler
+E:\msys32\tmp\ccUVjSgK.s:230    .text.SysTick_Handler:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:237    .text.SysTick_Handler:00000000 SysTick_Handler
+E:\msys32\tmp\ccUVjSgK.s:250    .text.mNVIC_SetPriority:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:257    .text.mNVIC_SetPriority:00000000 mNVIC_SetPriority
+E:\msys32\tmp\ccUVjSgK.s:289    .text.mNVIC_EnableIRQ:00000000 $t
+E:\msys32\tmp\ccUVjSgK.s:296    .text.mNVIC_EnableIRQ:00000000 mNVIC_EnableIRQ
+
+UNDEFINED SYMBOLS
+GPIO_TongglePin

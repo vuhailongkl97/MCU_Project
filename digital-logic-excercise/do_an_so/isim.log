@@ -1,0 +1,10 @@
+ISim log file
+Running: E:\Users\VuHaiLong\Desktop\PTIT4\do_an_so\do_an_so\tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/tb_isim_beh.wdb 
+ISim P.20131013 (signature 0x8ef4fb42)
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Stopped at time : 0 fs : File "E:/Users/VuHaiLong/Desktop/PTIT4/do_an_so/do_an_so/main.vhd" Line 63

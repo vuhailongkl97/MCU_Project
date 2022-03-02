@@ -1,0 +1,482 @@
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"clock.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.system_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	system_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	system_init:
+  26              	.LFB0:
+  27              		.file 1 "E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc/clock.c"
+   1:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** #include "all_lib.h"
+   2:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 
+   3:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** // cau hinh max speed rcc
+   4:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** void system_init(u32_t div_m, u32_t mul_n, u32_t div_p, u32_t system_source,u32_t div_ahb , u32_t d
+  28              		.loc 1 4 0
+  29              		.cfi_startproc
+  30              		@ args = 12, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  34 0000 30B4     		push	{r4, r5}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+  38              		.cfi_offset 5, -4
+  39 0002 82B0     		sub	sp, sp, #8
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 16
+   5:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+   6:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****   volatile u32_t temp_reg;
+   7:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****   volatile u32_t timeout;
+   8:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****   
+   9:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****   		//enable FPU
+  10:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg = read_reg(mFPU_CPACR, ~0u);
+  42              		.loc 1 10 0
+  43 0004 6D4D     		ldr	r5, .L11
+  44 0006 2C68     		ldr	r4, [r5]
+  45 0008 0194     		str	r4, [sp, #4]
+  11:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg |= (0xF <<20);
+  46              		.loc 1 11 0
+  47 000a 019C     		ldr	r4, [sp, #4]
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 2
+
+
+  48 000c 44F47004 		orr	r4, r4, #15728640
+  49 0010 0194     		str	r4, [sp, #4]
+  12:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	write_reg(mFPU_CPACR , temp_reg) ; 
+  50              		.loc 1 12 0
+  51 0012 019C     		ldr	r4, [sp, #4]
+  52 0014 2C60     		str	r4, [r5]
+  53              	.LVL1:
+  13:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    
+  14:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****   /* Disable all interrupts */
+  15:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    write_reg(mRCC_CIR, 0x00000000U);
+  54              		.loc 1 15 0
+  55 0016 6A4C     		ldr	r4, .L11+4
+  56 0018 0025     		movs	r5, #0
+  57 001a 2560     		str	r5, [r4]
+  16:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 
+  17:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    // __HAL_RCC_SYSCFG_CLK_ENABLE();
+  18:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    write_reg(mRCC_APB2ENR , (1u <<14 ));
+  58              		.loc 1 18 0
+  59 001c 3834     		adds	r4, r4, #56
+  60 001e 4FF48045 		mov	r5, #16384
+  61 0022 2560     		str	r5, [r4]
+  19:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    
+  20:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    //  __HAL_RCC_PWR_CLK_ENABLE();  	
+  21:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    write_reg(mRCC_APB1ENR , (1u <<28 ));
+  62              		.loc 1 21 0
+  63 0024 043C     		subs	r4, r4, #4
+  64 0026 4FF08055 		mov	r5, #268435456
+  65 002a 2560     		str	r5, [r4]
+  22:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    
+  23:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    //__HAL_PWR_VOLTAGESCALING_ONFIG(PWR_REGULATOR_VOLTAGE_SCALE1); for using clock <= 100mhz 
+  24:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    temp_reg = read_reg(mPWR_CR , ~(3u << 14 ));
+  66              		.loc 1 24 0
+  67 002c 654D     		ldr	r5, .L11+8
+  68 002e 2C68     		ldr	r4, [r5]
+  69 0030 24F44044 		bic	r4, r4, #49152
+  70 0034 0194     		str	r4, [sp, #4]
+  25:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    temp_reg |= (3u << 14);
+  71              		.loc 1 25 0
+  72 0036 019C     		ldr	r4, [sp, #4]
+  73 0038 44F44044 		orr	r4, r4, #49152
+  74 003c 0194     		str	r4, [sp, #4]
+  26:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    write_reg( mPWR_CR , temp_reg);
+  75              		.loc 1 26 0
+  76 003e 019C     		ldr	r4, [sp, #4]
+  77 0040 2C60     		str	r4, [r5]
+  27:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    
+  28:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    //HSE clock bypass
+  29:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****    	temp_reg = read_reg(mRCC_CR, ~(1u << 18 ));
+  78              		.loc 1 29 0
+  79 0042 05F5E435 		add	r5, r5, #116736
+  80 0046 2C68     		ldr	r4, [r5]
+  81 0048 24F48024 		bic	r4, r4, #262144
+  82 004c 0194     		str	r4, [sp, #4]
+  30:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg |= (0u << 18);
+  83              		.loc 1 30 0
+  84 004e 019C     		ldr	r4, [sp, #4]
+  85 0050 0194     		str	r4, [sp, #4]
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 3
+
+
+  31:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CR, temp_reg);
+  86              		.loc 1 31 0
+  87 0052 019C     		ldr	r4, [sp, #4]
+  88 0054 2C60     		str	r4, [r5]
+  32:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  33:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  34:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	//using hse
+  35:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg = read_reg(mRCC_CR, ~(1u << 16 ));
+  89              		.loc 1 35 0
+  90 0056 24F48034 		bic	r4, r4, #65536
+  91 005a 0194     		str	r4, [sp, #4]
+  36:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg |= (1u << 16);
+  92              		.loc 1 36 0
+  93 005c 019C     		ldr	r4, [sp, #4]
+  94 005e 44F48034 		orr	r4, r4, #65536
+  95 0062 0194     		str	r4, [sp, #4]
+  37:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CR, temp_reg);
+  96              		.loc 1 37 0
+  97 0064 019C     		ldr	r4, [sp, #4]
+  98 0066 2C60     		str	r4, [r5]
+  38:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  39:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	timeout = 0xFF;
+  99              		.loc 1 39 0
+ 100 0068 FF24     		movs	r4, #255
+ 101 006a 0094     		str	r4, [sp]
+ 102              	.L3:
+  40:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     do {
+  41:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****        
+  42:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****         timeout--;
+ 103              		.loc 1 42 0 discriminator 2
+ 104 006c 009C     		ldr	r4, [sp]
+ 105 006e 013C     		subs	r4, r4, #1
+ 106 0070 0094     		str	r4, [sp]
+  43:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     } while ((0 == (read_reg(mRCC_CR, (1u << 17)))) && (timeout > 0));
+ 107              		.loc 1 43 0 discriminator 2
+ 108 0072 554C     		ldr	r4, .L11+12
+ 109 0074 2468     		ldr	r4, [r4]
+ 110 0076 14F4003F 		tst	r4, #131072
+ 111 007a 02D1     		bne	.L2
+ 112              		.loc 1 43 0 is_stmt 0 discriminator 1
+ 113 007c 009D     		ldr	r5, [sp]
+ 114 007e 002D     		cmp	r5, #0
+ 115 0080 F4D1     		bne	.L3
+ 116              	.L2:
+  44:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  45:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	/* Disable the main PLL. */
+  46:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_CR, ~(1 << 24));
+ 117              		.loc 1 46 0 is_stmt 1
+ 118 0082 24F08074 		bic	r4, r4, #16777216
+ 119 0086 0194     		str	r4, [sp, #4]
+  47:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CR, temp_reg);
+ 120              		.loc 1 47 0
+ 121 0088 019D     		ldr	r5, [sp, #4]
+ 122 008a 4F4C     		ldr	r4, .L11+12
+ 123 008c 2560     		str	r5, [r4]
+  48:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  49:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	/* Wait till PLL is disable */
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 4
+
+
+  50:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     timeout = 0xFFF;
+ 124              		.loc 1 50 0
+ 125 008e 40F6FF74 		movw	r4, #4095
+ 126 0092 0094     		str	r4, [sp]
+ 127              	.L5:
+  51:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     do {
+  52:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****         timeout--;
+ 128              		.loc 1 52 0 discriminator 2
+ 129 0094 009C     		ldr	r4, [sp]
+ 130 0096 013C     		subs	r4, r4, #1
+ 131 0098 0094     		str	r4, [sp]
+  53:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     } while ((0 != (read_reg(mRCC_CR, (1 << 25)))) && (timeout > 0));
+ 132              		.loc 1 53 0 discriminator 2
+ 133 009a 4B4C     		ldr	r4, .L11+12
+ 134 009c 2468     		ldr	r4, [r4]
+ 135 009e 14F0007F 		tst	r4, #33554432
+ 136 00a2 02D0     		beq	.L4
+ 137              		.loc 1 53 0 is_stmt 0 discriminator 1
+ 138 00a4 009C     		ldr	r4, [sp]
+ 139 00a6 002C     		cmp	r4, #0
+ 140 00a8 F4D1     		bne	.L5
+ 141              	.L4:
+  54:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  55:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	// can thiet lap ko se doc sai dia chi lenh , du lieu FLASH_LATENCY_2
+  56:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	write_reg(mFLASH_ACR , 0x03u);
+ 142              		.loc 1 56 0 is_stmt 1
+ 143 00aa 484C     		ldr	r4, .L11+16
+ 144 00ac 0325     		movs	r5, #3
+ 145 00ae 2560     		str	r5, [r4]
+  57:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  58:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_PLLCFGR, ~0x3Fu);
+ 146              		.loc 1 58 0
+ 147 00b0 A4F57F74 		sub	r4, r4, #1020
+ 148 00b4 2568     		ldr	r5, [r4]
+ 149 00b6 25F03F05 		bic	r5, r5, #63
+ 150 00ba 0195     		str	r5, [sp, #4]
+  59:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg |= div_m;
+ 151              		.loc 1 59 0
+ 152 00bc 019D     		ldr	r5, [sp, #4]
+ 153 00be 2843     		orrs	r0, r0, r5
+ 154              	.LVL2:
+ 155 00c0 0190     		str	r0, [sp, #4]
+  60:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_PLLCFGR, temp_reg);
+ 156              		.loc 1 60 0
+ 157 00c2 0198     		ldr	r0, [sp, #4]
+ 158 00c4 2060     		str	r0, [r4]
+  61:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     
+  62:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	// nhan *N   *100
+  63:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_PLLCFGR, ~(0x1FFu << 6));
+ 159              		.loc 1 63 0
+ 160 00c6 20F4FF40 		bic	r0, r0, #32640
+ 161 00ca 20F04000 		bic	r0, r0, #64
+ 162 00ce 0190     		str	r0, [sp, #4]
+  64:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg |= (mul_n << 6);
+ 163              		.loc 1 64 0
+ 164 00d0 0198     		ldr	r0, [sp, #4]
+ 165 00d2 40EA8111 		orr	r1, r0, r1, lsl #6
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 5
+
+
+ 166              	.LVL3:
+ 167 00d6 0191     		str	r1, [sp, #4]
+  65:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_PLLCFGR, temp_reg);
+ 168              		.loc 1 65 0
+ 169 00d8 0199     		ldr	r1, [sp, #4]
+ 170 00da 2160     		str	r1, [r4]
+  66:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  67:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	// chia /P  /2
+  68:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 
+  69:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_PLLCFGR, ~(0x3u<< 16));
+ 171              		.loc 1 69 0
+ 172 00dc 21F44031 		bic	r1, r1, #196608
+ 173 00e0 0191     		str	r1, [sp, #4]
+  70:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg |= (div_p << 16);
+ 174              		.loc 1 70 0
+ 175 00e2 0199     		ldr	r1, [sp, #4]
+ 176 00e4 41EA0242 		orr	r2, r1, r2, lsl #16
+ 177              	.LVL4:
+ 178 00e8 0192     		str	r2, [sp, #4]
+  71:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_PLLCFGR, temp_reg);
+ 179              		.loc 1 71 0
+ 180 00ea 019A     		ldr	r2, [sp, #4]
+ 181 00ec 2260     		str	r2, [r4]
+  72:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  73:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  74:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	/* Enable the main PLL. */
+  75:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_CR, ~(1 << 24));
+ 182              		.loc 1 75 0
+ 183 00ee 3649     		ldr	r1, .L11+12
+ 184 00f0 0A68     		ldr	r2, [r1]
+ 185 00f2 22F08072 		bic	r2, r2, #16777216
+ 186 00f6 0192     		str	r2, [sp, #4]
+  76:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg |= (1 << 24);
+ 187              		.loc 1 76 0
+ 188 00f8 019A     		ldr	r2, [sp, #4]
+ 189 00fa 42F08072 		orr	r2, r2, #16777216
+ 190 00fe 0192     		str	r2, [sp, #4]
+  77:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CR, temp_reg);
+ 191              		.loc 1 77 0
+ 192 0100 019A     		ldr	r2, [sp, #4]
+ 193 0102 0A60     		str	r2, [r1]
+  78:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  79:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	/* Wait till PLL is ready */
+  80:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     timeout = 0xFFFF;
+ 194              		.loc 1 80 0
+ 195 0104 4FF6FF72 		movw	r2, #65535
+ 196 0108 0092     		str	r2, [sp]
+ 197              	.L7:
+  81:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     do {
+  82:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****         timeout--;
+ 198              		.loc 1 82 0 discriminator 2
+ 199 010a 009A     		ldr	r2, [sp]
+ 200 010c 013A     		subs	r2, r2, #1
+ 201 010e 0092     		str	r2, [sp]
+  83:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     } while ((0 == (read_reg(mRCC_CR, (1 << 25)))) && (timeout > 0));
+ 202              		.loc 1 83 0 discriminator 2
+ 203 0110 2D4A     		ldr	r2, .L11+12
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 6
+
+
+ 204 0112 1268     		ldr	r2, [r2]
+ 205 0114 12F0007F 		tst	r2, #33554432
+ 206 0118 02D1     		bne	.L6
+ 207              		.loc 1 83 0 is_stmt 0 discriminator 1
+ 208 011a 009A     		ldr	r2, [sp]
+ 209 011c 002A     		cmp	r2, #0
+ 210 011e F4D1     		bne	.L7
+ 211              	.L6:
+  84:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  85:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 
+  86:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	//  chia 1 
+  87:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_CFGR, ~(0xFu << 4));
+ 212              		.loc 1 87 0 is_stmt 1
+ 213 0120 2B4A     		ldr	r2, .L11+20
+ 214 0122 1168     		ldr	r1, [r2]
+ 215 0124 21F0F001 		bic	r1, r1, #240
+ 216 0128 0191     		str	r1, [sp, #4]
+  88:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg |= ( div_ahb << 4);
+ 217              		.loc 1 88 0
+ 218 012a 0199     		ldr	r1, [sp, #4]
+ 219 012c 0498     		ldr	r0, [sp, #16]
+ 220 012e 41EA0011 		orr	r1, r1, r0, lsl #4
+ 221 0132 0191     		str	r1, [sp, #4]
+  89:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CFGR, temp_reg);	
+ 222              		.loc 1 89 0
+ 223 0134 0199     		ldr	r1, [sp, #4]
+ 224 0136 1160     		str	r1, [r2]
+  90:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+  91:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	 /* APB1 prescaler */
+  92:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	// chia toi da
+  93:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_CFGR, ~(0x07u << 10));
+ 225              		.loc 1 93 0
+ 226 0138 21F4E051 		bic	r1, r1, #7168
+ 227 013c 0191     		str	r1, [sp, #4]
+  94:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg |= (mAPB_DIV16 << 10);
+ 228              		.loc 1 94 0
+ 229 013e 0199     		ldr	r1, [sp, #4]
+ 230 0140 41F4E051 		orr	r1, r1, #7168
+ 231 0144 0191     		str	r1, [sp, #4]
+  95:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CFGR, temp_reg);
+ 232              		.loc 1 95 0
+ 233 0146 0199     		ldr	r1, [sp, #4]
+ 234 0148 1160     		str	r1, [r2]
+  96:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	// APB2 giong APB1
+  97:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg = read_reg(mRCC_CFGR, ~(0x07u << 13));
+ 235              		.loc 1 97 0
+ 236 014a 21F46041 		bic	r1, r1, #57344
+ 237 014e 0191     		str	r1, [sp, #4]
+  98:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg |= (mAPB_DIV16 << 13);
+ 238              		.loc 1 98 0
+ 239 0150 0199     		ldr	r1, [sp, #4]
+ 240 0152 41F46041 		orr	r1, r1, #57344
+ 241 0156 0191     		str	r1, [sp, #4]
+  99:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CFGR, temp_reg);
+ 242              		.loc 1 99 0
+ 243 0158 0199     		ldr	r1, [sp, #4]
+ 244 015a 1160     		str	r1, [r2]
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 7
+
+
+ 100:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+ 101:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 
+ 102:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	//select source
+ 103:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_CFGR, ~(0x3u << 0));
+ 245              		.loc 1 103 0
+ 246 015c 21F00301 		bic	r1, r1, #3
+ 247 0160 0191     		str	r1, [sp, #4]
+ 104:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg |= (system_source << 0);
+ 248              		.loc 1 104 0
+ 249 0162 0199     		ldr	r1, [sp, #4]
+ 250 0164 1943     		orrs	r1, r1, r3
+ 251 0166 0191     		str	r1, [sp, #4]
+ 105:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CFGR, temp_reg);
+ 252              		.loc 1 105 0
+ 253 0168 0199     		ldr	r1, [sp, #4]
+ 254 016a 1160     		str	r1, [r2]
+ 106:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     
+ 107:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     // /* Wait till System clock switch is ready */
+ 108:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     timeout = 0xFFFFFF;
+ 255              		.loc 1 108 0
+ 256 016c 6FF07F42 		mvn	r2, #-16777216
+ 257 0170 0092     		str	r2, [sp]
+ 258              	.L9:
+ 109:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     do {
+ 110:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****         timeout--;
+ 259              		.loc 1 110 0 discriminator 2
+ 260 0172 009A     		ldr	r2, [sp]
+ 261 0174 013A     		subs	r2, r2, #1
+ 262 0176 0092     		str	r2, [sp]
+ 111:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     } while (((system_source << 2) != (read_reg(mRCC_CFGR, (0x3 << 2)))) && (timeout > 0));
+ 263              		.loc 1 111 0 discriminator 2
+ 264 0178 154A     		ldr	r2, .L11+20
+ 265 017a 1268     		ldr	r2, [r2]
+ 266 017c 02F00C01 		and	r1, r2, #12
+ 267 0180 B1EB830F 		cmp	r1, r3, lsl #2
+ 268 0184 02D0     		beq	.L8
+ 269              		.loc 1 111 0 is_stmt 0 discriminator 1
+ 270 0186 0099     		ldr	r1, [sp]
+ 271 0188 0029     		cmp	r1, #0
+ 272 018a F2D1     		bne	.L9
+ 273              	.L8:
+ 112:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+ 113:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+ 114:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     /* APB1 prescaler */
+ 115:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	//  apb1 chia 2
+ 116:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     temp_reg = read_reg(mRCC_CFGR, ~(7u << 10));
+ 274              		.loc 1 116 0 is_stmt 1
+ 275 018c 22F4E052 		bic	r2, r2, #7168
+ 276 0190 0192     		str	r2, [sp, #4]
+ 117:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg |=  (div_apb1 << 10);
+ 277              		.loc 1 117 0
+ 278 0192 019B     		ldr	r3, [sp, #4]
+ 279              	.LVL5:
+ 280 0194 059A     		ldr	r2, [sp, #20]
+ 281 0196 43EA8223 		orr	r3, r3, r2, lsl #10
+ 282 019a 0193     		str	r3, [sp, #4]
+ 118:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CFGR, temp_reg);
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 8
+
+
+ 283              		.loc 1 118 0
+ 284 019c 019B     		ldr	r3, [sp, #4]
+ 285 019e 0C4A     		ldr	r2, .L11+20
+ 286 01a0 1360     		str	r3, [r2]
+ 119:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+ 120:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+ 121:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	// apb2 chia 1
+ 122:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg = read_reg(mRCC_CFGR, ~(7u << 13));
+ 287              		.loc 1 122 0
+ 288 01a2 23F46043 		bic	r3, r3, #57344
+ 289 01a6 0193     		str	r3, [sp, #4]
+ 123:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	temp_reg |=  (div_apb2 << 10);
+ 290              		.loc 1 123 0
+ 291 01a8 019B     		ldr	r3, [sp, #4]
+ 292 01aa 0699     		ldr	r1, [sp, #24]
+ 293 01ac 43EA8123 		orr	r3, r3, r1, lsl #10
+ 294 01b0 0193     		str	r3, [sp, #4]
+ 124:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c ****     write_reg(mRCC_CFGR, temp_reg);
+ 295              		.loc 1 124 0
+ 296 01b2 019B     		ldr	r3, [sp, #4]
+ 297 01b4 1360     		str	r3, [r2]
+ 125:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 	
+ 126:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** 
+ 127:E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mSrc\clock.c **** }
+ 298              		.loc 1 127 0
+ 299 01b6 02B0     		add	sp, sp, #8
+ 300              	.LCFI2:
+ 301              		.cfi_def_cfa_offset 8
+ 302              		@ sp needed
+ 303 01b8 30BC     		pop	{r4, r5}
+ 304              	.LCFI3:
+ 305              		.cfi_restore 5
+ 306              		.cfi_restore 4
+ 307              		.cfi_def_cfa_offset 0
+ 308 01ba 7047     		bx	lr
+ 309              	.L12:
+ 310              		.align	2
+ 311              	.L11:
+ 312 01bc 88ED00E0 		.word	-536810104
+ 313 01c0 0C380240 		.word	1073887244
+ 314 01c4 00700040 		.word	1073770496
+ 315 01c8 00380240 		.word	1073887232
+ 316 01cc 003C0240 		.word	1073888256
+ 317 01d0 08380240 		.word	1073887240
+ 318              		.cfi_endproc
+ 319              	.LFE0:
+ 321              		.text
+ 322              	.Letext0:
+ 323              		.file 2 "E:/Users/VuHaiLong/Desktop/mbed/hocRTOS/mylib/mInc/mtype.h"
+ARM GAS  E:\msys32\tmp\cc4fVQlU.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 clock.c
+E:\msys32\tmp\cc4fVQlU.s:18     .text.system_init:00000000 $t
+E:\msys32\tmp\cc4fVQlU.s:25     .text.system_init:00000000 system_init
+E:\msys32\tmp\cc4fVQlU.s:312    .text.system_init:000001bc $d
+
+NO UNDEFINED SYMBOLS

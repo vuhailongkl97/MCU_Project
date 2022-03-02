@@ -1,0 +1,25 @@
+1.các lệnh thực hiện theo cơ chế Read-modify-write . trong đó có quá trình race condition >> đã cấm truy cập từ nơi khác đến 
+. >> tại sao lại cần bit-banding ( mdk5 sử dụng __LOCK_ , __UNLOCK ) .. 
+  Optional bit-banding ( user guide 2.2.5 ) và chỉ có 1 số thanh ghi sử dụng 2 hàm trên ạ ( như HSI , HSE , PLL .)
+2. event mask register trong EXTI . sử dụng nó như nào ạ 
+3.Input capture  filter : 
+	0001: f SAMPLING =f CK_INT , N=2
+	0010: f SAMPLING =f CK_INT , N=4
+	0011: f SAMPLING =f CK_INT , N=8
+	0100: f SAMPLING =f DTS /2, N=6
+	0101: f SAMPLING =f DTS /2, N=8
+	0110: f SAMPLING =f DTS /4, N=6
+	0111: f SAMPLING =f DTS /4, N=8
+	1000: f SAMPLING =f DTS /8, N=6
+	1001: f SAMPLING =f DTS /8, N=8
+	1010: f SAMPLING =f DTS /16, N=5
+	1011: f SAMPLING =f DTS /16, N=6
+	1100: f SAMPLING =f DTS /16, N=8
+	1101: f SAMPLING =f DTS /32, N=5
+	1110: f SAMPLING =f DTS /32, N=6
+	1111: f SAMPLING =f DTS /32, N=8
+		a giải thích cách filter với f CK_INT , f DTS và N 
+4.chức năng output compare của timer
+5.FIFO trong DMA . threshold level trong FIFO có ý nghĩa gì ạ
+
+

@@ -1,0 +1,72 @@
+﻿interrupt 
+
+	tại sao lại phải  chia làm 2 loại ngắt ( 1 loại được thực hiện trong ngắt , 1 loại được thực hiện trong task)
+		trả lời :
+			vì cơ chế của 2 context này hoàn toàn khác nhau . 
+			ví dụ chẳng hạn đói với hàm xTaskNotify (thực hiện trong task có 2 function ) 
+			 taskENTER_CRITICAL() and taskEXIT_CRITICAL() 
+			macros provide a basic critical section implementation that works by simply disabling interrupts, 
+			either globally, or up to a specific interrupt priority level.
+		>> giả sử nó được gọi trong ngắt mà chính disabling thì ngắt sẽ không thể thực hiện được  đoạn code dự tính
+		ngược lại nếu dùng task_fromIsr trong 1 task thông thường thì khó có thể hoàn thành xong 1 task bởi vì ngắt có thể xảy ra
+	( chẳng hạn như slice time thì 1 vài function api với mục đích đồng bộ dũ liệu , thông báo trên hệ thống sẽ ko thể hoàn thành ,
+điều này gây ra sai sót thậm chí gây crash hệ điều hành 
+	function portEND_SWITCHING_ISR, portYIELD_FROM_ISR
+	có chức năng như nhau 
+	là quyết định xét có thỏa mãn để  context switching hay không  nhờ vào việc thay đổi tham số truyền vào 
+	
+	portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );
+	xHigherPriorityTaskWoken có thể là pdTrue cho phép switching
+	hoặc pdFasle là không cho phép switching
+
+	cơ chế hoạt động 
+		1.  task đang được chạy ( ở trạng thái running ) 
+		2.	bất ngờ 1 sự việc xảy ra ( ngắt tới)
+		3.  kernel thực hiện context switching để chuyển đến thực hiện code của Interrupt
+		4.  tại cuối Interrupt user có thể điều hướng chuyển chương trình sang 1 task khác để thực hiện ( gọi portEND_SWITCHING_ISR)
+		5.  function xét tính hợp lệ của việc switching . là task2 ( interrupt muốn sw tới ) phải có priority > priority của task 1( task ban đầu 
+		6.  tính hợp lệ thông qua việc thay đổi xHigherPriorityTaskWoken ( biến con trỏ đã được truyền vào lúc gọi hàm )
+		7. tùy theo  xHigherPriorityTaskWoken mà sw có được thực hiện hay không 
+	
+	
+	*lưu ý hàm này được gọi trong interrupt
+	
+	 + do vậy có thêm chữ FROM_ISR  ở cuối 
+	Deferred Interrupt Processing - mục đích giảm thời gian thực thi lệnh trong ngắt 
+     >> tại sao phải giảm , giảm làm gì ,để nguyên chả dễ à ?
+		trả lời :
+			nếu để chương trình ngắt dài ( đặc biệt nhất là ngắt đó đang nắm giữ độ ưu tiên cao nhât). nó sẽ chiếm toàn thời gian 
+thực hiện của chương trình , kể cả kernel cũng không đụng được đến khi nó đang chạy 
+            + dẫn đến task trước đó được chạy có thể disrupt cho đến khi ngắt thực hiện xong( có thể rất dài , vì đang xet vậy mà )
+
+			+ nhiều cấu trúc RTOS cho phép nest interrupt càng làm chương trình trở nên phức tạp hơn ( khi ngắt 1 chưa xong ngắt 2 nhảy vào( priority lớn hơn ) ....)
+			nếu như chương trình ngắt 1 mà ngắn ( thưc hiện nhanh thì việc ngắt lồng là ít xảy ra hơn >> chương trình đõ phức tạp hơn
+
+	nguyên lý hoạt động deferred interrupt processing 
+		khi có ngắt xảy ra mà khỗi lượng công việc trong ngắt đó là lớn
+		>> nó sẽ chuyển khối công việc đó qua 1 task khác ( có mức priority tương dối đảm bảo lớn hơn task trước đó bị ngắt chiếm )
+			task tạm đó ( có mưc priority < mức của ngắt) >> dễ dàng cho việc ngắt khác thực hiện tránh được những nhược điểm mà để chương trình ngắt dài
+			như đã trình bày ở trên .
+
+trang 217 master Freertos
+
+semaphore
+	BINARY SEMAPHORE USED FOR SYNCHRONIRATION 
+ giúp trao đổi thông tin , event đồng bộ giữa các task với tốc đô xử lý nhanh được xử lý trong ngắt short
+ the binary semaphore is used to ‘defer’ interrupt processingto a task . tạo ra 1 task tạm ( đảm bảo có thể pre-empts các task khác trong hệ thông)
+nhưng không được là có mức priority lớn  hơn ngắt đang được chạy 
+
+quá trình diễn ra như sau 
+	1 - When the interrupt occurs, Task1 is Running, and Task2 is Blocked waiting for a semaphore.
+	2 - The ISR executes, handles the interrupting peripheral, clears the interrupt, then ‘gives’a semaphore to unblock Task 2.
+	3 - Task 2 completes any further processing necessitated by the interrupt, then blocks on the semaphore to wait to be unblocked
+     again by the next interrupt.
+
+semaphore giống như 1 cái ổ khóa  , mỗi interrupt kích hoạt chiếm 1 chìa khóa . khi 1 interrup vào  >> mở khóa và cầm khóa đi vào 
+khi task 2 đến . thấy có người bên trong nên chỉ được cắm khóa ở đấy chứ chưa được vào . 
+khi task 3 .. đến thì không còn khóa để cắm >>>>>> bị bỏ qua
+gọi là binary bởi vì chỉ có 1 ổ khóa và ổ khóa chỉ có 2 trạng thái là đã được cắm khóa , hoặc free
+
+
+
+

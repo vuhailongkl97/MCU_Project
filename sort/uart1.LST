@@ -1,0 +1,180 @@
+C51 COMPILER V9.01   UART1                                                                 06/16/2018 02:30:09 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE UART1
+OBJECT MODULE PLACED IN uart1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE uart1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<regx52.h>
+   2          #include "Uartmode1.h"
+   3          #include <string.h>
+   4          
+   5          void xuatketqua(unsigned int high , int i){
+   6   1              unsigned int h =high  ,j = 0 , temp =100;
+   7   1              while(temp  != 1 ){
+   8   2                              temp = 1; 
+   9   2                              for( j = 1      ; j <= i ; j++) temp *= 10;
+  10   2                              UART_WRITE((h/temp)%10 +'0');                   
+  11   2                              i--;
+  12   2              }
+  13   1              UART_WRITE_STR(" ms\r\n");
+  14   1      }
+  15          unsigned int heso = 0;
+  16          void InitTimer(){
+  17   1              TMOD &= 0xF0;
+  18   1              TMOD |= 0x01;
+  19   1              
+  20   1              ET0 = 1;        
+  21   1              EA = 1;
+  22   1              TH0 = 0xFB;
+  23   1              TL0  =0xC3;
+  24   1      }
+  25          void chon(char a[] , int n ){
+  26   1              int min , j , i;
+  27   1              for(  i = 0 ; i < n ; i++)
+  28   1              {
+  29   2                      min = i ; 
+  30   2                      for( j = i+1 ; j < n ; j ++){
+  31   3                              if(a[min] > a[j]) min = j ; 
+  32   3                      }
+  33   2                      if( min != i ){
+  34   3                              char temp = a[i];
+  35   3                              a[i] = a[min];
+  36   3                              a[min] =temp;
+  37   3                      }
+  38   2              }       
+  39   1      }
+  40          void  noibot(char a[] , int n ){
+  41   1              unsigned int i , j ; 
+  42   1              for ( i = 0 ; i < n-1  ; i ++){
+  43   2                      for ( j =n-1 ; j >i ; j --){
+  44   3                              if(a[j] < a[j-1]){
+  45   4                                      char temp = a[j];
+  46   4                                      a[j] =a[j-1];
+  47   4                                      a[j-1] = temp;
+  48   4                              }
+  49   3                      }
+  50   2              }
+  51   1      }
+  52          void quickSort(char *a, int l, int r)
+  53          {
+  54   1         
+  55   1          int key = a[(l+r)/2];
+C51 COMPILER V9.01   UART1                                                                 06/16/2018 02:30:09 PAGE 2   
+
+  56   1          int i = l, j = r;
+  57   1        
+  58   1          while(i <= j)
+  59   1          {
+  60   2              
+  61   2              while (a[i] < key) { i++;  }
+  62   2          
+  63   2              while (a[j] > key) { j--;  }
+  64   2              if(i <= j)
+  65   2              {
+  66   3                  if (i < j)
+  67   3                  {
+  68   4                      char temp  = a[i];
+  69   4                                      a[i] = a[j];
+  70   4                                      a[j] = temp;
+  71   4                  }
+  72   3                  i++;
+  73   3                  j--;
+  74   3              }
+  75   2          }
+  76   1          //bay gio ta co 1 mang : a[l]....a[j]..a[i]...a[r]
+  77   1          if (l < j) quickSort(a, l, j);   // lam lai voi mang a[l]....a[j]
+*** WARNING C265 IN LINE 77 OF UART1.C: '_quickSort': recursive call to non-reentrant function
+  78   1          if (i < r) quickSort(a, i, r); // lam lai voi mang a[i]....a[r]
+*** WARNING C265 IN LINE 78 OF UART1.C: '_quickSort': recursive call to non-reentrant function
+  79   1      }
+  80          
+  81          void chen(char a[] , int n ){
+  82   1              unsigned int i , j ;
+  83   1              for (  i = 1; i < n ; i++){
+  84   2                      for( j = i ; j >0 ; j--){
+  85   3                              if(a[j] < a[j-1]){
+  86   4                                      char temp = a[j];
+  87   4                                      a[j]=a[j-1];
+  88   4                                      a[j-1] =temp;
+  89   4                              }
+  90   3                      }
+  91   2              }
+  92   1      }
+  93          void main(){
+  94   1               unsigned int i  = 0 , size = 100; 
+  95   1              // 1 xung dem mat 1.085us
+  96   1              //1 lan overflow mat 71ms
+  97   1      
+  98   1        code  char arr[] = {1,26,28,82,6,44,30,53,50,99,91,63,40,74,36,92,50,69,36,82,68,99,74,16,73,15,80,5,54,
+             -79,51,30,84,50
+  99   1              ,86,81,18,3,60,99,41,25,93,93,1,36,52,57,91,63,69,42,53,43,87,16,69,33,82,16,31,23,66,29,5,38,17,51,86,39
+ 100   1              ,71,19,32,36,28,13,52,98,65,55,29,32,44,59,13,77,94,84,31,94,22,61,3,83,48,32,24,35,59 ,69 };
+ 101   1              char temp[100];
+ 102   1              strncpy(temp , arr , size);
+ 103   1              UART_INIT();
+ 104   1              InitTimer();
+ 105   1              UART_WRITE_STR("SX CHON  :");
+ 106   1              TH0 =0xFB;TL0 = 0xC3;
+ 107   1              TR0 = 1 ;                                        
+ 108   1              chon(temp , size);
+ 109   1              TR0 = 0;
+ 110   1              xuatketqua(heso, 5);
+ 111   1      
+ 112   1      
+ 113   1              UART_WRITE_STR("SX NOI BOT  :");
+ 114   1              heso = 0;
+C51 COMPILER V9.01   UART1                                                                 06/16/2018 02:30:09 PAGE 3   
+
+ 115   1              TH0 =0xFB;TL0 = 0xC3;
+ 116   1              TR0 = 1 ;                                
+ 117   1              strncpy(temp , arr , size);
+ 118   1              noibot(temp , size);
+ 119   1              TR0 = 0 ;
+ 120   1              xuatketqua(heso, 5);
+ 121   1      
+ 122   1              UART_WRITE_STR("SX CHEN  :");
+ 123   1              heso = 0 ;
+ 124   1          TH0 =0xFB;TL0 = 0xC3;
+ 125   1              TR0 = 1 ;                                
+ 126   1              strncpy(temp , arr , 100);
+ 127   1              chen(temp , size);
+ 128   1              TR0 = 0 ;
+ 129   1              xuatketqua(heso, 5);
+ 130   1      
+ 131   1              UART_WRITE_STR("SX QuickSort  :");
+ 132   1              heso = 0 ;
+ 133   1              TH0 =0xFB;TL0 = 0xC3;
+ 134   1              TR0 = 1 ;                                
+ 135   1              strncpy(temp , arr , 100);
+ 136   1              quickSort(temp , 0 , size-1 );
+ 137   1              TR0 = 0 ;
+ 138   1              xuatketqua(heso, 5);
+ 139   1      
+ 140   1          while(1){   
+ 141   2        }     
+ 142   1      }
+ 143          // do chinh xac 1ms;
+ 144          void overFlowTimer0() interrupt 1{
+ 145   1              TR0 = 0 ; 
+ 146   1              TH0 =0xFB;
+ 147   1              TL0 = 0xC3;
+ 148   1              heso ++;
+ 149   1              TR0  = 1 ; 
+ 150   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1239    ----
+   CONSTANT SIZE    =    158    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2     154
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)
